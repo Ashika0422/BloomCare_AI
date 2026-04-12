@@ -8,6 +8,7 @@ from database import db
 from auth import auth_bp
 from predict import predict_bp
 from journal import journal_bp
+from vitals import vitals_bp
 
 load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
@@ -44,6 +45,7 @@ def create_app():
     app.register_blueprint(auth_bp,    url_prefix='/auth')
     app.register_blueprint(predict_bp, url_prefix='/api')
     app.register_blueprint(journal_bp, url_prefix='/journal')
+    app.register_blueprint(vitals_bp,  url_prefix='/vitals')
 
     # ── Create tables ─────────────────────────────────────────
     with app.app_context():

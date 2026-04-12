@@ -5,21 +5,21 @@ import RegisterPage   from './components/auth/RegisterPage';
 import Navbar         from './components/Navbar';
 import MainDashboard  from './components/dashboard/MainDashboard';
 import DailyJournal   from './components/dashboard/DailyJournal';
-import PredictionPage from './components/PredictionPage';
+import RiskAnalysis   from './components/dashboard/RiskAnalysis';
 import DashboardPage  from './components/DashboardPage';
 import AboutPage      from './components/AboutPage';
 
 function AppInner() {
   const { isAuthenticated, loading } = useAuth();
   const [authView, setAuthView] = useState('login');
-  const [page,     setPage]     = useState('home');   // default: main dashboard
+  const [page,     setPage]     = useState('home');
 
   if (loading) {
     return (
       <div style={{
-        minHeight: '100vh', display: 'flex',
-        alignItems: 'center', justifyContent: 'center',
-        background: 'var(--cream)', fontFamily: 'var(--font-body)',
+        minHeight: '100vh', display: 'flex', alignItems: 'center',
+        justifyContent: 'center', background: 'var(--cream)',
+        fontFamily: 'var(--font-body)',
       }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🌸</div>
@@ -41,21 +41,34 @@ function AppInner() {
       <main>
         {page === 'home'      && <MainDashboard onNavigate={setPage} />}
         {page === 'journal'   && <DailyJournal />}
-        {page === 'predict'   && <PredictionPage />}
+        {page === 'risk'      && <RiskAnalysis />}
         {page === 'dashboard' && <DashboardPage />}
         {page === 'about'     && <AboutPage />}
-        {/* Placeholders for upcoming phases */}
-        {page === 'risk'      && <PredictionPage />}
-        {['chat','medicines','goals','stats'].includes(page) && (
+        {/* Upcoming modules */}
+        {['chat', 'medicines', 'goals', 'stats'].includes(page) && (
           <div style={{
             maxWidth: 600, margin: '80px auto', textAlign: 'center',
             fontFamily: 'var(--font-body)', color: 'var(--slate-mid)',
           }}>
             <div style={{ fontSize: 52, marginBottom: 16 }}>🚧</div>
-            <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--slate)', marginBottom: 8 }}>
-              Coming in the next phase
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              color: 'var(--slate)', marginBottom: 8,
+            }}>
+              Coming soon
             </h2>
-            <p>The <strong>{page}</strong> module will be built in Phase 5B-2 and beyond.</p>
+            <p>The <strong>{page}</strong> module is being built in the next phase.</p>
+            <button
+              onClick={() => setPage('home')}
+              style={{
+                marginTop: 20, padding: '10px 24px', borderRadius: 99,
+                background: 'var(--rose)', color: '#fff', border: 'none',
+                fontSize: 14, fontWeight: 600, cursor: 'pointer',
+                fontFamily: 'var(--font-body)',
+              }}
+            >
+              ← Back to Dashboard
+            </button>
           </div>
         )}
       </main>
