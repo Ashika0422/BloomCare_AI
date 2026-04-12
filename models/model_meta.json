@@ -1,0 +1,17 @@
+{
+  "features": [
+    "Age",
+    "SystolicBP",
+    "DiastolicBP",
+    "Blood Glucose",
+    "BodyTemp",
+    "HeartRate"
+  ],
+  "target_names": [
+    "Low Risk",
+    "Mid Risk",
+    "High Risk"
+  ],
+  "model_name": "Random Forest (Tuned)",
+  "accuracy": 85.22
+}
