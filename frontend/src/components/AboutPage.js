@@ -2,10 +2,10 @@ const s = {
   page: { maxWidth: 900, margin: '0 auto', padding: '48px 32px 80px' },
   hero: { textAlign: 'center', marginBottom: 56, animation: 'fadeUp 0.5s ease both' },
   eyebrow: {
-    display: 'inline-block', background: 'var(--rose-light)', color: 'var(--rose-dark)',
+    display: 'inline-block', background: 'var(--primary-tint)', color: 'var(--primary-dark)',
     fontSize: 11, fontWeight: 600, padding: '4px 14px', borderRadius: 99,
     letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 14,
-    border: '1px solid var(--rose-mid)',
+    border: '1px solid var(--primary-light)',
   },
   title: {
     fontFamily: 'var(--font-display)', fontSize: 40, fontWeight: 600,
@@ -29,7 +29,7 @@ const s = {
   },
   stepNum: {
     width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-    background: 'linear-gradient(135deg, var(--rose), var(--rose-dark))',
+    background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     color: '#fff', fontWeight: 700, fontSize: 14,
   },
@@ -54,7 +54,7 @@ const s = {
   featureName: { fontSize: 13, fontWeight: 600, color: 'var(--slate)', marginBottom: 4 },
   featureDesc: { fontSize: 12, color: 'var(--slate-light)', lineHeight: 1.5 },
   disclaimer: {
-    background: 'var(--amber-light)', borderRadius: 'var(--radius-md)',
+    background: 'var(--warning-light)', borderRadius: 'var(--radius-md)',
     border: '1px solid rgba(212,146,74,0.3)', padding: '20px 24px',
     fontSize: 14, color: '#7A5020', lineHeight: 1.7,
   },
@@ -68,9 +68,9 @@ const STEPS = [
 ];
 
 const TECH = [
-  { icon: '🐍', name: 'Python + scikit-learn', desc: 'Model training, preprocessing, GridSearchCV tuning', color: 'var(--sage)' },
-  { icon: '⚡', name: 'XGBoost',               desc: 'Gradient boosting classifier (compared against RF)', color: 'var(--amber)' },
-  { icon: '🌶️', name: 'Flask',                 desc: 'REST API backend serving predictions on port 5000', color: 'var(--rose)' },
+  { icon: '🐍', name: 'Python + scikit-learn', desc: 'Model training, preprocessing, GridSearchCV tuning', color: 'var(--success)' },
+  { icon: '⚡', name: 'XGBoost',               desc: 'Gradient boosting classifier (compared against RF)', color: 'var(--warning)' },
+  { icon: '🌶️', name: 'Flask',                 desc: 'REST API backend serving predictions on port 5000', color: 'var(--primary)' },
   { icon: '⚛️', name: 'React 18',              desc: 'Frontend SPA with hooks, state management, routing', color: '#61DAFB' },
   { icon: '📊', name: 'Recharts',              desc: 'Dashboard visualisations and interactive charts', color: 'var(--slate-mid)' },
   { icon: '🗃️', name: 'Maternal Dataset',      desc: '1,014 records from Bangladesh rural health clinics', color: '#9C6FDE' },
@@ -150,7 +150,7 @@ export default function AboutPage() {
               desc: 'Vitals are within normal ranges. Routine antenatal visits every 4 weeks are advised.' },
             { icon: '🟡', label: 'Mid Risk (1)',  color: '#9A6B1A', bg: '#FDF3E7', border: '#F5C97B',
               desc: 'Some indicators require attention. A medical consultation within 1–2 weeks is recommended.' },
-            { icon: '🔴', label: 'High Risk (2)', color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE',
+            { icon: '🔴', label: 'High Risk (2)', color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF',
               desc: 'Critical indicators detected. Immediate medical evaluation is strongly advised.' },
           ].map(r => (
             <div key={r.label} style={{

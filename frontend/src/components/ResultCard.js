@@ -20,11 +20,11 @@ const RISK_CONFIG = {
   2: {
     label: 'High Risk',
     emoji: '🔴',
-    color: '#C0394F',
-    bg: '#FBEEF1',
-    border: '#F4C5CE',
-    gradient: 'linear-gradient(135deg, #FBEEF1 0%, #FADDDF 100%)',
-    bar: '#E8667A',
+    color: '#8A00F3',
+    bg: '#F5E6FF',
+    border: '#E8CCFF',
+    gradient: 'linear-gradient(135deg, #F5E6FF 0%, #EDD5FF 100%)',
+    bar: '#B100E7',
   },
 };
 
@@ -150,7 +150,7 @@ export default function ResultCard({ result }) {
           </h4>
           <ProbBar label="Low Risk"  value={probs.low_risk}  color="#5A8A72" delay={100} />
           <ProbBar label="Mid Risk"  value={probs.mid_risk}  color="#D4924A" delay={200} />
-          <ProbBar label="High Risk" value={probs.high_risk} color="#E8667A" delay={300} />
+          <ProbBar label="High Risk" value={probs.high_risk} color="#B100E7" delay={300} />
         </div>
 
         {/* Input summary */}

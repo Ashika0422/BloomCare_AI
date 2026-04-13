@@ -13,7 +13,7 @@ const VITALS = [
     label: 'Systolic BP',      unit: 'mmHg',
     min: 70,  max: 180,  step: 1,   placeholder: '120',
     normalMin: 90,  normalMax: 120,
-    icon: '🫀', color: '#E8667A', lightColor: '#FBEEF1',
+    icon: '🫀', color: '#B100E7', lightColor: '#F5E6FF',
     desc: 'Upper blood pressure reading',
   },
   {
@@ -21,7 +21,7 @@ const VITALS = [
     label: 'Diastolic BP',     unit: 'mmHg',
     min: 40,  max: 120,  step: 1,   placeholder: '80',
     normalMin: 60,  normalMax: 80,
-    icon: '💓', color: '#C0394F', lightColor: '#FADDDF',
+    icon: '💓', color: '#8A00F3', lightColor: '#EDD5FF',
     desc: 'Lower blood pressure reading',
   },
   {
@@ -55,12 +55,12 @@ const VITAL_MAP = Object.fromEntries(VITALS.map(v => [v.key, v]));
 const RISK_CFG = {
   0: { label: 'Low Risk',  icon: '🟢', color: '#2D7A4F', bg: '#EBF4EF', border: '#A8D5B8', grad: 'linear-gradient(135deg,#EBF4EF,#D4EDDA)' },
   1: { label: 'Mid Risk',  icon: '🟡', color: '#9A6B1A', bg: '#FDF3E7', border: '#F5C97B', grad: 'linear-gradient(135deg,#FDF3E7,#FAECD4)' },
-  2: { label: 'High Risk', icon: '🔴', color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE', grad: 'linear-gradient(135deg,#FBEEF1,#FADDDF)' },
+  2: { label: 'High Risk', icon: '🔴', color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF', grad: 'linear-gradient(135deg,#F5E6FF,#EDD5FF)' },
 };
 
 const STATUS_CFG = {
   normal: { label: 'Normal', color: '#2D7A4F', bg: '#EBF4EF' },
-  high:   { label: 'High',   color: '#C0394F', bg: '#FBEEF1' },
+  high:   { label: 'High',   color: '#8A00F3', bg: '#F5E6FF' },
   low:    { label: 'Low',    color: '#9A6B1A', bg: '#FDF3E7' },
 };
 
@@ -73,10 +73,10 @@ const s = {
   },
   pageHeader: { marginBottom: 36, animation: 'fadeUp 0.5s ease both' },
   eyebrow: {
-    display: 'inline-block', background: 'var(--rose-light)',
-    color: 'var(--rose-dark)', fontSize: 11, fontWeight: 600,
+    display: 'inline-block', background: 'var(--primary-tint)',
+    color: 'var(--primary-dark)', fontSize: 11, fontWeight: 600,
     padding: '4px 12px', borderRadius: 99, letterSpacing: '0.1em',
-    textTransform: 'uppercase', marginBottom: 12, border: '1px solid var(--rose-mid)',
+    textTransform: 'uppercase', marginBottom: 12, border: '1px solid var(--primary-light)',
   },
   pageTitle: {
     fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600,
@@ -92,7 +92,7 @@ const s = {
   },
   statusCard: (v, status) => ({
     background: 'var(--white)', borderRadius: 'var(--radius-md)',
-    border: `1.5px solid ${status === 'normal' ? 'var(--border)' : status === 'high' ? '#F4C5CE' : '#F5C97B'}`,
+    border: `1.5px solid ${status === 'normal' ? 'var(--border)' : status === 'high' ? '#E8CCFF' : '#F5C97B'}`,
     padding: '14px 16px', position: 'relative', overflow: 'hidden',
     boxShadow: 'var(--shadow-sm)',
   }),
@@ -143,14 +143,14 @@ const s = {
     width: '100%', padding: '11px 52px 11px 14px',
     borderRadius: 'var(--radius-md)',
     border: `1.5px solid ${
-      status === 'high' ? '#F4C5CE' :
+      status === 'high' ? '#E8CCFF' :
       status === 'low'  ? '#F5C97B' :
-      focused ? 'var(--rose)' : 'var(--border)'
+      focused ? 'var(--primary)' : 'var(--border)'
     }`,
-    background: status === 'high' ? '#FBEEF1' : status === 'low' ? '#FDF3E7' : focused ? 'var(--blush)' : '#fdfaf7',
+    background: status === 'high' ? '#F5E6FF' : status === 'low' ? '#FDF3E7' : focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.1)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
   }),
   inputUnit: {
     position: 'absolute', right: 12, fontSize: 11,
@@ -162,13 +162,13 @@ const s = {
   analyseBtn: (loading) => ({
     width: '100%', marginTop: 8, padding: '15px',
     borderRadius: 'var(--radius-md)',
-    background: loading ? 'var(--rose-mid)'
-      : 'linear-gradient(135deg, #C0394F 0%, #8B1A2E 100%)',
+    background: loading ? 'var(--primary-light)'
+      : 'linear-gradient(135deg, #8A00F3 0%, #6E01F4 100%)',
     color: '#fff', border: 'none',
     cursor: loading ? 'not-allowed' : 'pointer',
     fontSize: 15, fontWeight: 700, letterSpacing: '0.04em',
     transition: 'all 0.2s ease', fontFamily: 'var(--font-body)',
-    boxShadow: loading ? 'none' : '0 6px 24px rgba(192,57,79,0.4)',
+    boxShadow: loading ? 'none' : '0 6px 24px rgba(110,1,244,0.4)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
   }),
   spinner: {
@@ -178,7 +178,7 @@ const s = {
   },
   disclaimer: {
     marginTop: 14, padding: '10px 14px',
-    background: 'var(--amber-light)', borderRadius: 8,
+    background: 'var(--warning-light)', borderRadius: 8,
     border: '1px solid rgba(212,146,74,0.25)',
     fontSize: 11, color: '#7A5020', lineHeight: 1.6,
   },
@@ -268,15 +268,15 @@ const s = {
   xaiRow: (status) => ({
     display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10,
     padding: '10px 14px', borderRadius: 10,
-    background: status !== 'normal' ? (status === 'high' ? '#FBEEF1' : '#FDF3E7') : 'var(--blush)',
-    border: `1px solid ${status === 'high' ? '#F4C5CE' : status === 'low' ? '#F5C97B' : 'var(--border)'}`,
+    background: status !== 'normal' ? (status === 'high' ? '#F5E6FF' : '#FDF3E7') : 'var(--blush)',
+    border: `1px solid ${status === 'high' ? '#E8CCFF' : status === 'low' ? '#F5C97B' : 'var(--border)'}`,
   }),
   xaiIcon: { fontSize: 18, flexShrink: 0 },
   xaiInfo: { flex: 1, minWidth: 0 },
   xaiLabel: { fontSize: 13, fontWeight: 600, color: 'var(--slate)', marginBottom: 2 },
   xaiVal: (status) => ({
     fontSize: 12,
-    color: status === 'high' ? '#C0394F' : status === 'low' ? '#9A6B1A' : 'var(--slate-mid)',
+    color: status === 'high' ? '#8A00F3' : status === 'low' ? '#9A6B1A' : 'var(--slate-mid)',
     fontWeight: status !== 'normal' ? 600 : 400,
   }),
   xaiBarWrap: { width: 80, flexShrink: 0 },
@@ -308,7 +308,7 @@ const s = {
   empty: {
     textAlign: 'center', padding: '48px 24px',
     background: 'var(--white)', borderRadius: 'var(--radius-xl)',
-    border: '1.5px dashed var(--rose-mid)',
+    border: '1.5px dashed var(--primary-light)',
   },
   emptyIcon: { fontSize: 52, marginBottom: 16 },
   emptyTitle: {
@@ -541,7 +541,7 @@ export default function RiskAnalysis() {
                   color={v.color}
                 />
                 {errors[v.key] && (
-                  <span style={{ fontSize: 11, color: 'var(--rose-dark)', marginTop: 3, display: 'block', fontWeight: 500 }}>
+                  <span style={{ fontSize: 11, color: 'var(--primary-dark)', marginTop: 3, display: 'block', fontWeight: 500 }}>
                     Valid range: {errors[v.key]}
                   </span>
                 )}
@@ -551,9 +551,9 @@ export default function RiskAnalysis() {
 
           {apiErr && (
             <div style={{
-              background: 'var(--rose-light)', border: '1px solid var(--rose-mid)',
+              background: 'var(--primary-tint)', border: '1px solid var(--primary-light)',
               borderRadius: 8, padding: '10px 14px', fontSize: 13,
-              color: 'var(--rose-dark)', marginBottom: 12, animation: 'fadeIn 0.3s ease',
+              color: 'var(--primary-dark)', marginBottom: 12, animation: 'fadeIn 0.3s ease',
             }}>
               ⚠️ {apiErr}
             </div>
@@ -623,7 +623,7 @@ export default function RiskAnalysis() {
                     {[
                       { label: 'Low Risk',  val: result.probabilities.low_risk,  color: '#5A8A72', delay: 100 },
                       { label: 'Mid Risk',  val: result.probabilities.mid_risk,  color: '#D4924A', delay: 200 },
-                      { label: 'High Risk', val: result.probabilities.high_risk, color: '#E8667A', delay: 300 },
+                      { label: 'High Risk', val: result.probabilities.high_risk, color: '#B100E7', delay: 300 },
                     ].map(p => (
                       <div key={p.label} style={s.probRow}>
                         <div style={s.probRowTop}>
@@ -658,12 +658,12 @@ export default function RiskAnalysis() {
                           <div style={s.xaiBarWrap}>
                             <div style={s.xaiBarTrack}>
                               <div style={s.xaiBarFill(
-                                f.status === 'high' ? '#E8667A' : f.status === 'low' ? '#D4924A' : '#5A8A72',
+                                f.status === 'high' ? '#B100E7' : f.status === 'low' ? '#D4924A' : '#5A8A72',
                                 animated ? Math.min(f.impact * 2.5, 100) : 0
                               )} />
                             </div>
                             <div style={s.xaiPct(
-                              f.status === 'high' ? '#C0394F' : f.status === 'low' ? '#9A6B1A' : '#5A8A72'
+                              f.status === 'high' ? '#8A00F3' : f.status === 'low' ? '#9A6B1A' : '#5A8A72'
                             )}>
                               {f.impact}%
                             </div>
@@ -752,8 +752,8 @@ export default function RiskAnalysis() {
                         <AreaChart data={chartData} margin={{ left: -10, right: 10 }}>
                           <defs>
                             <linearGradient id={`grad-${activeTab}`} x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%"  stopColor={vCfg?.color || '#E8667A'} stopOpacity={0.15} />
-                              <stop offset="95%" stopColor={vCfg?.color || '#E8667A'} stopOpacity={0.01} />
+                              <stop offset="5%"  stopColor={vCfg?.color || '#B100E7'} stopOpacity={0.15} />
+                              <stop offset="95%" stopColor={vCfg?.color || '#B100E7'} stopOpacity={0.01} />
                             </linearGradient>
                           </defs>
                           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
@@ -773,9 +773,9 @@ export default function RiskAnalysis() {
                           )}
                           <Area
                             type="monotone" dataKey="value"
-                            stroke={vCfg?.color || '#E8667A'} strokeWidth={2.5}
+                            stroke={vCfg?.color || '#B100E7'} strokeWidth={2.5}
                             fill={`url(#grad-${activeTab})`}
-                            dot={{ r: 3, fill: vCfg?.color || '#E8667A' }}
+                            dot={{ r: 3, fill: vCfg?.color || '#B100E7' }}
                             activeDot={{ r: 5 }}
                             name={vCfg?.label || activeTab}
                           />

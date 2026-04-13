@@ -9,7 +9,7 @@ const MOODS = [
   { value: 'Grateful', emoji: '🙏', label: 'Grateful', color: '#9B59B6', bg: '#F5EEF8', border: '#D7B8E8' },
   { value: 'Tired',    emoji: '😴', label: 'Tired',    color: '#8FA3B1', bg: '#F0F4F7', border: '#C5D4DC' },
   { value: 'Anxious',  emoji: '😰', label: 'Anxious',  color: '#C0884A', bg: '#FDF3E7', border: '#F0C080' },
-  { value: 'Sad',      emoji: '😢', label: 'Sad',      color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE' },
+  { value: 'Sad',      emoji: '😢', label: 'Sad',      color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF' },
 ];
 
 const MOOD_MAP = Object.fromEntries(MOODS.map(m => [m.value, m]));
@@ -35,10 +35,10 @@ const s = {
     marginBottom: 36, animation: 'fadeUp 0.5s ease both',
   },
   eyebrow: {
-    display: 'inline-block', background: 'var(--rose-light)',
-    color: 'var(--rose-dark)', fontSize: 11, fontWeight: 600,
+    display: 'inline-block', background: 'var(--primary-tint)',
+    color: 'var(--primary-dark)', fontSize: 11, fontWeight: 600,
     padding: '4px 12px', borderRadius: 99, letterSpacing: '0.1em',
-    textTransform: 'uppercase', marginBottom: 12, border: '1px solid var(--rose-mid)',
+    textTransform: 'uppercase', marginBottom: 12, border: '1px solid var(--primary-light)',
   },
   pageTitle: {
     fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600,
@@ -104,12 +104,12 @@ const s = {
   textarea: (focused) => ({
     width: '100%', minHeight: 180, padding: '16px',
     borderRadius: 'var(--radius-md)',
-    border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', lineHeight: 1.7, resize: 'vertical',
     transition: 'all 0.2s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.1)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
   }),
   charCount: {
     position: 'absolute', bottom: 10, right: 14,
@@ -121,13 +121,13 @@ const s = {
     background: disabled
       ? 'var(--border)'
       : loading
-      ? 'var(--rose-mid)'
-      : 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)',
+      ? 'var(--primary-light)'
+      : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     color: disabled ? 'var(--slate-light)' : '#fff',
     border: 'none', cursor: disabled || loading ? 'not-allowed' : 'pointer',
     fontSize: 14, fontWeight: 600, letterSpacing: '0.03em',
     transition: 'all 0.2s ease', fontFamily: 'var(--font-body)',
-    boxShadow: disabled || loading ? 'none' : '0 4px 16px rgba(232,102,122,0.3)',
+    boxShadow: disabled || loading ? 'none' : '0 4px 16px rgba(177,0,231,0.3)',
     display: 'flex', alignItems: 'center', gap: 8,
   }),
   spinner: {
@@ -172,7 +172,7 @@ const s = {
     aspect: '1', width: '100%', paddingTop: '100%',
     borderRadius: 6, position: 'relative',
     background: mood ? (MOOD_MAP[mood]?.bg || 'var(--blush)') : 'var(--blush)',
-    border: isToday ? '2px solid var(--rose)' : '1px solid var(--border)',
+    border: isToday ? '2px solid var(--primary)' : '1px solid var(--border)',
     cursor: mood ? 'pointer' : 'default',
     transition: 'transform 0.15s ease',
   }),
@@ -334,9 +334,9 @@ export default function DailyJournal() {
                 style={s.promptChip}
                 onClick={() => setText(prev => prev ? `${prev}\n\n${p} ` : `${p} `)}
                 onMouseEnter={e => {
-                  e.currentTarget.style.background = 'var(--rose-light)';
-                  e.currentTarget.style.color = 'var(--rose-dark)';
-                  e.currentTarget.style.borderColor = 'var(--rose-mid)';
+                  e.currentTarget.style.background = 'var(--primary-tint)';
+                  e.currentTarget.style.color = 'var(--primary-dark)';
+                  e.currentTarget.style.borderColor = 'var(--primary-light)';
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.background = 'var(--blush)';
@@ -400,7 +400,7 @@ export default function DailyJournal() {
                       <button
                         style={s.deleteBtn}
                         onClick={() => handleDelete(e.id)}
-                        onMouseEnter={ev => { ev.currentTarget.style.color = 'var(--rose-dark)'; ev.currentTarget.style.background = 'var(--rose-light)'; }}
+                        onMouseEnter={ev => { ev.currentTarget.style.color = 'var(--primary-dark)'; ev.currentTarget.style.background = 'var(--primary-tint)'; }}
                         onMouseLeave={ev => { ev.currentTarget.style.color = 'var(--slate-light)'; ev.currentTarget.style.background = 'none'; }}
                       >
                         ✕
@@ -448,7 +448,7 @@ export default function DailyJournal() {
                     style={{
                       aspectRatio: '1', borderRadius: 6,
                       background: cfg ? cfg.bg : 'var(--blush)',
-                      border: isToday ? '2px solid var(--rose)' : '1px solid var(--border)',
+                      border: isToday ? '2px solid var(--primary)' : '1px solid var(--border)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: 13, cursor: dayMood ? 'pointer' : 'default',
                       transition: 'transform 0.15s',

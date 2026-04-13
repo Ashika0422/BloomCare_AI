@@ -29,7 +29,7 @@ RISK_LABELS = {0: 'Low Risk', 1: 'Mid Risk', 2: 'High Risk'}
 RISK_COLORS_RL = {
     0: colors.HexColor('#2D7A4F'),
     1: colors.HexColor('#9A6B1A'),
-    2: colors.HexColor('#C0394F'),
+    2: colors.HexColor('#8A00F3'),
 }
 
 
@@ -50,7 +50,7 @@ def build_pdf_report(user, logs, journals, checklist_stats, goals):
     usable  = W - 4 * cm
 
     # ── Custom styles ────────────────────────────────────────
-    rose     = colors.HexColor('#C0394F')
+    rose     = colors.HexColor('#8A00F3')
     slate    = colors.HexColor('#2C3E50')
     midgray  = colors.HexColor('#546A7B')
     lightbg  = colors.HexColor('#FDF6F8')

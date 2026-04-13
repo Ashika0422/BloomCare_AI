@@ -8,8 +8,8 @@ const CATEGORIES = [
   { value: 'Mindfulness', icon: '🧘', color: '#9B59B6', bg: '#F5EEF8', border: '#D7B8E8' },
   { value: 'Sleep',       icon: '😴', color: '#546A7B', bg: '#EDF2F5', border: '#B8CDD6' },
   { value: 'Hydration',   icon: '💧', color: '#2980B9', bg: '#EBF5FB', border: '#AED6F1' },
-  { value: 'Medical',     icon: '🩺', color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE' },
-  { value: 'Personal',    icon: '🌸', color: '#E8667A', bg: '#FBEEF1', border: '#F4C5CE' },
+  { value: 'Medical',     icon: '🩺', color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF' },
+  { value: 'Personal',    icon: '🌸', color: '#B100E7', bg: '#F5E6FF', border: '#E8CCFF' },
   { value: 'Other',       icon: '⭐', color: '#8FA3B1', bg: '#F0F4F7', border: '#C5D4DC' },
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map(c => [c.value, c]));
@@ -30,10 +30,10 @@ const s = {
   },
   pageHeader: { marginBottom: 36, animation: 'fadeUp 0.5s ease both' },
   eyebrow: {
-    display: 'inline-block', background: 'var(--rose-light)', color: 'var(--rose-dark)',
+    display: 'inline-block', background: 'var(--primary-tint)', color: 'var(--primary-dark)',
     fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 99,
     letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12,
-    border: '1px solid var(--rose-mid)',
+    border: '1px solid var(--primary-light)',
   },
   pageTitle: {
     fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600,
@@ -119,7 +119,7 @@ const s = {
   metricInputRow: { display: 'flex', alignItems: 'center', gap: 8 },
   metricInput: (focused) => ({
     flex: 1, padding: '9px 12px', borderRadius: 10,
-    border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : 'var(--white)',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', fontWeight: 600,
@@ -130,10 +130,10 @@ const s = {
   }),
   saveMetricsBtn: {
     marginTop: 14, padding: '9px 20px', borderRadius: 99,
-    background: 'linear-gradient(135deg, var(--rose), var(--rose-dark))',
+    background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))',
     color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13,
     fontWeight: 600, transition: 'all 0.2s', fontFamily: 'var(--font-body)',
-    boxShadow: '0 3px 12px rgba(192,57,79,0.25)',
+    boxShadow: '0 3px 12px rgba(110,1,244,0.25)',
   },
   savedBadge: {
     display: 'inline-flex', alignItems: 'center', gap: 5,
@@ -147,8 +147,8 @@ const s = {
   addGoalBtn: {
     display: 'flex', alignItems: 'center', gap: 6,
     padding: '6px 14px', borderRadius: 99,
-    background: 'var(--rose-light)', border: '1.5px solid var(--rose-mid)',
-    color: 'var(--rose-dark)', fontSize: 12, fontWeight: 600,
+    background: 'var(--primary-tint)', border: '1.5px solid var(--primary-light)',
+    color: 'var(--primary-dark)', fontSize: 12, fontWeight: 600,
     cursor: 'pointer', transition: 'all 0.15s', fontFamily: 'var(--font-body)',
   },
   goalCard: (cfg) => ({
@@ -189,7 +189,7 @@ const s = {
   }),
   deleteGoalBtn: {
     marginLeft: 'auto', width: 28, height: 28, borderRadius: 8, border: 'none',
-    background: 'var(--rose-light)', color: 'var(--rose-dark)',
+    background: 'var(--primary-tint)', color: 'var(--primary-dark)',
     cursor: 'pointer', fontSize: 12, display: 'flex',
     alignItems: 'center', justifyContent: 'center',
     transition: 'all 0.15s',
@@ -204,7 +204,7 @@ const s = {
   /* Add goal form */
   addGoalForm: {
     background: 'var(--blush)', borderRadius: 14, padding: '18px',
-    border: '1.5px solid var(--rose-mid)', marginBottom: 14,
+    border: '1.5px solid var(--primary-light)', marginBottom: 14,
     animation: 'fadeIn 0.3s ease',
   },
   formRow2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 },
@@ -214,7 +214,7 @@ const s = {
   },
   fInput: (focused) => ({
     width: '100%', padding: '9px 12px', borderRadius: 10,
-    border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--white)' : 'var(--blush)',
     fontSize: 13, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.18s',
@@ -241,10 +241,10 @@ const s = {
   },
   confirmBtn: {
     flex: 2, padding: '9px', borderRadius: 10,
-    background: 'linear-gradient(135deg, var(--rose), var(--rose-dark))',
+    background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))',
     color: '#fff', border: 'none', cursor: 'pointer',
     fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-body)',
-    boxShadow: '0 3px 12px rgba(192,57,79,0.25)',
+    boxShadow: '0 3px 12px rgba(110,1,244,0.25)',
     transition: 'all 0.2s',
   },
 };
@@ -375,7 +375,7 @@ export default function GoalTracker() {
         {[
           { icon: '✅', label: 'Today\'s Habits',   val: `${checkDone}/${checkTotal}`,         color: '#5A8A72' },
           { icon: '🎯', label: 'Active Goals',       val: goals.length,                         color: '#D4924A' },
-          { icon: '🏆', label: 'Goals Completed',    val: completedGoals,                       color: '#C0394F' },
+          { icon: '🏆', label: 'Goals Completed',    val: completedGoals,                       color: '#8A00F3' },
           { icon: '😴', label: 'Avg Sleep (7 days)', val: stats ? `${stats.avg_sleep}h` : '—', color: '#546A7B' },
         ].map((st, i) => (
           <div key={i} style={s.statCard(st.color)}>
@@ -410,7 +410,7 @@ export default function GoalTracker() {
           <div style={{ height: 6, borderRadius: 99, background: 'var(--border)', marginBottom: 18, overflow: 'hidden' }}>
             <div style={{
               height: '100%', borderRadius: 99, width: `${checkPct}%`,
-              background: 'linear-gradient(90deg, var(--rose), var(--rose-dark))',
+              background: 'linear-gradient(90deg, var(--primary), var(--primary-dark))',
               transition: 'width 0.5s ease',
             }} />
           </div>
@@ -486,8 +486,8 @@ export default function GoalTracker() {
             <button
               style={s.addGoalBtn}
               onClick={() => setShowAddForm(p => !p)}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--rose)'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'var(--rose-light)'; e.currentTarget.style.color = 'var(--rose-dark)'; }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary)'; e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'var(--primary-tint)'; e.currentTarget.style.color = 'var(--primary-dark)'; }}
             >
               {showAddForm ? '✕ Cancel' : '+ Add Goal'}
             </button>
@@ -581,7 +581,7 @@ export default function GoalTracker() {
 
               return (
                 <div key={goal.id} style={s.goalCard(cfg)}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--rose-mid)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary-light)'; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; }}
                 >
                   <div style={s.goalTop}>
@@ -599,8 +599,8 @@ export default function GoalTracker() {
                     <button
                       style={s.deleteGoalBtn}
                       onClick={() => handleDeleteGoal(goal.id)}
-                      onMouseEnter={e => { e.currentTarget.style.background = 'var(--rose)'; e.currentTarget.style.color = '#fff'; }}
-                      onMouseLeave={e => { e.currentTarget.style.background = 'var(--rose-light)'; e.currentTarget.style.color = 'var(--rose-dark)'; }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary)'; e.currentTarget.style.color = '#fff'; }}
+                      onMouseLeave={e => { e.currentTarget.style.background = 'var(--primary-tint)'; e.currentTarget.style.color = 'var(--primary-dark)'; }}
                     >
                       ✕
                     </button>

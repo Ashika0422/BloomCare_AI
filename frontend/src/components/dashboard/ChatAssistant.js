@@ -12,8 +12,8 @@ function inlineFormat(text) {
     else if (match[3]) parts.push(<em key={match.index} style={{ fontStyle: 'italic' }}>{match[3]}</em>);
     else if (match[4]) parts.push(
       <code key={match.index} style={{
-        background: 'rgba(232,102,122,0.12)', padding: '1px 5px',
-        borderRadius: 4, fontSize: 12, fontFamily: 'monospace', color: '#C0394F',
+        background: 'rgba(177,0,231,0.12)', padding: '1px 5px',
+        borderRadius: 4, fontSize: 12, fontFamily: 'monospace', color: '#8A00F3',
       }}>{match[4]}</code>
     );
     last = match.index + match[0].length;
@@ -34,7 +34,7 @@ function renderMarkdown(text) {
       <ul key={`ul${out.length}`} style={{ margin: '6px 0 8px', paddingLeft: 0, listStyle: 'none' }}>
         {listItems.map((item, i) => (
           <li key={i} style={{ display: 'flex', gap: 8, marginBottom: 5, fontSize: 14, lineHeight: 1.65 }}>
-            <span style={{ color: 'var(--rose)', flexShrink: 0, marginTop: 3, fontSize: 10 }}>●</span>
+            <span style={{ color: 'var(--primary)', flexShrink: 0, marginTop: 3, fontSize: 10 }}>●</span>
             <span>{inlineFormat(item)}</span>
           </li>
         ))}
@@ -64,7 +64,7 @@ function renderMarkdown(text) {
         <div key={idx} style={{ display: 'flex', gap: 10, marginBottom: 6, fontSize: 14, lineHeight: 1.65 }}>
           <span style={{
             minWidth: 20, height: 20, borderRadius: '50%',
-            background: 'rgba(232,102,122,0.15)', color: 'var(--rose-dark)',
+            background: 'rgba(232,102,122,0.15)', color: 'var(--primary-dark)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: 11, fontWeight: 700, flexShrink: 0, marginTop: 2,
           }}>{numMatch[1]}</span>
@@ -89,7 +89,7 @@ function renderMarkdown(text) {
       flushList();
       out.push(
         <div key={idx} style={{
-          borderLeft: '3px solid var(--rose)', paddingLeft: 12,
+          borderLeft: '3px solid var(--primary)', paddingLeft: 12,
           margin: '5px 0', color: 'var(--slate-mid)', fontSize: 13, fontStyle: 'italic',
         }}>{inlineFormat(line.slice(2))}</div>
       );
@@ -110,7 +110,7 @@ function TypingDots() {
     <div style={{ display: 'flex', gap: 4, alignItems: 'center', height: 20 }}>
       {[0, 1, 2].map(i => (
         <div key={i} style={{
-          width: 7, height: 7, borderRadius: '50%', background: 'var(--rose-mid)',
+          width: 7, height: 7, borderRadius: '50%', background: 'var(--primary-light)',
           animation: `typingBounce 1.2s ease-in-out ${i * 0.18}s infinite`,
         }} />
       ))}
@@ -151,9 +151,9 @@ const s = {
   },
   headerAvatar: {
     width: 42, height: 42, borderRadius: '50%', flexShrink: 0,
-    background: 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)',
+    background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: 20, boxShadow: '0 3px 10px rgba(232,102,122,0.3)',
+    fontSize: 20, boxShadow: '0 3px 10px rgba(177,0,231,0.3)',
   },
   headerInfo: { flex: 1 },
   headerName: {
@@ -213,24 +213,24 @@ const s = {
   }),
   botAvatar: {
     width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
-    background: 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)',
+    background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14,
   },
   bubble: (isUser) => ({
     maxWidth: '74%', padding: '11px 15px',
     borderRadius: isUser ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
     background: isUser
-      ? 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)'
+      ? 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)'
       : 'var(--white)',
     color: isUser ? '#fff' : 'var(--slate)',
-    boxShadow: isUser ? '0 3px 14px rgba(192,57,79,0.22)' : '0 2px 8px rgba(44,62,80,0.07)',
+    boxShadow: isUser ? '0 3px 14px rgba(110,1,244,0.22)' : '0 2px 8px rgba(44,62,80,0.07)',
     border: isUser ? 'none' : '1px solid var(--border)',
   }),
   bubbleTime: (isUser) => ({
     fontSize: 10, marginTop: 5, opacity: 0.55, textAlign: isUser ? 'right' : 'left',
   }),
   cursor: {
-    display: 'inline-block', width: 2, height: 13, background: 'var(--rose)',
+    display: 'inline-block', width: 2, height: 13, background: 'var(--primary)',
     marginLeft: 2, verticalAlign: 'middle',
     animation: 'cursorBlink 1s step-end infinite',
   },
@@ -243,10 +243,10 @@ const s = {
   },
   welcomeOrb: {
     width: 80, height: 80, borderRadius: '50%',
-    background: 'linear-gradient(135deg, #FBEEF1 0%, var(--rose-mid) 100%)',
+    background: 'linear-gradient(135deg, #F5E6FF 0%, var(--primary-light) 100%)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     fontSize: 38, marginBottom: 18,
-    boxShadow: '0 6px 28px rgba(232,102,122,0.2)',
+    boxShadow: '0 6px 28px rgba(177,0,231,0.2)',
     animation: 'orbFloat 3s ease-in-out infinite',
   },
   welcomeTitle: {
@@ -280,8 +280,8 @@ const s = {
   },
   quickChip: {
     padding: '4px 11px', borderRadius: 99, fontSize: 12, fontWeight: 500,
-    background: 'var(--rose-light)', border: '1px solid var(--rose-mid)',
-    color: 'var(--rose-dark)', cursor: 'pointer', transition: 'all 0.14s',
+    background: 'var(--primary-tint)', border: '1px solid var(--primary-light)',
+    color: 'var(--primary-dark)', cursor: 'pointer', transition: 'all 0.14s',
     fontFamily: 'var(--font-body)', whiteSpace: 'nowrap',
   },
 
@@ -293,32 +293,32 @@ const s = {
   },
   textarea: (focused) => ({
     flex: 1, padding: '10px 15px', borderRadius: 22,
-    border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 14, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', lineHeight: 1.5,
     resize: 'none', minHeight: 42, maxHeight: 130,
     transition: 'all 0.18s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.1)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
     overflowY: 'auto',
   }),
   sendBtn: (canSend) => ({
     width: 42, height: 42, borderRadius: '50%', flexShrink: 0,
     background: canSend
-      ? 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)'
+      ? 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)'
       : 'var(--border)',
     border: 'none', cursor: canSend ? 'pointer' : 'not-allowed',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     fontSize: 16, transition: 'all 0.18s ease',
-    boxShadow: canSend ? '0 3px 10px rgba(192,57,79,0.3)' : 'none',
+    boxShadow: canSend ? '0 3px 10px rgba(110,1,244,0.3)' : 'none',
     color: '#fff',
   }),
 
   /* Error */
   errBar: {
     margin: '0 20px 6px', padding: '9px 14px',
-    background: 'var(--rose-light)', border: '1px solid var(--rose-mid)',
-    borderRadius: 10, fontSize: 13, color: 'var(--rose-dark)',
+    background: 'var(--primary-tint)', border: '1px solid var(--primary-light)',
+    borderRadius: 10, fontSize: 13, color: 'var(--primary-dark)',
     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     animation: 'fadeIn 0.2s ease',
   },
@@ -496,7 +496,7 @@ export default function ChatAssistant() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 5,
-          background: 'var(--sage-light)', color: 'var(--sage)',
+          background: 'var(--success-light)', color: 'var(--success)',
           fontSize: 11, fontWeight: 600, padding: '4px 10px',
           borderRadius: 99, border: '1px solid #A8D5B8',
         }}>
@@ -505,7 +505,7 @@ export default function ChatAssistant() {
 
         {hasMessages && (
           <button style={s.clearBtn} onClick={clearChat}
-            onMouseEnter={e => { e.currentTarget.style.background = 'var(--rose-light)'; e.currentTarget.style.borderColor = 'var(--rose)'; e.currentTarget.style.color = 'var(--rose-dark)'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary-tint)'; e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.color = 'var(--primary-dark)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--slate-mid)'; }}
           >
             🗑 Clear
@@ -574,7 +574,7 @@ export default function ChatAssistant() {
           <div style={s.suggGrid}>
             {suggestions.map((sg, i) => (
               <button key={i} style={s.suggChip} onClick={() => sendMessage(sg.text)}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--rose)'; e.currentTarget.style.background = 'var(--rose-light)'; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.background = 'var(--primary-tint)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--white)'; }}
               >
                 <span style={s.suggEmoji}>{sg.icon}</span>
@@ -632,7 +632,7 @@ export default function ChatAssistant() {
         <div style={s.errBar}>
           <span>⚠️ {error}</span>
           <button onClick={() => setError('')} style={{
-            background: 'none', border: 'none', color: 'var(--rose-dark)',
+            background: 'none', border: 'none', color: 'var(--primary-dark)',
             fontWeight: 700, cursor: 'pointer', padding: 0, fontSize: 14,
           }}>✕</button>
         </div>
@@ -643,8 +643,8 @@ export default function ChatAssistant() {
         <div style={s.quickRow}>
           {QUICK.map((q, i) => (
             <button key={i} style={s.quickChip} onClick={() => sendMessage(q.text)}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--rose)'; e.currentTarget.style.color = '#fff'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'var(--rose-light)'; e.currentTarget.style.color = 'var(--rose-dark)'; }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--primary)'; e.currentTarget.style.color = '#fff'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'var(--primary-tint)'; e.currentTarget.style.color = 'var(--primary-dark)'; }}
             >
               {q.icon} {q.text}
             </button>

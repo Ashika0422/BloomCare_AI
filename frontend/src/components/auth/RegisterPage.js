@@ -4,28 +4,19 @@ import { useAuth } from '../../context/AuthContext';
 /* ── Trimester data ─────────────────────────────────────── */
 const TRIMESTERS = [
   {
-    value: 1,
-    label: 'First Trimester',
-    weeks: 'Weeks 1–12',
-    emoji: '🌱',
+    value: 1, label: 'First Trimester', weeks: 'Weeks 1–12', emoji: '🌱',
     desc: 'Early development. Morning sickness and fatigue are common.',
-    color: '#5A8A72', bg: '#EBF4EF', border: '#A8D5B8',
+    color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5',   // violet
   },
   {
-    value: 2,
-    label: 'Second Trimester',
-    weeks: 'Weeks 13–26',
-    emoji: '🌷',
+    value: 2, label: 'Second Trimester', weeks: 'Weeks 13–26', emoji: '🌷',
     desc: 'Baby bump appears. Energy often returns. Kicks begin!',
-    color: '#D4924A', bg: '#FDF3E7', border: '#F5C97B',
+    color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0',   // purple-magenta
   },
   {
-    value: 3,
-    label: 'Third Trimester',
-    weeks: 'Weeks 27–40',
-    emoji: '🌸',
+    value: 3, label: 'Third Trimester', weeks: 'Weeks 27–40', emoji: '🌸',
     desc: 'Final stretch. Baby grows rapidly. Birth preparation begins.',
-    color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE',
+    color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8',   // hot pink
   },
 ];
 
@@ -44,7 +35,7 @@ const s = {
   },
   left: {
     flex: '0 0 38%',
-    background: 'linear-gradient(160deg, #3D1A24 0%, #6B2D3E 45%, #C0394F 100%)',
+    background: 'linear-gradient(160deg, #3D1A24 0%, #6B2D3E 45%, #8A00F3 100%)',
     display: 'flex', flexDirection: 'column',
     justifyContent: 'center', padding: '60px 48px',
     position: 'relative', overflow: 'hidden',
@@ -80,7 +71,7 @@ const s = {
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     background: done ? 'rgba(255,255,255,0.9)' : active ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.1)',
     fontSize: done ? 16 : 14,
-    color: done ? '#C0394F' : '#fff',
+    color: done ? '#8A00F3' : '#fff',
     fontWeight: 700,
     border: active ? '2px solid rgba(255,255,255,0.6)' : '2px solid transparent',
     transition: 'all 0.3s ease',
@@ -98,10 +89,10 @@ const s = {
   stepHeader: { marginBottom: 32, animation: 'fadeUp 0.4s ease both' },
   eyebrow: {
     display: 'inline-block',
-    background: 'var(--rose-light)', color: 'var(--rose-dark)',
+    background: 'var(--primary-tint)', color: 'var(--primary-dark)',
     fontSize: 11, fontWeight: 600, padding: '4px 12px',
     borderRadius: 99, letterSpacing: '0.1em', textTransform: 'uppercase',
-    marginBottom: 12, border: '1px solid var(--rose-mid)',
+    marginBottom: 12, border: '1px solid var(--primary-light)',
   },
   title: {
     fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 600,
@@ -118,11 +109,11 @@ const s = {
   input: (focused, error) => ({
     width: '100%', padding: '12px 16px',
     borderRadius: 'var(--radius-md)',
-    border: `1.5px solid ${error ? 'var(--rose)' : focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${error ? 'var(--primary)' : focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 14, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.12)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.12)' : 'none',
   }),
   eye: {
     position: 'absolute', right: 12, top: '50%',
@@ -130,7 +121,7 @@ const s = {
     fontSize: 15, background: 'none', border: 'none', padding: 0,
     color: 'var(--slate-light)',
   },
-  errorText: { fontSize: 11, color: 'var(--rose-dark)', marginTop: 4, fontWeight: 500 },
+  errorText: { fontSize: 11, color: 'var(--primary-dark)', marginTop: 4, fontWeight: 500 },
   row2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 },
   trimesterGrid: { display: 'flex', flexDirection: 'column', gap: 10 },
   trimCard: (selected, cfg) => ({
@@ -168,12 +159,12 @@ const s = {
     flex: 1, padding: '13px 22px',
     borderRadius: 'var(--radius-md)',
     background: loading
-      ? 'var(--rose-mid)'
-      : 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)',
+      ? 'var(--primary-light)'
+      : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     color: '#fff', border: 'none',
     fontSize: 14, fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer',
     letterSpacing: '0.03em', transition: 'all 0.2s ease',
-    boxShadow: loading ? 'none' : '0 4px 18px rgba(232,102,122,0.3)',
+    boxShadow: loading ? 'none' : '0 4px 18px rgba(177,0,231,0.3)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
     fontFamily: 'var(--font-body)',
   }),
@@ -188,28 +179,28 @@ const s = {
     color: 'var(--slate-mid)', marginTop: 20,
   },
   link: {
-    color: 'var(--rose-dark)', fontWeight: 600, cursor: 'pointer',
+    color: 'var(--primary-dark)', fontWeight: 600, cursor: 'pointer',
     background: 'none', border: 'none', padding: 0,
     fontSize: 14, fontFamily: 'var(--font-body)', textDecoration: 'underline',
   },
   globalError: {
-    background: 'var(--rose-light)', border: '1px solid var(--rose-mid)',
+    background: 'var(--primary-tint)', border: '1px solid var(--primary-light)',
     borderRadius: 'var(--radius-sm)', padding: '12px 16px',
-    color: 'var(--rose-dark)', fontSize: 13, marginBottom: 18,
+    color: 'var(--primary-dark)', fontSize: 13, marginBottom: 18,
     animation: 'fadeIn 0.3s ease', lineHeight: 1.5,
   },
   pwStrength: (score) => ({
     height: 4, borderRadius: 99, marginTop: 6,
     background: score === 0 ? 'var(--border)'
-      : score <= 1 ? 'var(--rose)'
-      : score === 2 ? 'var(--amber)'
+      : score <= 1 ? 'var(--primary)'
+      : score === 2 ? 'var(--warning)'
       : '#5A8A72',
     width: `${Math.max(score * 25, 4)}%`,
     transition: 'all 0.3s ease',
   }),
   pwHint: (score) => ({
     fontSize: 11, marginTop: 4,
-    color: score <= 1 ? 'var(--rose-dark)' : score === 2 ? 'var(--amber)' : 'var(--sage)',
+    color: score <= 1 ? 'var(--primary-dark)' : score === 2 ? 'var(--warning)' : 'var(--success)',
   }),
 };
 

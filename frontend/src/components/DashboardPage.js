@@ -19,8 +19,8 @@ const MODEL_STATS = {
 };
 
 const FEATURE_IMPORTANCE = [
-  { name: 'Blood Glucose', value: 0.312, color: '#E8667A' },
-  { name: 'Systolic BP',   value: 0.241, color: '#C0394F' },
+  { name: 'Blood Glucose', value: 0.312, color: '#B100E7' },
+  { name: 'Systolic BP',   value: 0.241, color: '#8A00F3' },
   { name: 'Age',           value: 0.178, color: '#D4924A' },
   { name: 'Diastolic BP',  value: 0.132, color: '#5A8A72' },
   { name: 'Heart Rate',    value: 0.089, color: '#546A7B' },
@@ -30,7 +30,7 @@ const FEATURE_IMPORTANCE = [
 const CLASS_METRICS = [
   { class: 'Low Risk',  precision: 90, recall: 88, f1: 89, color: '#5A8A72', samples: 336 },
   { class: 'Mid Risk',  precision: 82, recall: 80, f1: 81, color: '#D4924A', samples: 272 },
-  { class: 'High Risk', precision: 89, recall: 93, f1: 91, color: '#E8667A', samples: 406 },
+  { class: 'High Risk', precision: 89, recall: 93, f1: 91, color: '#B100E7', samples: 406 },
 ];
 
 const MODEL_COMPARISON = [
@@ -45,10 +45,10 @@ const s = {
   page: { maxWidth: 1100, margin: '0 auto', padding: '48px 32px 80px' },
   hero: { marginBottom: 44, animation: 'fadeUp 0.5s ease both' },
   eyebrow: {
-    display: 'inline-block', background: 'var(--rose-light)',
-    color: 'var(--rose-dark)', fontSize: 11, fontWeight: 600,
+    display: 'inline-block', background: 'var(--primary-tint)',
+    color: 'var(--primary-dark)', fontSize: 11, fontWeight: 600,
     padding: '4px 14px', borderRadius: 99, letterSpacing: '0.1em',
-    textTransform: 'uppercase', marginBottom: 14, border: '1px solid var(--rose-mid)',
+    textTransform: 'uppercase', marginBottom: 14, border: '1px solid var(--primary-light)',
   },
   title: {
     fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600,
@@ -145,9 +145,9 @@ export default function DashboardPage() {
       {/* Stat Cards */}
       <div style={s.statsRow}>
         {[
-          { val: `${MODEL_STATS.accuracy}%`, label: 'Test Accuracy',   accent: 'var(--rose)' },
-          { val: `${MODEL_STATS.f1}%`,       label: 'F1 Score (macro)',accent: 'var(--sage)' },
-          { val: MODEL_STATS.trainSize,       label: 'Training Samples',accent: 'var(--amber)'},
+          { val: `${MODEL_STATS.accuracy}%`, label: 'Test Accuracy',   accent: 'var(--primary)' },
+          { val: `${MODEL_STATS.f1}%`,       label: 'F1 Score (macro)',accent: 'var(--success)' },
+          { val: MODEL_STATS.trainSize,       label: 'Training Samples',accent: 'var(--warning)'},
           { val: MODEL_STATS.features,        label: 'Input Features',  accent: 'var(--slate-mid)'},
         ].map((st, i) => (
           <div key={i} style={s.statCard(st.accent)}>
@@ -191,8 +191,8 @@ export default function DashboardPage() {
                 tickFormatter={v => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
               <Legend wrapperStyle={{ fontSize: 12, color: 'var(--slate-mid)' }} />
-              <Bar dataKey="accuracy" name="Test Accuracy" fill="var(--rose)"    radius={[4,4,0,0]} />
-              <Bar dataKey="cv"       name="CV Score"      fill="var(--sage)"    radius={[4,4,0,0]} />
+              <Bar dataKey="accuracy" name="Test Accuracy" fill="var(--primary)"    radius={[4,4,0,0]} />
+              <Bar dataKey="cv"       name="CV Score"      fill="var(--success)"    radius={[4,4,0,0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

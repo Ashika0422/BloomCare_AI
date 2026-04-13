@@ -19,10 +19,10 @@ const TRIMESTER_DATA = {
   },
   3: {
     emoji: '🌸', label: 'Third Trimester', weeks: 'Weeks 27–40',
-    color: '#C0394F', light: '#FBEEF1', border: '#F4C5CE',
+    color: '#8A00F3', light: '#F5E6FF', border: '#E8CCFF',
     milestones: ['Baby opens eyes', 'Lungs maturing', 'Rapid weight gain', 'Baby moves into head-down position'],
     tip: 'Prepare your birth plan. Attend all prenatal appointments.',
-    bg: 'linear-gradient(135deg, #FBEEF1 0%, #FADDDF 100%)',
+    bg: 'linear-gradient(135deg, #F5E6FF 0%, #EDD5FF 100%)',
   },
 };
 
@@ -33,13 +33,13 @@ const MOOD_CONFIG = {
   Grateful: { emoji: '🙏', color: '#9B59B6', bg: '#F5EEF8' },
   Tired:    { emoji: '😴', color: '#8FA3B1', bg: '#F0F4F7' },
   Anxious:  { emoji: '😰', color: '#D4924A', bg: '#FDF3E7' },
-  Sad:      { emoji: '😢', color: '#C0394F', bg: '#FBEEF1' },
+  Sad:      { emoji: '😢', color: '#8A00F3', bg: '#F5E6FF' },
 };
 
 const RISK_CONFIG = {
   0: { label: 'Low Risk',  color: '#5A8A72', bg: '#EBF4EF', icon: '🟢' },
   1: { label: 'Mid Risk',  color: '#D4924A', bg: '#FDF3E7', icon: '🟡' },
-  2: { label: 'High Risk', color: '#C0394F', bg: '#FBEEF1', icon: '🔴' },
+  2: { label: 'High Risk', color: '#8A00F3', bg: '#F5E6FF', icon: '🔴' },
 };
 
 function getGreeting() {
@@ -171,21 +171,21 @@ const s = {
   checkItem: (done) => ({
     display: 'flex', alignItems: 'center', gap: 12,
     padding: '11px 14px', borderRadius: 10, marginBottom: 8,
-    background: done ? 'var(--sage-light)' : 'var(--blush)',
+    background: done ? 'var(--success-light)' : 'var(--blush)',
     border: `1px solid ${done ? '#A8D5B8' : 'var(--border)'}`,
     cursor: 'pointer', transition: 'all 0.2s ease',
     userSelect: 'none',
   }),
   checkBox: (done) => ({
     width: 22, height: 22, borderRadius: 6, flexShrink: 0,
-    background: done ? 'var(--sage)' : 'transparent',
-    border: `2px solid ${done ? 'var(--sage)' : 'var(--border)'}`,
+    background: done ? 'var(--success)' : 'transparent',
+    border: `2px solid ${done ? 'var(--success)' : 'var(--border)'}`,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     fontSize: 12, color: '#fff', transition: 'all 0.2s ease',
   }),
   checkLabel: (done) => ({
     fontSize: 14, fontWeight: 500, flex: 1,
-    color: done ? 'var(--sage)' : 'var(--slate)',
+    color: done ? 'var(--success)' : 'var(--slate)',
     textDecoration: done ? 'line-through' : 'none',
     transition: 'all 0.2s',
   }),
@@ -196,19 +196,19 @@ const s = {
   numLabel: { fontSize: 11, fontWeight: 600, color: 'var(--slate-mid)', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 6, display: 'block' },
   numInput: (focused) => ({
     width: '100%', padding: '10px 14px',
-    borderRadius: 10, border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    borderRadius: 10, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : 'var(--cream)',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.1)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
   }),
   saveBtn: {
     marginTop: 16, padding: '10px 22px', borderRadius: 99,
-    background: 'linear-gradient(135deg, var(--rose), var(--rose-dark))',
+    background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))',
     color: '#fff', border: 'none', cursor: 'pointer',
     fontSize: 13, fontWeight: 600, letterSpacing: '0.03em',
     transition: 'all 0.2s', fontFamily: 'var(--font-body)',
-    boxShadow: '0 3px 14px rgba(232,102,122,0.3)',
+    boxShadow: '0 3px 14px rgba(177,0,231,0.3)',
   },
 
   /* Last risk */
@@ -264,7 +264,7 @@ const CHECKLIST_ITEMS = [
 ];
 
 const SHORTCUTS = [
-  { icon: '🩺', label: 'Risk Analysis', page: 'risk',      color: '#C0394F', bg: '#FBEEF1' },
+  { icon: '🩺', label: 'Risk Analysis', page: 'risk',      color: '#8A00F3', bg: '#F5E6FF' },
   { icon: '💬', label: 'AI Chat',       page: 'chat',      color: '#546A7B', bg: '#EDF2F5' },
   { icon: '💊', label: 'Medicines',     page: 'medicines', color: '#D4924A', bg: '#FDF3E7' },
   { icon: '🎯', label: 'Goals',         page: 'goals',     color: '#5A8A72', bg: '#EBF4EF' },
@@ -340,7 +340,7 @@ export default function MainDashboard({ onNavigate }) {
       {/* ── Hero Greeting ──────────────────────────────── */}
       <div style={{
         ...s.hero,
-        background: `linear-gradient(135deg, #3D1A24 0%, #6B2D3E 50%, #C0394F 100%)`,
+        background: `linear-gradient(135deg, #3D1A24 0%, #6B2D3E 50%, #8A00F3 100%)`,
         color: '#fff',
       }}>
         <div style={s.heroOrb1} /><div style={s.heroOrb2} />
@@ -384,7 +384,7 @@ export default function MainDashboard({ onNavigate }) {
           {
             icon: '🩺', label: 'Total Predictions',
             val: summary?.total_predictions ?? '—',
-            color: '#C0394F',
+            color: '#8A00F3',
           },
           {
             icon: '✅', label: "Today's Progress",
@@ -464,7 +464,7 @@ export default function MainDashboard({ onNavigate }) {
           <div style={{ height: 6, borderRadius: 99, background: 'var(--border)', marginBottom: 18, overflow: 'hidden' }}>
             <div style={{
               height: '100%', borderRadius: 99,
-              background: 'linear-gradient(90deg, var(--rose), var(--rose-dark))',
+              background: 'linear-gradient(90deg, var(--primary), var(--primary-dark))',
               width: `${progressPct}%`, transition: 'width 0.5s ease',
             }} />
           </div>
@@ -555,7 +555,7 @@ export default function MainDashboard({ onNavigate }) {
               }}>
                 No predictions yet.{' '}
                 <span
-                  style={{ color: 'var(--rose)', fontWeight: 600, cursor: 'pointer' }}
+                  style={{ color: 'var(--primary)', fontWeight: 600, cursor: 'pointer' }}
                   onClick={() => onNavigate?.('risk')}
                 >
                   Run your first analysis →

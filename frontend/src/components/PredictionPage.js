@@ -44,20 +44,20 @@ const FIELDS = [
 const SAMPLE_CASES = [
   {
     label: 'Low Risk Sample',
-    color: 'var(--sage)',
-    bg: 'var(--sage-light)',
+    color: 'var(--success)',
+    bg: 'var(--success-light)',
     data: { age: 25, systolicBP: 115, diastolicBP: 75, bloodGlucose: 6.1, bodyTemp: 98.0, heartRate: 72 }
   },
   {
     label: 'Mid Risk Sample',
-    color: 'var(--amber)',
-    bg: 'var(--amber-light)',
+    color: 'var(--warning)',
+    bg: 'var(--warning-light)',
     data: { age: 32, systolicBP: 128, diastolicBP: 85, bloodGlucose: 8.5, bodyTemp: 99.0, heartRate: 85 }
   },
   {
     label: 'High Risk Sample',
-    color: 'var(--rose-dark)',
-    bg: 'var(--rose-light)',
+    color: 'var(--primary-dark)',
+    bg: 'var(--primary-tint)',
     data: { age: 35, systolicBP: 140, diastolicBP: 90, bloodGlucose: 15.0, bodyTemp: 98.0, heartRate: 86 }
   },
 ];
@@ -73,17 +73,17 @@ const s = {
   },
   heroEyebrow: {
     display: 'inline-block',
-    background: 'var(--rose-light)', color: 'var(--rose-dark)',
+    background: 'var(--primary-tint)', color: 'var(--primary-dark)',
     fontSize: 11, fontWeight: 600, padding: '4px 14px',
     borderRadius: 99, letterSpacing: '0.1em', textTransform: 'uppercase',
-    marginBottom: 18, border: '1px solid var(--rose-mid)',
+    marginBottom: 18, border: '1px solid var(--primary-light)',
   },
   heroTitle: {
     fontFamily: 'var(--font-display)', fontSize: 44,
     fontWeight: 600, color: 'var(--slate)', lineHeight: 1.2,
     marginBottom: 16, letterSpacing: '-0.5px',
   },
-  heroTitleAccent: { color: 'var(--rose)', fontStyle: 'italic' },
+  heroTitleAccent: { color: 'var(--primary)', fontStyle: 'italic' },
   heroSub: {
     fontSize: 17, color: 'var(--slate-mid)', maxWidth: 520,
     margin: '0 auto', lineHeight: 1.7,
@@ -131,11 +131,11 @@ const s = {
   input: (focused, error) => ({
     width: '100%', padding: '11px 52px 11px 14px',
     borderRadius: 'var(--radius-sm)',
-    border: `1.5px solid ${error ? 'var(--rose)' : focused ? 'var(--rose)' : 'var(--border)'}`,
-    background: error ? 'var(--rose-light)' : focused ? 'var(--blush)' : 'var(--blush)',
+    border: `1.5px solid ${error ? 'var(--primary)' : focused ? 'var(--primary)' : 'var(--border)'}`,
+    background: error ? 'var(--primary-tint)' : focused ? 'var(--blush)' : 'var(--blush)',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     transition: 'all 0.2s ease', fontFamily: 'var(--font-body)',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.12)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.12)' : 'none',
   }),
   unit: {
     position: 'absolute', right: 12,
@@ -144,17 +144,17 @@ const s = {
     pointerEvents: 'none',
   },
   hint: { fontSize: 11, color: 'var(--slate-light)' },
-  errorText: { fontSize: 11, color: 'var(--rose-dark)', fontWeight: 500 },
+  errorText: { fontSize: 11, color: 'var(--primary-dark)', fontWeight: 500 },
   submitBtn: (loading) => ({
     width: '100%', marginTop: 28,
     padding: '15px 32px', borderRadius: 'var(--radius-md)',
     background: loading
-      ? 'var(--rose-mid)'
-      : 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)',
+      ? 'var(--primary-light)'
+      : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
     fontSize: 15, fontWeight: 600, letterSpacing: '0.03em',
     transition: 'all 0.2s ease',
-    boxShadow: loading ? 'none' : '0 4px 20px rgba(232,102,122,0.35)',
+    boxShadow: loading ? 'none' : '0 4px 20px rgba(177,0,231,0.35)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
   }),
   spinner: {
@@ -164,9 +164,9 @@ const s = {
   },
   disclaimer: {
     marginTop: 20, padding: '12px 16px',
-    background: 'var(--amber-light)', borderRadius: 'var(--radius-sm)',
+    background: 'var(--warning-light)', borderRadius: 'var(--radius-sm)',
     border: '1px solid rgba(212,146,74,0.25)',
-    fontSize: 12, color: 'var(--amber)',
+    fontSize: 12, color: 'var(--warning)',
     lineHeight: 1.6,
   },
   rightCol: {
@@ -175,7 +175,7 @@ const s = {
   },
   emptyState: {
     background: 'var(--white)', borderRadius: 'var(--radius-lg)',
-    border: '1.5px dashed var(--rose-mid)',
+    border: '1.5px dashed var(--primary-light)',
     padding: '48px 32px', textAlign: 'center',
   },
   emptyIcon: { fontSize: 48, marginBottom: 16 },
@@ -346,9 +346,9 @@ export default function PredictionPage() {
           )}
           {apiError && (
             <div style={{
-              background: 'var(--rose-light)', border: '1px solid var(--rose-mid)',
+              background: 'var(--primary-tint)', border: '1px solid var(--primary-light)',
               borderRadius: 'var(--radius-md)', padding: '16px 20px',
-              color: 'var(--rose-dark)', fontSize: 14, lineHeight: 1.6,
+              color: 'var(--primary-dark)', fontSize: 14, lineHeight: 1.6,
               animation: 'fadeIn 0.3s ease',
             }}>
               ❌ <strong>Error:</strong> {apiError}

@@ -9,12 +9,12 @@ import {
 const RISK_CFG = {
   0: { label: 'Low Risk',  color: '#2D7A4F', bg: '#EBF4EF', border: '#A8D5B8', icon: '🟢' },
   1: { label: 'Mid Risk',  color: '#9A6B1A', bg: '#FDF3E7', border: '#F5C97B', icon: '🟡' },
-  2: { label: 'High Risk', color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE', icon: '🔴' },
+  2: { label: 'High Risk', color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF', icon: '🔴' },
 };
 const TRIM_CFG = {
   1: { label: '1st', emoji: '🌱', color: '#5A8A72' },
   2: { label: '2nd', emoji: '🌷', color: '#D4924A' },
-  3: { label: '3rd', emoji: '🌸', color: '#C0394F' },
+  3: { label: '3rd', emoji: '🌸', color: '#8A00F3' },
 };
 
 /* ── Styles ─────────────────────────────────────────────────── */
@@ -120,11 +120,11 @@ const s = {
   },
   searchInput: (focused) => ({
     padding: '9px 14px', borderRadius: 99, minWidth: 220,
-    border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : 'var(--cream)',
     fontSize: 13, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.1)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
   }),
   filterSelect: {
     padding: '9px 14px', borderRadius: 99,
@@ -148,7 +148,7 @@ const s = {
   userNameCell: { display: 'flex', alignItems: 'center', gap: 10 },
   userAvatar: (color) => ({
     width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-    background: `linear-gradient(135deg, ${color}, #8B1A2E)`,
+    background: `linear-gradient(135deg, ${color}, #6E01F4)`,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     fontSize: 13, color: '#fff', fontWeight: 700,
   }),
@@ -238,11 +238,11 @@ const s = {
   pdfBtn: {
     display: 'flex', alignItems: 'center', gap: 7,
     padding: '10px 20px', borderRadius: 'var(--radius-md)',
-    background: 'linear-gradient(135deg, #C0394F, #8B1A2E)',
+    background: 'linear-gradient(135deg, #8A00F3, #6E01F4)',
     color: '#fff', border: 'none', cursor: 'pointer',
     fontSize: 13, fontWeight: 700, transition: 'all 0.2s',
     fontFamily: 'var(--font-body)',
-    boxShadow: '0 4px 16px rgba(192,57,79,0.3)',
+    boxShadow: '0 4px 16px rgba(110,1,244,0.3)',
   },
   customTooltip: {
     background: 'var(--white)', border: '1px solid var(--border)',
@@ -392,13 +392,13 @@ export default function AdminPanel() {
   const riskChartData = stats ? [
     { name: 'Low',  value: stats.risk_distribution[0], fill: '#5A8A72' },
     { name: 'Mid',  value: stats.risk_distribution[1], fill: '#D4924A' },
-    { name: 'High', value: stats.risk_distribution[2], fill: '#E8667A' },
+    { name: 'High', value: stats.risk_distribution[2], fill: '#B100E7' },
   ] : [];
 
   const trimChartData = stats ? [
     { name: '1st Trimester', value: stats.trim_distribution[1], fill: '#5A8A72' },
     { name: '2nd Trimester', value: stats.trim_distribution[2], fill: '#D4924A' },
-    { name: '3rd Trimester', value: stats.trim_distribution[3], fill: '#C0394F' },
+    { name: '3rd Trimester', value: stats.trim_distribution[3], fill: '#8A00F3' },
   ] : [];
 
   const activityData = stats?.daily_activity?.map(d => ({
@@ -419,7 +419,7 @@ export default function AdminPanel() {
             Once an admin exists, only they can grant admin access to others.
           </p>
           {promoteMsg && (
-            <p style={{ color: 'var(--rose-dark)', fontSize: 14, marginBottom: 16 }}>
+            <p style={{ color: 'var(--primary-dark)', fontSize: 14, marginBottom: 16 }}>
               ⚠️ {promoteMsg}
             </p>
           )}
@@ -492,7 +492,7 @@ export default function AdminPanel() {
           {[
             { icon: '👥', label: 'Total Users',       val: stats.total_users,       color: '#2C3E50' },
             { icon: '🆕', label: 'New This Week',      val: stats.new_users_week,    color: '#5A8A72' },
-            { icon: '🩺', label: 'Total Predictions',  val: stats.total_predictions, color: '#C0394F' },
+            { icon: '🩺', label: 'Total Predictions',  val: stats.total_predictions, color: '#8A00F3' },
             { icon: '📔', label: 'Journal Entries',    val: stats.total_journals,    color: '#D4924A' },
             { icon: '💊', label: 'Medicines Tracked',  val: stats.total_medicines,   color: '#9B59B6' },
             { icon: '🎯', label: 'Goals Created',      val: stats.total_goals,       color: '#546A7B' },
@@ -559,7 +559,7 @@ export default function AdminPanel() {
                 <XAxis dataKey="date" tick={{ fontSize: 9, fill: 'var(--slate-light)' }} />
                 <YAxis tick={{ fontSize: 10, fill: 'var(--slate-light)' }} allowDecimals={false} />
                 <Tooltip content={<ChartTip />} />
-                <Bar dataKey="users" name="Active Users" fill="#C0394F" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="users" name="Active Users" fill="#8A00F3" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (
@@ -625,7 +625,7 @@ export default function AdminPanel() {
               ) : users.map(u => {
                 const riskCfg = u.last_risk !== null && u.last_risk !== undefined ? RISK_CFG[u.last_risk] : null;
                 const trimCfg = TRIM_CFG[u.trimester];
-                const colors  = ['#C0394F', '#D4924A', '#5A8A72', '#546A7B', '#9B59B6'];
+                const colors  = ['#8A00F3', '#D4924A', '#5A8A72', '#546A7B', '#9B59B6'];
                 const avatarColor = colors[u.id % colors.length];
                 return (
                   <tr key={u.id}
@@ -671,7 +671,7 @@ export default function AdminPanel() {
                           onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}>
                           👁 View
                         </button>
-                        <button style={s.actionBtn('#C0394F', '#FBEEF1')}
+                        <button style={s.actionBtn('#8A00F3', '#F5E6FF')}
                           disabled={downloading === u.id || !reportAvail}
                           onClick={() => downloadPDF(u.id, u.username)}
                           title={!reportAvail ? 'pip install reportlab' : ''}
@@ -771,16 +771,16 @@ export default function AdminPanel() {
 
               {/* Danger zone */}
               <div style={{
-                padding: '14px 16px', background: 'var(--rose-light)',
-                borderRadius: 10, border: '1px solid var(--rose-mid)',
+                padding: '14px 16px', background: 'var(--primary-tint)',
+                borderRadius: 10, border: '1px solid var(--primary-light)',
               }}>
-                <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--rose-dark)', marginBottom: 10 }}>
+                <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--primary-dark)', marginBottom: 10 }}>
                   ⚠️ Danger Zone
                 </p>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <button style={{
-                    ...s.actionBtn('var(--rose-dark)', 'var(--white)'),
-                    border: '1.5px solid var(--rose-mid)',
+                    ...s.actionBtn('var(--primary-dark)', 'var(--white)'),
+                    border: '1.5px solid var(--primary-light)',
                     padding: '8px 16px',
                   }}
                     onClick={() => handleDeleteUser(selectedUser.id)}>

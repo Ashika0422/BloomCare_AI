@@ -10,7 +10,7 @@ const FREQ_CFG = {
   'Twice Daily':     { color: '#D4924A', bg: '#FDF3E7', border: '#F5C97B', icon: '🔁' },
   'Every Other Day': { color: '#546A7B', bg: '#EDF2F5', border: '#B8CDD6', icon: '📅' },
   'Weekly':          { color: '#9B59B6', bg: '#F5EEF8', border: '#D7B8E8', icon: '🗓️' },
-  'As Needed':       { color: '#C0394F', bg: '#FBEEF1', border: '#F4C5CE', icon: '⚡' },
+  'As Needed':       { color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF', icon: '⚡' },
 };
 
 /* ── Notification helpers ───────────────────────────────────── */
@@ -54,10 +54,10 @@ const s = {
   },
   pageHeader: { marginBottom: 36, animation: 'fadeUp 0.5s ease both' },
   eyebrow: {
-    display: 'inline-block', background: 'var(--rose-light)', color: 'var(--rose-dark)',
+    display: 'inline-block', background: 'var(--primary-tint)', color: 'var(--primary-dark)',
     fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 99,
     letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12,
-    border: '1px solid var(--rose-mid)',
+    border: '1px solid var(--primary-light)',
   },
   pageTitle: {
     fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600,
@@ -111,7 +111,7 @@ const s = {
     marginBottom: 16,
   },
   progressLabel: { fontSize: 13, color: 'var(--slate-mid)', fontWeight: 500 },
-  progressPct: { fontSize: 13, fontWeight: 700, color: 'var(--sage)' },
+  progressPct: { fontSize: 13, fontWeight: 700, color: 'var(--success)' },
   progressBar: { height: 6, borderRadius: 99, background: 'var(--border)', marginBottom: 20, overflow: 'hidden' },
   progressFill: (pct) => ({
     height: '100%', borderRadius: 99, width: `${pct}%`,
@@ -192,15 +192,15 @@ const s = {
   },
   input: (focused, error) => ({
     width: '100%', padding: '11px 14px', borderRadius: 'var(--radius-md)',
-    border: `1.5px solid ${error ? 'var(--rose)' : focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${error ? 'var(--primary)' : focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 14, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s',
-    boxShadow: focused ? '0 0 0 3px rgba(232,102,122,0.1)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
   }),
   select: (focused) => ({
     width: '100%', padding: '11px 14px', borderRadius: 'var(--radius-md)',
-    border: `1.5px solid ${focused ? 'var(--rose)' : 'var(--border)'}`,
+    border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`,
     background: focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 14, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', cursor: 'pointer', transition: 'all 0.2s',
@@ -223,21 +223,21 @@ const s = {
   daysRow: { display: 'flex', gap: 6, flexWrap: 'wrap' },
   dayBtn: (selected) => ({
     width: 36, height: 36, borderRadius: '50%', border: 'none',
-    background: selected ? 'var(--rose)' : 'var(--blush)',
+    background: selected ? 'var(--primary)' : 'var(--blush)',
     color: selected ? '#fff' : 'var(--slate-mid)',
     fontSize: 11, fontWeight: 700, cursor: 'pointer',
     transition: 'all 0.18s ease', fontFamily: 'var(--font-body)',
     border: selected ? 'none' : '1.5px solid var(--border)',
   }),
-  errorText: { fontSize: 11, color: 'var(--rose-dark)', marginTop: 4, fontWeight: 500 },
+  errorText: { fontSize: 11, color: 'var(--primary-dark)', marginTop: 4, fontWeight: 500 },
   submitBtn: (loading) => ({
     width: '100%', padding: '13px', borderRadius: 'var(--radius-md)', marginTop: 4,
-    background: loading ? 'var(--rose-mid)'
-      : 'linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%)',
+    background: loading ? 'var(--primary-light)'
+      : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
     fontSize: 14, fontWeight: 700, letterSpacing: '0.03em',
     transition: 'all 0.2s', fontFamily: 'var(--font-body)',
-    boxShadow: loading ? 'none' : '0 4px 18px rgba(192,57,79,0.3)',
+    boxShadow: loading ? 'none' : '0 4px 18px rgba(110,1,244,0.3)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
   }),
   spinner: {
@@ -252,9 +252,9 @@ const s = {
     display: 'flex', alignItems: 'center', gap: 8,
   },
   errMsg: {
-    background: 'var(--rose-light)', border: '1px solid var(--rose-mid)',
+    background: 'var(--primary-tint)', border: '1px solid var(--primary-light)',
     borderRadius: 10, padding: '10px 14px', fontSize: 13,
-    color: 'var(--rose-dark)', marginBottom: 16, animation: 'fadeIn 0.3s ease',
+    color: 'var(--primary-dark)', marginBottom: 16, animation: 'fadeIn 0.3s ease',
   },
 };
 
@@ -522,7 +522,7 @@ export default function MedicineTracker() {
                         <span style={{ color: cfg.color, fontWeight: 600 }}>{med.frequency}</span>
                         {med.days_of_week && ` (${med.days_of_week})`}
                         {med.notes && <> &nbsp;·&nbsp; 📝 {med.notes}</>}
-                        {!med.is_active && <span style={{ color: 'var(--rose)', marginLeft: 6 }}>· Paused</span>}
+                        {!med.is_active && <span style={{ color: 'var(--primary)', marginLeft: 6 }}>· Paused</span>}
                       </div>
                     </div>
                     <div style={s.medActions}>
@@ -536,7 +536,7 @@ export default function MedicineTracker() {
                         {med.is_active ? '⏸' : '▶'}
                       </button>
                       <button
-                        style={s.iconBtn('#C0394F', '#FBEEF1')}
+                        style={s.iconBtn('#8A00F3', '#F5E6FF')}
                         title="Delete"
                         onClick={() => handleDelete(med.id)}
                         onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; }}
