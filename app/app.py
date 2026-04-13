@@ -20,7 +20,7 @@ import os
 def create_app():
     app = Flask(__name__)
 
-    app.config['SECRET_KEY']                     = os.environ.get('SECRET_KEY',     'babybloom-dev-secret')
+    app.config['SECRET_KEY']                     = os.environ.get('SECRET_KEY',     'BloomCare-dev-secret')
     app.config['JWT_SECRET_KEY']                 = os.environ.get('JWT_SECRET_KEY', 'jwt-dev-secret')
     app.config['JWT_ACCESS_TOKEN_EXPIRES']       = False
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -29,7 +29,7 @@ def create_app():
     MYSQL_PASSWORD = os.environ.get('MYSQL_PASSWORD', 'password')
     MYSQL_HOST     = os.environ.get('MYSQL_HOST',     'localhost')
     MYSQL_PORT     = os.environ.get('MYSQL_PORT',     '3306')
-    MYSQL_DB       = os.environ.get('MYSQL_DB',       'babybloom')
+    MYSQL_DB       = os.environ.get('MYSQL_DB',       'BloomCare')
 
     app.config['SQLALCHEMY_DATABASE_URI'] = (
         f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"

@@ -474,7 +474,7 @@ export default function ChatAssistant() {
       <div style={s.header}>
         <div style={s.headerAvatar}>🌸</div>
         <div style={s.headerInfo}>
-          <div style={s.headerName}>BabyBloom AI Assistant</div>
+          <div style={s.headerName}>BloomCare AI Assistant</div>
           <div style={s.headerSub}>Pregnancy health Q&A · Free AI powered</div>
         </div>
 

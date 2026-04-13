@@ -90,7 +90,7 @@ export default function AboutPage() {
     <div style={s.page}>
       <div style={s.hero}>
         <span style={s.eyebrow}>About the Project</span>
-        <h1 style={s.title}>BabyBloom AI</h1>
+        <h1 style={s.title}>BloomCare AI</h1>
         <p style={s.sub}>
           A machine learning system for predicting maternal health risk
           during pregnancy, built with Python, Flask, and React.
@@ -170,7 +170,7 @@ export default function AboutPage() {
 
       {/* Disclaimer */}
       <div style={s.disclaimer}>
-        ⚠️ <strong>Medical Disclaimer:</strong> BabyBloom AI is an educational
+        ⚠️ <strong>Medical Disclaimer:</strong> BloomCare AI is an educational
         project built for learning purposes. The predictions provided are based
         on a machine learning model trained on a limited dataset and should
         <strong> never</strong> be used as a substitute for professional medical

@@ -133,7 +133,7 @@ export default function Navbar({ currentPage, onNavigate }) {
           <div style={s.logo} onClick={() => onNavigate('home')}>
             <div style={s.logoIcon}>🌸</div>
             <div>
-              <span style={s.logoText}>BabyBloom</span>
+              <span style={s.logoText}>BloomCare</span>
               <span style={s.logoSub}>AI · Health</span>
             </div>
           </div>

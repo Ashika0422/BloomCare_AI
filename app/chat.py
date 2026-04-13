@@ -19,7 +19,7 @@ GROQ_MODEL   = 'llama-3.1-70b-versatile'   # free, fast, excellent quality
 GEMINI_MODEL = 'gemini-1.5-flash'
 
 # ── Pregnancy system prompt ──────────────────────────────────
-SYSTEM_PROMPT = """You are BabyBloom AI — a warm, knowledgeable, and compassionate pregnancy health assistant. You help pregnant women understand their health, symptoms, nutrition, and wellness during pregnancy.
+SYSTEM_PROMPT = """You are BloomCare AI — a warm, knowledgeable, and compassionate pregnancy health assistant. You help pregnant women understand their health, symptoms, nutrition, and wellness during pregnancy.
 
 GUIDELINES:
 - Always be warm, empathetic, and supportive. Pregnancy is a deeply personal experience.
@@ -199,7 +199,7 @@ def call_gemini(messages):
     }
     ack_turn = {
         'role':  'model',
-        'parts': [{'text': 'Understood. I am BabyBloom AI, ready to help.'}],
+        'parts': [{'text': 'Understood. I am BloomCare AI, ready to help.'}],
     }
     contents = [system_turn, ack_turn] + contents
 

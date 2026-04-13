@@ -172,7 +172,7 @@ export default function LoginPage({ onSwitchToRegister }) {
         <div style={{ ...s.leftOrb(100, 0.04), bottom: 160, left: 40 }} />
         <div style={s.brand}>
           <div style={s.brandIcon}>🌸</div>
-          <h1 style={s.brandName}>BabyBloom<br />AI</h1>
+          <h1 style={s.brandName}>BloomCare<br />AI</h1>
           <p style={s.brandTagline}>
             Your intelligent companion for a healthier, safer pregnancy journey.
           </p>
@@ -206,7 +206,7 @@ export default function LoginPage({ onSwitchToRegister }) {
           </button>
           <div style={s.divider}>
             <span style={s.dividerLine} />
-            <span>New to BabyBloom?</span>
+            <span>New to BloomCare?</span>
             <span style={s.dividerLine} />
           </div>
           <p style={s.switchText}>

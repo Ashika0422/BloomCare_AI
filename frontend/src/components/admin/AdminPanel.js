@@ -356,7 +356,7 @@ export default function AdminPanel() {
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
       a.href     = url;
-      a.download = `babybloom_report_${username}.pdf`;
+      a.download = `BloomCare_report_${username}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
     } catch (e) {
@@ -378,7 +378,7 @@ export default function AdminPanel() {
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
       a.href     = url;
-      a.download = `babybloom_report_${user.username}.pdf`;
+      a.download = `BloomCare_report_${user.username}.pdf`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {

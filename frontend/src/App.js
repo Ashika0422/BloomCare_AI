@@ -27,7 +27,7 @@ function AppInner() {
       }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>🌸</div>
-          <div style={{ color: 'var(--slate-mid)', fontSize: 15 }}>Loading BabyBloom…</div>
+          <div style={{ color: 'var(--slate-mid)', fontSize: 15 }}>Loading BloomCare…</div>
         </div>
       </div>
     );

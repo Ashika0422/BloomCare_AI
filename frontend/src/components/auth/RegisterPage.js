@@ -407,7 +407,7 @@ export default function RegisterPage({ onSwitchToLogin }) {
         <div style={s.leftContent}>
           <div style={s.brandRow}>
             <span style={s.brandIcon}>🌸</span>
-            <span style={s.brandName}>BabyBloom AI</span>
+            <span style={s.brandName}>BloomCare AI</span>
           </div>
 
           <p style={s.progressTitle}>Your progress</p>
