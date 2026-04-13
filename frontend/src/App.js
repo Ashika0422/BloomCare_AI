@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import LoginPage      from './components/auth/LoginPage';
-import RegisterPage   from './components/auth/RegisterPage';
-import Navbar         from './components/Navbar';
-import MainDashboard  from './components/dashboard/MainDashboard';
-import DailyJournal   from './components/dashboard/DailyJournal';
-import RiskAnalysis   from './components/dashboard/RiskAnalysis';
-import ChatAssistant  from './components/dashboard/ChatAssistant';
-import DashboardPage  from './components/DashboardPage';
-import AboutPage      from './components/AboutPage';
+import LoginPage       from './components/auth/LoginPage';
+import RegisterPage    from './components/auth/RegisterPage';
+import Navbar          from './components/Navbar';
+import MainDashboard   from './components/dashboard/MainDashboard';
+import DailyJournal    from './components/dashboard/DailyJournal';
+import RiskAnalysis    from './components/dashboard/RiskAnalysis';
+import ChatAssistant   from './components/dashboard/ChatAssistant';
+import MedicineTracker from './components/dashboard/MedicineTracker';
+import GoalTracker     from './components/dashboard/GoalTracker';
+import DashboardPage   from './components/DashboardPage';
+import AboutPage       from './components/AboutPage';
 
 function AppInner() {
   const { isAuthenticated, loading } = useAuth();
@@ -44,18 +46,20 @@ function AppInner() {
         {page === 'journal'   && <DailyJournal />}
         {page === 'risk'      && <RiskAnalysis />}
         {page === 'chat'      && <ChatAssistant />}
+        {page === 'medicines' && <MedicineTracker />}
+        {page === 'goals'     && <GoalTracker />}
         {page === 'dashboard' && <DashboardPage />}
         {page === 'about'     && <AboutPage />}
-        {['medicines', 'goals', 'stats'].includes(page) && (
+        {page === 'stats'     && (
           <div style={{
             maxWidth: 600, margin: '80px auto', textAlign: 'center',
             fontFamily: 'var(--font-body)', color: 'var(--slate-mid)',
           }}>
             <div style={{ fontSize: 52, marginBottom: 16 }}>🚧</div>
             <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--slate)', marginBottom: 8 }}>
-              Coming soon
+              Coming in Phase 5C
             </h2>
-            <p>The <strong>{page}</strong> module is being built in the next phase.</p>
+            <p>The admin stats panel is being built next.</p>
             <button onClick={() => setPage('home')} style={{
               marginTop: 20, padding: '10px 24px', borderRadius: 99,
               background: 'var(--rose)', color: '#fff', border: 'none',
