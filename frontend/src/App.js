@@ -9,11 +9,12 @@ import RiskAnalysis    from './components/dashboard/RiskAnalysis';
 import ChatAssistant   from './components/dashboard/ChatAssistant';
 import MedicineTracker from './components/dashboard/MedicineTracker';
 import GoalTracker     from './components/dashboard/GoalTracker';
+import AdminPanel      from './components/admin/AdminPanel';
 import DashboardPage   from './components/DashboardPage';
 import AboutPage       from './components/AboutPage';
 
 function AppInner() {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
   const [authView, setAuthView] = useState('login');
   const [page,     setPage]     = useState('home');
 
@@ -48,26 +49,9 @@ function AppInner() {
         {page === 'chat'      && <ChatAssistant />}
         {page === 'medicines' && <MedicineTracker />}
         {page === 'goals'     && <GoalTracker />}
+        {page === 'admin'     && <AdminPanel />}
         {page === 'dashboard' && <DashboardPage />}
         {page === 'about'     && <AboutPage />}
-        {page === 'stats'     && (
-          <div style={{
-            maxWidth: 600, margin: '80px auto', textAlign: 'center',
-            fontFamily: 'var(--font-body)', color: 'var(--slate-mid)',
-          }}>
-            <div style={{ fontSize: 52, marginBottom: 16 }}>🚧</div>
-            <h2 style={{ fontFamily: 'var(--font-display)', color: 'var(--slate)', marginBottom: 8 }}>
-              Coming in Phase 5C
-            </h2>
-            <p>The admin stats panel is being built next.</p>
-            <button onClick={() => setPage('home')} style={{
-              marginTop: 20, padding: '10px 24px', borderRadius: 99,
-              background: 'var(--rose)', color: '#fff', border: 'none',
-              fontSize: 14, fontWeight: 600, cursor: 'pointer',
-              fontFamily: 'var(--font-body)',
-            }}>← Back to Dashboard</button>
-          </div>
-        )}
       </main>
     </div>
   );

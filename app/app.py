@@ -12,6 +12,8 @@ from vitals import vitals_bp
 from chat import chat_bp
 from medicines import medicines_bp
 from goals import goals_bp
+from admin import admin_bp
+from reports import reports_bp
 import os
 
 
@@ -48,6 +50,8 @@ def create_app():
     app.register_blueprint(chat_bp,      url_prefix='/chat')
     app.register_blueprint(medicines_bp, url_prefix='/medicines')
     app.register_blueprint(goals_bp,     url_prefix='/goals')
+    app.register_blueprint(admin_bp,     url_prefix='/admin')
+    app.register_blueprint(reports_bp,   url_prefix='/reports')
 
     with app.app_context():
         db.create_all()
