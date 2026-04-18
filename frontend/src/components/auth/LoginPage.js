@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Flower2, Bot, Pill, BookOpen, Eye, EyeOff, AlertTriangle, ArrowRight } from 'lucide-react';
 
-const GRAD_HEADER = 'linear-gradient(160deg, #2D0060 0%, #8A00F3 45%, #F2008A 100%)';
+const GRAD_HEADER = 'linear-gradient(160deg, #210217 0%, #5f0742 40%, #be0e83 100%)';
 const GRAD_SOFT   = 'linear-gradient(135deg, #8A00F3 0%, #D300D0 100%)';
 const SHADOW_BTN  = '0 4px 20px rgba(110, 1, 244, 0.38)';
 const FOCUS_RING  = '0 0 0 3px rgba(177, 0, 231, 0.18)';
 const PRIMARY     = '#B100E7';
 const PRIMARY_TINT= '#F5E6FF';
 const PRIMARY_LIGHT='#E8CCFF';
-const BORDER_COLOR= 'rgba(177,0,231,0.15)';
+const BORDER_COLOR= 'rgba(237,18,164,0.15)';
 
 const s = {
   page: { minHeight: '100vh', display: 'flex', fontFamily: 'var(--font-body)' },
@@ -103,7 +103,7 @@ const s = {
     display: 'flex', alignItems: 'center', gap: 12,
     margin: '24px 0', color: 'var(--slate-light)', fontSize: 13,
   },
-  dividerLine: { flex: 1, height: 1, background: 'rgba(177,0,231,0.12)' },
+  dividerLine: { flex: 1, height: 1, background: 'rgba(237,18,164,0.12)' },
   switchText: { textAlign: 'center', fontSize: 14, color: 'var(--slate-mid)', marginTop: 4 },
   link: {
     color: '#6E01F4', fontWeight: 600, cursor: 'pointer',

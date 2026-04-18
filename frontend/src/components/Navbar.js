@@ -9,13 +9,13 @@ import {
 
 /* ── Trimester config — Icon instead of emoji ──────────────── */
 const TRIM_INFO = {
-  1: { label: '1st Trimester', color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5', Icon: Leaf },
-  2: { label: '2nd Trimester', color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0', Icon: Flower2 },
-  3: { label: '3rd Trimester', color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8', Icon: Flower2 },
+  1: { label: '1st Trimester', color: '#f141b6', bg: '#fde7f6', border: '#f8a0db', Icon: Leaf },
+  2: { label: '2nd Trimester', color: '#be0e83', bg: '#fbd0ed', border: '#f471c8', Icon: Flower2 },
+  3: { label: '3rd Trimester', color: '#8e0b62', bg: '#fbd0ed', border: '#f141b6', Icon: Flower2 },
 };
 
-const GRAD_SOFT = 'linear-gradient(135deg, #8A00F3 0%, #D300D0 100%)';
-const PRIMARY   = '#B100E7';
+const GRAD_SOFT = 'linear-gradient(135deg, #f141b6 0%, #be0e83 100%)';
+const PRIMARY   = '#ed12a4';
 
 /* ── Nav links — Icon component instead of emoji string ────── */
 const BASE_LINKS = [
@@ -33,7 +33,7 @@ const s = {
     position: 'sticky', top: 0, zIndex: 100,
     background: '#F3C4FB',
     backdropFilter: 'blur(18px)',
-    borderBottom: '1px solid rgba(177,0,231,0.12)',
+    borderBottom: '1px solid rgba(237,18,164,0.12)',
   },
   inner: {
     maxWidth: 1280, margin: '0 auto',
@@ -49,7 +49,7 @@ const s = {
     width: 36, height: 36, borderRadius: '50%',
     background: GRAD_SOFT,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    boxShadow: '0 3px 12px rgba(110,1,244,0.3)',
+    boxShadow: '0 3px 12px rgba(237,18,164,0.3)',
   },
   logoText: {
     fontFamily: 'var(--font-display)', fontSize: 18,
@@ -76,7 +76,7 @@ const s = {
     color: active ? '#fff' : 'var(--slate-mid)',
     transition: 'all 0.18s ease', letterSpacing: '0.01em',
     fontFamily: 'var(--font-body)',
-    boxShadow: active && !isAdmin ? '0 2px 10px rgba(110,1,244,0.25)' : 'none',
+    boxShadow: active && !isAdmin ? '0 2px 10px rgba(237,18,164,0.25)' : 'none',
   }),
   right: { display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 },
   trimBadge: (info) => ({
@@ -89,7 +89,7 @@ const s = {
   userBtn: {
     display: 'flex', alignItems: 'center', gap: 8,
     padding: '4px 10px 4px 4px', borderRadius: 99,
-    border: '1.5px solid rgba(177,0,231,0.2)',
+    border: '1.5px solid rgba(237,18,164,0.2)',
     background: 'var(--white)', cursor: 'pointer',
     transition: 'all 0.2s ease',
   },
@@ -104,19 +104,19 @@ const s = {
   dropdown: {
     position: 'absolute', top: 48, right: 0,
     background: 'var(--white)', borderRadius: 'var(--radius-md)',
-    border: '1px solid rgba(177,0,231,0.15)', minWidth: 195,
-    boxShadow: '0 8px 32px rgba(110,1,244,0.14)',
+    border: '1px solid rgba(237,18,164,0.15)', minWidth: 195,
+    boxShadow: '0 8px 32px rgba(237,18,164,0.14)',
     zIndex: 200, overflow: 'hidden', animation: 'fadeIn 0.15s ease',
   },
   dropItem: (danger, admin) => ({
     display: 'flex', alignItems: 'center', gap: 10,
     padding: '10px 16px', cursor: 'pointer', fontSize: 13,
     fontWeight: 500, transition: 'background 0.15s',
-    color: danger ? '#C0394F' : admin ? '#2C3E50' : 'var(--slate)',
+    color: danger ? '#be0e83' : admin ? '#2C3E50' : 'var(--slate)',
     background: 'transparent', border: 'none', width: '100%',
     textAlign: 'left', fontFamily: 'var(--font-body)',
   }),
-  divider: { height: 1, background: 'rgba(177,0,231,0.1)', margin: '3px 0' },
+  divider: { height: 1, background: 'rgba(237,18,164,0.1)', margin: '3px 0' },
 };
 
 export default function Navbar({ currentPage, onNavigate }) {
@@ -195,7 +195,7 @@ export default function Navbar({ currentPage, onNavigate }) {
                 style={s.userBtn}
                 onClick={() => setShowDropdown(p => !p)}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = PRIMARY; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(177,0,231,0.2)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(237,18,164,0.2)'; }}
               >
                 <div style={s.avatar}>
                   {avatarSrc
@@ -211,7 +211,7 @@ export default function Navbar({ currentPage, onNavigate }) {
               {showDropdown && (
                 <div style={s.dropdown} onMouseLeave={() => setShowDropdown(false)}>
                   {/* User info header */}
-                  <div style={{ padding: '10px 16px', borderBottom: '1px solid rgba(177,0,231,0.1)' }}>
+                  <div style={{ padding: '10px 16px', borderBottom: '1px solid rgba(237,18,164,0.1)' }}>
                     <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--slate)', display: 'flex', alignItems: 'center', gap: 6 }}>
                       {user?.full_name}
                       {user?.is_admin && (
@@ -259,7 +259,7 @@ export default function Navbar({ currentPage, onNavigate }) {
                   {/* Sign Out — LogOut icon */}
                   <button style={s.dropItem(true, false)}
                     onClick={() => { logout(); setShowDropdown(false); }}
-                    onMouseEnter={e => { e.currentTarget.style.background = '#FBEEF1'; }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#fde7f6'; }}
                     onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                     <LogOut size={14} strokeWidth={1.8} />
                     Sign Out

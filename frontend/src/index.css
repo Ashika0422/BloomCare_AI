@@ -1,102 +1,119 @@
 :root {
-  /* ── Raw palette stops (lightest → darkest) ──────────────── */
-  --p1:  #F5E6FF;   /* lavender tint  — backgrounds           */
-  --p2:  #E8CCFF;   /* light violet   — hover / soft fill     */
-  --p3:  #6E01F4;   /* deep violet    — stop 1 of gradient    */
-  --p4:  #8A00F3;   /* violet         — stop 2                */
-  --p5:  #A200F3;   /* violet-purple  — stop 3                */
-  --p6:  #B100E7;   /* purple         — stop 4                */
-  --p7:  #BC00DD;   /* purple-magenta — stop 5 (mid)          */
-  --p8:  #C400D7;   /* magenta        — stop 6                */
-  --p9:  #D300D0;   /* magenta-pink   — stop 7                */
-  --p10: #DB00B6;   /* deep pink      — stop 8                */
-  --p11: #E500A3;   /* hot pink       — stop 9                */
-  --p12: #F2008A;   /* vivid pink     — stop 10 (end)         */
+  /* ── Raw scale ───────────────────────────────────────────── */
+  --bb-50:  #fde7f6;
+  --bb-100: #fbd0ed;
+  --bb-200: #f8a0db;
+  --bb-300: #f471c8;
+  --bb-400: #f141b6;
+  --bb-500: #ed12a4;
+  --bb-600: #be0e83;
+  --bb-700: #8e0b62;
+  --bb-800: #5f0742;
+  --bb-900: #2f0421;
+  --bb-950: #210217;
 
-  /* ── Semantic aliases ────────────────────────────────────── */
+  /* ── Semantic brand tokens ───────────────────────────────── */
+  --primary:        var(--bb-500);   /* #ed12a4 — buttons, active nav, links    */
+  --primary-hover:  var(--bb-600);   /* #be0e83 — button hover state            */
+  --primary-dark:   var(--bb-700);   /* #8e0b62 — deep accents, gradient end    */
+  --primary-deeper: var(--bb-800);   /* #5f0742 — hero section dark end         */
+  --primary-light:  var(--bb-200);   /* #f8a0db — borders, focus rings          */
+  --primary-tint:   var(--bb-100);   /* #fbd0ed — hover backgrounds             */
+  --primary-wash:   var(--bb-50);    /* #fde7f6 — page/card background tint     */
 
-  /* Primary: mid-gradient violet-purple (main brand colour) */
-  --primary:        var(--p6);       /* #B100E7 */
-  --primary-dark:   var(--p4);       /* #8A00F3 */
-  --primary-deeper: var(--p3);       /* #6E01F4 */
-  --primary-light:  var(--p2);       /* #E8CCFF */
-  --primary-tint:   var(--p1);       /* #F5E6FF */
+  /* ── Gradients ───────────────────────────────────────────── */
+  --grad-main:    linear-gradient(135deg, var(--bb-500) 0%, var(--bb-700) 100%);
+  --grad-soft:    linear-gradient(135deg, var(--bb-400) 0%, var(--bb-600) 100%);
+  --grad-vivid:   linear-gradient(135deg, var(--bb-300) 0%, var(--bb-600) 100%);
+  --grad-header:  linear-gradient(160deg, var(--bb-950) 0%, var(--bb-800) 40%, var(--bb-600) 100%);
+  --grad-hero:    linear-gradient(135deg, var(--bb-900) 0%, var(--bb-700) 50%, var(--bb-500) 100%);
+  --grad-subtle:  linear-gradient(135deg, var(--bb-50)  0%, var(--bb-100) 100%);
+  --grad-bar:     linear-gradient(90deg,  var(--bb-400) 0%, var(--bb-600) 100%);
 
-  /* Accent: hot pink end of gradient */
-  --accent:         var(--p12);      /* #F2008A */
-  --accent-mid:     var(--p11);      /* #E500A3 */
-  --accent-dark:    var(--p10);      /* #DB00B6 */
-  --accent-light:   #FFE6F4;
-  --accent-tint:    #ffe5ec;
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --white:   #FFFFFF;
+  --cream:   #FFFBFE;           /* very slightly pink-tinted white      */
+  --blush:   var(--bb-50);      /* #fde7f6 — input focus bg, card tint  */
+  --surface: #FFF5FC;           /* between white and blush              */
 
-  /* Full gradient (used in buttons, headers, decorative elements) */
-  --grad-main:      linear-gradient(135deg, var(--p3) 0%, var(--p7) 50%, var(--p12) 100%);
-  --grad-soft:      linear-gradient(135deg, var(--p4) 0%, var(--p9) 100%);
-  --grad-vivid:     linear-gradient(135deg, var(--p3) 0%, var(--p12) 100%);
-  --grad-header:    linear-gradient(160deg, #3A0070 0%, var(--p5) 40%, var(--p12) 100%);
-  --grad-subtle:    linear-gradient(135deg, var(--p1) 0%, #FFE6F4 100%);
+  /* ── Text / Neutrals ─────────────────────────────────────── */
+  --slate:        #1E1E2E;      /* near-black for headings              */
+  --slate-mid:    #4A4560;      /* body text, labels                    */
+  --slate-light:  #8E8AA8;      /* muted text, hints                    */
 
-  /* Neutral colours — untouched */
-  --white:       #FFFFFF;
-  --cream:       #FEFAFB;
-  --blush:       #FDF4FF;
-  --slate:       #2C3E50;
-  --slate-mid:   #546A7B;
-  --slate-light: #8FA3B1;
-  --border:      rgba(177, 0, 231, 0.12);   /* tinted with primary */
-  --border-soft: rgba(177, 0, 231, 0.07);
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border:       rgba(237, 18, 164, 0.14);   /* primary-tinted border  */
+  --border-soft:  rgba(237, 18, 164, 0.07);   /* very subtle dividers   */
+  --border-focus: var(--bb-300);              /* input focus border     */
 
-  /* Status colours (keep distinct from brand palette) */
-  --success:       #2D7A4F;
-  --success-light: #EBF4EF;
-  --success-border:#A8D5B8;
-  --warning:       #9A6B1A;
-  --warning-light: #FDF3E7;
-  --warning-border:#F5C97B;
-  --danger:        #8A00F3;
-  --danger-light:  #F5E6FF;
-  --danger-border: #E8CCFF;
+  /* ── Status colours (keep medically meaningful) ────────────*/
+  --success:        #2D7A4F;
+  --success-light:  #EBF4EF;
+  --success-border: #A8D5B8;
+  --warning:        #9A6B1A;
+  --warning-light:  #FDF3E7;
+  --warning-border: #F5C97B;
+  --danger:         #be0e83;
+  --danger-light:   #fde7f6;
+  --danger-border:  #f8a0db;
 
-  /* Shadows */
-  --shadow-sm:  0 2px 10px rgba(110, 1, 244, 0.08);
-  --shadow-md:  0 8px 32px  rgba(110, 1, 244, 0.14);
-  --shadow-lg:  0 20px 60px rgba(110, 1, 244, 0.18);
-  --shadow-glow:0 0 24px    rgba(177, 0, 231, 0.35);
+  /* ── Shadows ─────────────────────────────────────────────── */
+  --shadow-sm:   0 2px 10px rgba(237, 18, 164, 0.08);
+  --shadow-md:   0 8px 32px  rgba(237, 18, 164, 0.14);
+  --shadow-lg:   0 20px 60px rgba(237, 18, 164, 0.18);
+  --shadow-btn:  0 4px 20px  rgba(190, 14, 131, 0.38);
+  --shadow-glow: 0 0 24px    rgba(237, 18, 164, 0.4);
 
-  /* Typography */
+  /* ── Focus ring ──────────────────────────────────────────── */
+  --focus-ring: 0 0 0 3px rgba(237, 18, 164, 0.2);
+
+  /* ── Typography ─────────────────────────────────────────────*/
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'DM Sans', sans-serif;
-  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono:    'JetBrains Mono', monospace;
 
-  /* Radii */
-  --radius-sm:  8px;
-  --radius-md:  14px;
-  --radius-lg:  22px;
-  --radius-xl:  32px;
+  /* ── Radii ───────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+
+  /* ── Trimester colours (bubblegum scale) ─────────────────── */
+  --trim1-color:  var(--bb-400);   /* #f141b6 */
+  --trim1-bg:     var(--bb-50);    /* #fde7f6 */
+  --trim1-border: var(--bb-200);   /* #f8a0db */
+
+  --trim2-color:  var(--bb-600);   /* #be0e83 */
+  --trim2-bg:     var(--bb-100);   /* #fbd0ed */
+  --trim2-border: var(--bb-300);   /* #f471c8 */
+
+  --trim3-color:  var(--bb-700);   /* #8e0b62 */
+  --trim3-bg:     var(--bb-100);   /* #fbd0ed */
+  --trim3-border: var(--bb-400);   /* #f141b6 */
 }
 
-/* ── Reset ─────────────────────────────────────────────────── */
+/* ── Reset ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--accent-tint);
+  background: var(--cream);
   color: var(--slate);
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Scrollbar ─────────────────────────────────────────────── */
+/* ── Scrollbar ───────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--blush); }
+::-webkit-scrollbar-track { background: var(--bb-50); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--p4), var(--p12));
+  background: linear-gradient(180deg, var(--bb-400), var(--bb-600));
   border-radius: 99px;
 }
 
-/* ── Animations ────────────────────────────────────────────── */
+/* ── Animations ──────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -114,26 +131,21 @@ body {
   to { transform: rotate(360deg); }
 }
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
+  0%, 100% { transform: scale(1);    opacity: 1; }
   50%       { transform: scale(1.06); opacity: 0.85; }
 }
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 12px rgba(177, 0, 231, 0.25); }
-  50%       { box-shadow: 0 0 28px rgba(177, 0, 231, 0.55); }
+  0%, 100% { box-shadow: 0 0 12px rgba(237,18,164,0.25); }
+  50%       { box-shadow: 0 0 28px rgba(237,18,164,0.55); }
 }
 
 .animate-fadeUp   { animation: fadeUp   0.5s ease both; }
 .animate-fadeIn   { animation: fadeIn   0.4s ease both; }
 .animate-bounceIn { animation: bounceIn 0.5s cubic-bezier(.36,.07,.19,.97) both; }
 
-/* ── Utility: gradient text ────────────────────────────────── */
+/* ── Utility: gradient text ──────────────────────────────── */
 .gradient-text {
-  background: var(--grad-vivid);
+  background: var(--grad-main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

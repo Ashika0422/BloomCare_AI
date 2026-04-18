@@ -135,7 +135,7 @@ const s = {
     background: error ? 'var(--primary-tint)' : focused ? 'var(--blush)' : 'var(--blush)',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     transition: 'all 0.2s ease', fontFamily: 'var(--font-body)',
-    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.12)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.12)' : 'none',
   }),
   unit: {
     position: 'absolute', right: 12,
@@ -154,7 +154,7 @@ const s = {
     color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
     fontSize: 15, fontWeight: 600, letterSpacing: '0.03em',
     transition: 'all 0.2s ease',
-    boxShadow: loading ? 'none' : '0 4px 20px rgba(177,0,231,0.35)',
+    boxShadow: loading ? 'none' : '0 4px 20px rgba(237,18,164,0.35)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
   }),
   spinner: {

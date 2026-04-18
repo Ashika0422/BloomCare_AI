@@ -54,7 +54,7 @@ const s = {
   metricInputRow: { display: 'flex', alignItems: 'center', gap: 8 },
   metricInput: (focused) => ({ flex: 1, padding: '9px 12px', borderRadius: 10, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : 'var(--white)', fontSize: 15, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', fontWeight: 600, transition: 'all 0.2s' }),
   metricUnit: (color) => ({ fontSize: 12, fontWeight: 600, color, whiteSpace: 'nowrap' }),
-  saveMetricsBtn: { marginTop: 14, padding: '9px 20px', borderRadius: 99, background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600, transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: '0 3px 12px rgba(110,1,244,0.25)' },
+  saveMetricsBtn: { marginTop: 14, padding: '9px 20px', borderRadius: 99, background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600, transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: '0 3px 12px rgba(237,18,164,0.25)' },
   savedBadge: { display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 600, color: '#2D7A4F', background: '#EBF4EF', padding: '5px 12px', borderRadius: 99, border: '1px solid #A8D5B8', marginTop: 10, animation: 'fadeIn 0.3s ease' },
   addGoalBtn: { display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 99, background: 'var(--primary-tint)', border: '1.5px solid var(--primary-light)', color: 'var(--primary-dark)', fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.15s', fontFamily: 'var(--font-body)' },
   goalCard: (cfg) => ({ background: 'var(--blush)', borderRadius: 14, padding: '16px', border: '1px solid var(--border)', marginBottom: 10, transition: 'all 0.2s ease' }),
@@ -80,7 +80,7 @@ const s = {
   catBtnLabel: (selected, color) => ({ fontSize: 9, fontWeight: 600, color: selected ? color : 'var(--slate-light)', letterSpacing: '0.03em' }),
   formActions: { display: 'flex', gap: 8 },
   cancelBtn: { flex: 1, padding: '9px', borderRadius: 10, border: '1.5px solid var(--border)', background: 'transparent', color: 'var(--slate-mid)', fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-body)' },
-  confirmBtn: { flex: 2, padding: '9px', borderRadius: 10, background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-body)', boxShadow: '0 3px 12px rgba(110,1,244,0.25)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 },
+  confirmBtn: { flex: 2, padding: '9px', borderRadius: 10, background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-body)', boxShadow: '0 3px 12px rgba(237,18,164,0.25)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 },
 };
 
 export default function GoalTracker() {
@@ -188,7 +188,7 @@ export default function GoalTracker() {
           </div>
           <p style={s.cardSub}>Resets daily at midnight</p>
           <div style={{ height: 6, borderRadius: 99, background: 'var(--border)', marginBottom: 18, overflow: 'hidden' }}>
-            <div style={{ height: '100%', borderRadius: 99, width: `${checkPct}%`, background: 'linear-gradient(90deg, var(--primary), var(--primary-dark))', transition: 'width 0.5s ease' }} />
+            <div style={{ height: '100%', borderRadius: 99, width: `${checkPct}%`, background: 'var(--grad-bar)', transition: 'width 0.5s ease' }} />
           </div>
           {CHECKLIST_ITEMS.map(item => {
             const done = checklist?.[item.key] || false;

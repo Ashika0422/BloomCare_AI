@@ -46,7 +46,7 @@ const s = {
   tableCard: { background: 'var(--white)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border)', padding: '26px 28px', boxShadow: 'var(--shadow-sm)', animation: 'fadeUp 0.5s ease 0.15s both' },
   tableTopRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, flexWrap: 'wrap' },
   tableTitle: { fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 600, color: 'var(--slate)', flex: 1 },
-  searchInput: (focused) => ({ padding: '9px 14px', borderRadius: 99, minWidth: 220, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : 'var(--cream)', fontSize: 13, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', transition: 'all 0.2s', boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none' }),
+  searchInput: (focused) => ({ padding: '9px 14px', borderRadius: 99, minWidth: 220, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : 'var(--cream)', fontSize: 13, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', transition: 'all 0.2s', boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.15)' : 'none' }),
   filterSelect: { padding: '9px 14px', borderRadius: 99, border: '1.5px solid var(--border)', background: 'var(--cream)', fontSize: 13, color: 'var(--slate)', cursor: 'pointer', fontFamily: 'var(--font-body)', outline: 'none', appearance: 'none' },
   table: { width: '100%', borderCollapse: 'collapse' },
   th: { fontSize: 10, fontWeight: 700, color: 'var(--slate-mid)', letterSpacing: '0.07em', textTransform: 'uppercase', padding: '8px 12px', textAlign: 'left', borderBottom: '2px solid var(--border)', whiteSpace: 'nowrap' },
@@ -74,7 +74,7 @@ const s = {
   detailSection: { marginBottom: 20 },
   detailTitle: { fontSize: 12, fontWeight: 700, color: 'var(--slate-mid)', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 12, paddingBottom: 8, borderBottom: '1px solid var(--border)' },
   logRow: { display: 'flex', gap: 8, padding: '8px 0', fontSize: 12, borderBottom: '1px solid var(--border)', color: 'var(--slate-mid)', alignItems: 'center' },
-  pdfBtn: { display: 'flex', alignItems: 'center', gap: 7, padding: '10px 20px', borderRadius: 'var(--radius-md)', background: 'linear-gradient(135deg, #8A00F3, #6E01F4)', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: '0 4px 16px rgba(110,1,244,0.3)' },
+  pdfBtn: { display: 'flex', alignItems: 'center', gap: 7, padding: '10px 20px', borderRadius: 'var(--radius-md)', background: 'linear-gradient(135deg, #ed12a4, #8e0b62)', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: '0 4px 16px rgba(237,18,164,0.3)' },
   customTooltip: { background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 10, padding: '10px 14px', fontSize: 12, boxShadow: 'var(--shadow-md)' },
 };
 

@@ -15,7 +15,7 @@ function inlineFormat(text) {
     if (match[2]) parts.push(<strong key={match.index}>{match[2]}</strong>);
     else if (match[3]) parts.push(<em key={match.index} style={{ fontStyle: 'italic' }}>{match[3]}</em>);
     else if (match[4]) parts.push(
-      <code key={match.index} style={{ background: 'rgba(177,0,231,0.12)', padding: '1px 5px', borderRadius: 4, fontSize: 12, fontFamily: 'monospace', color: '#8A00F3' }}>{match[4]}</code>
+      <code key={match.index} style={{ background: 'rgba(237,18,164,0.12)', padding: '1px 5px', borderRadius: 4, fontSize: 12, fontFamily: 'monospace', color: '#8A00F3' }}>{match[4]}</code>
     );
     last = match.index + match[0].length;
   }
@@ -93,7 +93,7 @@ const PROVIDER_CFG = {
 const s = {
   page: { height: 'calc(100vh - 62px)', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-body)', background: 'var(--cream)', overflow: 'hidden' },
   header: { background: 'var(--white)', borderBottom: '1px solid var(--border)', padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 },
-  headerAvatar: { width: 42, height: 42, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 3px 10px rgba(177,0,231,0.3)' },
+  headerAvatar: { width: 42, height: 42, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 3px 10px rgba(237,18,164,0.3)' },
   headerInfo: { flex: 1 },
   headerName: { fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 600, color: 'var(--slate)', lineHeight: 1.2 },
   headerSub: { fontSize: 11, color: 'var(--slate-light)', marginTop: 1 },
@@ -110,11 +110,11 @@ const s = {
   chatArea: { flex: 1, overflowY: 'auto', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 14 },
   msgRow: (isUser) => ({ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', gap: 8, alignItems: 'flex-end', animation: 'fadeUp 0.25s ease both' }),
   botAvatar: { width: 30, height: 30, borderRadius: '50%', flexShrink: 0, background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-  bubble: (isUser) => ({ maxWidth: '74%', padding: '11px 15px', borderRadius: isUser ? '18px 18px 4px 18px' : '18px 18px 18px 4px', background: isUser ? 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)' : 'var(--white)', color: isUser ? '#fff' : 'var(--slate)', boxShadow: isUser ? '0 3px 14px rgba(110,1,244,0.22)' : '0 2px 8px rgba(44,62,80,0.07)', border: isUser ? 'none' : '1px solid var(--border)' }),
+  bubble: (isUser) => ({ maxWidth: '74%', padding: '11px 15px', borderRadius: isUser ? '18px 18px 4px 18px' : '18px 18px 18px 4px', background: isUser ? 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)' : 'var(--white)', color: isUser ? '#fff' : 'var(--slate)', boxShadow: isUser ? '0 3px 14px rgba(237,18,164,0.22)' : '0 2px 8px rgba(44,62,80,0.07)', border: isUser ? 'none' : '1px solid var(--border)' }),
   bubbleTime: (isUser) => ({ fontSize: 10, marginTop: 5, opacity: 0.55, textAlign: isUser ? 'right' : 'left' }),
   cursor: { display: 'inline-block', width: 2, height: 13, background: 'var(--primary)', marginLeft: 2, verticalAlign: 'middle', animation: 'cursorBlink 1s step-end infinite' },
   welcome: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px 24px', textAlign: 'center' },
-  welcomeOrb: { width: 80, height: 80, borderRadius: '50%', background: 'linear-gradient(135deg, #F5E6FF 0%, var(--primary-light) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18, boxShadow: '0 6px 28px rgba(177,0,231,0.2)', animation: 'orbFloat 3s ease-in-out infinite' },
+  welcomeOrb: { width: 80, height: 80, borderRadius: '50%', background: 'linear-gradient(135deg, #F5E6FF 0%, var(--primary-light) 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18, boxShadow: '0 6px 28px rgba(237,18,164,0.2)', animation: 'orbFloat 3s ease-in-out infinite' },
   welcomeTitle: { fontFamily: 'var(--font-display)', fontSize: 26, fontWeight: 600, color: 'var(--slate)', marginBottom: 8, letterSpacing: '-0.3px' },
   welcomeSub: { fontSize: 14, color: 'var(--slate-mid)', maxWidth: 380, lineHeight: 1.7, marginBottom: 28 },
   suggGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, width: '100%', maxWidth: 560 },
@@ -125,8 +125,8 @@ const s = {
   quickRow: { padding: '8px 20px 4px', display: 'flex', gap: 6, flexWrap: 'wrap', borderTop: '1px solid var(--border)', background: 'var(--white)', flexShrink: 0 },
   quickChip: { padding: '4px 11px', borderRadius: 99, fontSize: 12, fontWeight: 500, background: 'var(--primary-tint)', border: '1px solid var(--primary-light)', color: 'var(--primary-dark)', cursor: 'pointer', transition: 'all 0.14s', fontFamily: 'var(--font-body)', whiteSpace: 'nowrap' },
   inputBar: { background: 'var(--white)', borderTop: '1px solid var(--border)', padding: '12px 18px', display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0 },
-  textarea: (focused) => ({ flex: 1, padding: '10px 15px', borderRadius: 22, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : '#fdfaf7', fontSize: 14, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', lineHeight: 1.5, resize: 'none', minHeight: 42, maxHeight: 130, transition: 'all 0.18s ease', boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none', overflowY: 'auto' }),
-  sendBtn: (canSend) => ({ width: 42, height: 42, borderRadius: '50%', flexShrink: 0, background: canSend ? 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)' : 'var(--border)', border: 'none', cursor: canSend ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.18s ease', boxShadow: canSend ? '0 3px 10px rgba(110,1,244,0.3)' : 'none' }),
+  textarea: (focused) => ({ flex: 1, padding: '10px 15px', borderRadius: 22, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : '#fdfaf7', fontSize: 14, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', lineHeight: 1.5, resize: 'none', minHeight: 42, maxHeight: 130, transition: 'all 0.18s ease', boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.15)' : 'none', overflowY: 'auto' }),
+  sendBtn: (canSend) => ({ width: 42, height: 42, borderRadius: '50%', flexShrink: 0, background: canSend ? 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)' : 'var(--border)', border: 'none', cursor: canSend ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.18s ease', boxShadow: canSend ? '0 3px 10px rgba(237,18,164,0.3)' : 'none' }),
   errBar: { margin: '0 20px 6px', padding: '9px 14px', background: 'var(--primary-tint)', border: '1px solid var(--primary-light)', borderRadius: 10, fontSize: 13, color: 'var(--primary-dark)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', animation: 'fadeIn 0.2s ease' },
 };
 

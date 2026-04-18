@@ -12,8 +12,8 @@ const FREQ_CFG = {
   'Daily':           { Icon: Repeat,   color: '#5A8A72', bg: '#EBF4EF', border: '#A8D5B8' },
   'Twice Daily':     { Icon: Repeat,   color: '#D4924A', bg: '#FDF3E7', border: '#F5C97B' },
   'Every Other Day': { Icon: Calendar, color: '#546A7B', bg: '#EDF2F5', border: '#B8CDD6' },
-  'Weekly':          { Icon: Calendar, color: '#9B59B6', bg: '#F5EEF8', border: '#D7B8E8' },
-  'As Needed':       { Icon: Zap,      color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF' },
+  'Weekly':          { Icon: Calendar, color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  'As Needed':       { Icon: Zap,      color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
 };
 
 async function requestNotificationPermission() {
@@ -76,14 +76,14 @@ const s = {
   formCard: { background: 'var(--white)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border)', padding: '28px 30px', boxShadow: 'var(--shadow-sm)', position: 'sticky', top: 82, animation: 'fadeUp 0.5s ease 0.15s both' },
   fieldWrap: { marginBottom: 16 },
   label: { display: 'block', fontSize: 12, fontWeight: 700, color: 'var(--slate-mid)', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 7 },
-  input: (focused, error) => ({ width: '100%', padding: '11px 14px', borderRadius: 'var(--radius-md)', border: `1.5px solid ${error ? 'var(--primary)' : focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : '#fdfaf7', fontSize: 14, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', transition: 'all 0.2s', boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none' }),
+  input: (focused, error) => ({ width: '100%', padding: '11px 14px', borderRadius: 'var(--radius-md)', border: `1.5px solid ${error ? 'var(--primary)' : focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : '#fdfaf7', fontSize: 14, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', transition: 'all 0.2s', boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.15)' : 'none' }),
   freqGrid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 7 },
   freqBtn: (selected, cfg) => ({ padding: '8px 6px', borderRadius: 10, textAlign: 'center', border: `1.5px solid ${selected ? cfg.color : 'var(--border)'}`, background: selected ? cfg.bg : 'var(--blush)', cursor: 'pointer', transition: 'all 0.18s ease', fontFamily: 'var(--font-body)', boxShadow: selected ? `0 0 0 2px ${cfg.color}22` : 'none' }),
   freqBtnLabel: (selected, color) => ({ fontSize: 10, fontWeight: 600, color: selected ? color : 'var(--slate-light)', letterSpacing: '0.03em' }),
   daysRow: { display: 'flex', gap: 6, flexWrap: 'wrap' },
   dayBtn: (selected) => ({ width: 36, height: 36, borderRadius: '50%', border: selected ? 'none' : '1.5px solid var(--border)', background: selected ? 'var(--primary)' : 'var(--blush)', color: selected ? '#fff' : 'var(--slate-mid)', fontSize: 11, fontWeight: 700, cursor: 'pointer', transition: 'all 0.18s ease', fontFamily: 'var(--font-body)' }),
   errorText: { fontSize: 11, color: 'var(--primary-dark)', marginTop: 4, fontWeight: 500 },
-  submitBtn: (loading) => ({ width: '100%', padding: '13px', borderRadius: 'var(--radius-md)', marginTop: 4, background: loading ? 'var(--primary-light)' : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)', color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontSize: 14, fontWeight: 700, letterSpacing: '0.03em', transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: loading ? 'none' : '0 4px 18px rgba(110,1,244,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }),
+  submitBtn: (loading) => ({ width: '100%', padding: '13px', borderRadius: 'var(--radius-md)', marginTop: 4, background: loading ? 'var(--primary-light)' : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)', color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontSize: 14, fontWeight: 700, letterSpacing: '0.03em', transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: loading ? 'none' : '0 4px 18px rgba(237,18,164,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }),
   spinner: { width: 14, height: 14, border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.7s linear infinite' },
   successMsg: { background: '#EBF4EF', border: '1px solid #A8D5B8', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: '#2D7A4F', marginBottom: 16, animation: 'fadeIn 0.3s ease', display: 'flex', alignItems: 'center', gap: 8 },
   errMsg: { background: 'var(--primary-tint)', border: '1px solid var(--primary-light)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--primary-dark)', marginBottom: 16, animation: 'fadeIn 0.3s ease', display: 'flex', alignItems: 'center', gap: 8 },
@@ -274,7 +274,7 @@ export default function MedicineTracker() {
                         : <PlayCircle size={15} strokeWidth={1.8} />
                       }
                     </button>
-                    <button style={s.iconBtn('#8A00F3', '#F5E6FF')} title="Delete" onClick={() => handleDelete(med.id)}
+                    <button style={s.iconBtn('#f141b6', '#fde7f6')} title="Delete" onClick={() => handleDelete(med.id)}
                       onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; }}
                       onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}>
                       <Trash2 size={15} strokeWidth={1.8} />

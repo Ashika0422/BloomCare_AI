@@ -88,7 +88,7 @@ const s = {
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', lineHeight: 1.7, resize: 'vertical',
     transition: 'all 0.2s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.15)' : 'none',
   }),
   charCount: { position: 'absolute', bottom: 10, right: 14, fontSize: 11, color: 'var(--slate-light)' },
   submitBtn: (loading, disabled) => ({
@@ -98,7 +98,7 @@ const s = {
     border: 'none', cursor: disabled || loading ? 'not-allowed' : 'pointer',
     fontSize: 14, fontWeight: 600, letterSpacing: '0.03em',
     transition: 'all 0.2s ease', fontFamily: 'var(--font-body)',
-    boxShadow: disabled || loading ? 'none' : '0 4px 16px rgba(177,0,231,0.3)',
+    boxShadow: disabled || loading ? 'none' : '0 4px 16px rgba(237,18,164,0.3)',
     display: 'flex', alignItems: 'center', gap: 8,
   }),
   spinner: {

@@ -7,17 +7,17 @@ const TRIMESTERS = [
   {
     value: 1, label: 'First Trimester', weeks: 'Weeks 1–12', Icon: Leaf,
     desc: 'Early development. Morning sickness and fatigue are common.',
-    color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5',
+    color: '#f141b6', bg: '#fde7f6', border: '#f8a0db',
   },
   {
     value: 2, label: 'Second Trimester', weeks: 'Weeks 13–26', Icon: Flower2,
     desc: 'Baby bump appears. Energy often returns. Kicks begin!',
-    color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0',
+    color: '#be0e83', bg: '#fbd0ed', border: '#f471c8',
   },
   {
     value: 3, label: 'Third Trimester', weeks: 'Weeks 27–40', Icon: Flower2,
     desc: 'Final stretch. Baby grows rapidly. Birth preparation begins.',
-    color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8',
+    color: '#8e0b62', bg: '#fbd0ed', border: '#f141b6',
   },
 ];
 
@@ -33,7 +33,7 @@ const s = {
   page: { minHeight: '100vh', display: 'flex', alignItems: 'stretch', fontFamily: 'var(--font-body)' },
   left: {
     flex: '0 0 38%',
-    background: 'linear-gradient(160deg, #3D1A24 0%, #6B2D3E 45%, #8A00F3 100%)',
+    background: 'linear-gradient(160deg, #210217 0%, #5f0742 40%, #be0e83 100%)',
     display: 'flex', flexDirection: 'column',
     justifyContent: 'center', padding: '60px 48px',
     position: 'relative', overflow: 'hidden',
@@ -113,7 +113,7 @@ const s = {
     background: focused ? 'var(--blush)' : '#fdfaf7',
     fontSize: 14, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.12)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.12)' : 'none',
   }),
   eye: {
     position: 'absolute', right: 12, top: '50%',
@@ -167,7 +167,7 @@ const s = {
     color: '#fff', border: 'none',
     fontSize: 14, fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer',
     letterSpacing: '0.03em', transition: 'all 0.2s ease',
-    boxShadow: loading ? 'none' : '0 4px 18px rgba(177,0,231,0.3)',
+    boxShadow: loading ? 'none' : '0 4px 18px rgba(237,18,164,0.3)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
     fontFamily: 'var(--font-body)',
   }),

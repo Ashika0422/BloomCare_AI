@@ -42,7 +42,7 @@ const s = {
     background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     fontSize: 30, flexShrink: 0, overflow: 'hidden',
-    border: '3px solid var(--white)', boxShadow: '0 4px 12px rgba(177,0,231,0.3)',
+    border: '3px solid var(--white)', boxShadow: '0 4px 12px rgba(237,18,164,0.3)',
   },
   uploadBtn: {
     padding: '8px 18px', borderRadius: 99,
@@ -72,7 +72,7 @@ const s = {
     background: focused ? 'var(--blush)' : 'var(--cream)',
     fontSize: 14, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s ease',
-    boxShadow: focused ? '0 0 0 3px rgba(177,0,231,0.15)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(237,18,164,0.15)' : 'none',
   }),
   trimRow: { display: 'flex', gap: 8 },
   trimBtn: (selected) => ({
@@ -94,7 +94,7 @@ const s = {
     color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
     fontSize: 14, fontWeight: 600, transition: 'all 0.2s ease',
     fontFamily: 'var(--font-body)', letterSpacing: '0.03em',
-    boxShadow: loading ? 'none' : '0 4px 16px rgba(177,0,231,0.3)',
+    boxShadow: loading ? 'none' : '0 4px 16px rgba(237,18,164,0.3)',
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
   }),
   spinner: {
