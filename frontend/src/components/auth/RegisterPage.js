@@ -1,38 +1,36 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { Leaf, Flower2, User, Heart, Baby, Eye, EyeOff, AlertTriangle, Check, ArrowRight, ArrowLeft } from 'lucide-react';
 
 /* ── Trimester data ─────────────────────────────────────── */
 const TRIMESTERS = [
   {
-    value: 1, label: 'First Trimester', weeks: 'Weeks 1–12', emoji: '🌱',
+    value: 1, label: 'First Trimester', weeks: 'Weeks 1–12', Icon: Leaf,
     desc: 'Early development. Morning sickness and fatigue are common.',
-    color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5',   // violet
+    color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5',
   },
   {
-    value: 2, label: 'Second Trimester', weeks: 'Weeks 13–26', emoji: '🌷',
+    value: 2, label: 'Second Trimester', weeks: 'Weeks 13–26', Icon: Flower2,
     desc: 'Baby bump appears. Energy often returns. Kicks begin!',
-    color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0',   // purple-magenta
+    color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0',
   },
   {
-    value: 3, label: 'Third Trimester', weeks: 'Weeks 27–40', emoji: '🌸',
+    value: 3, label: 'Third Trimester', weeks: 'Weeks 27–40', Icon: Flower2,
     desc: 'Final stretch. Baby grows rapidly. Birth preparation begins.',
-    color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8',   // hot pink
+    color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8',
   },
 ];
 
 /* ── Steps config ───────────────────────────────────────── */
 const STEPS = [
-  { id: 1, label: 'Account',  icon: '👤' },
-  { id: 2, label: 'Personal', icon: '💁' },
-  { id: 3, label: 'Pregnancy',icon: '🌸' },
+  { id: 1, label: 'Account',   Icon: User },
+  { id: 2, label: 'Personal',  Icon: Heart },
+  { id: 3, label: 'Pregnancy', Icon: Baby },
 ];
 
 /* ── Styles ─────────────────────────────────────────────── */
 const s = {
-  page: {
-    minHeight: '100vh', display: 'flex', alignItems: 'stretch',
-    fontFamily: 'var(--font-body)',
-  },
+  page: { minHeight: '100vh', display: 'flex', alignItems: 'stretch', fontFamily: 'var(--font-body)' },
   left: {
     flex: '0 0 38%',
     background: 'linear-gradient(160deg, #3D1A24 0%, #6B2D3E 45%, #8A00F3 100%)',
@@ -50,7 +48,11 @@ const s = {
   }),
   leftContent: { position: 'relative', zIndex: 1 },
   brandRow: { display: 'flex', alignItems: 'center', gap: 12, marginBottom: 40 },
-  brandIcon: { fontSize: 36 },
+  brandIconWrap: {
+    width: 44, height: 44, borderRadius: '50%',
+    background: 'rgba(255,255,255,0.18)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+  },
   brandName: {
     fontFamily: 'var(--font-display)', fontSize: 26,
     fontWeight: 600, color: '#fff', letterSpacing: '-0.3px',
@@ -70,9 +72,7 @@ const s = {
     width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     background: done ? 'rgba(255,255,255,0.9)' : active ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.1)',
-    fontSize: done ? 16 : 14,
     color: done ? '#8A00F3' : '#fff',
-    fontWeight: 700,
     border: active ? '2px solid rgba(255,255,255,0.6)' : '2px solid transparent',
     transition: 'all 0.3s ease',
   }),
@@ -118,8 +118,8 @@ const s = {
   eye: {
     position: 'absolute', right: 12, top: '50%',
     transform: 'translateY(-50%)', cursor: 'pointer',
-    fontSize: 15, background: 'none', border: 'none', padding: 0,
-    color: 'var(--slate-light)',
+    background: 'none', border: 'none', padding: 0,
+    color: 'var(--slate-light)', display: 'flex', alignItems: 'center',
   },
   errorText: { fontSize: 11, color: 'var(--primary-dark)', marginTop: 4, fontWeight: 500 },
   row2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 },
@@ -132,7 +132,12 @@ const s = {
     display: 'flex', alignItems: 'center', gap: 14,
     boxShadow: selected ? `0 0 0 3px ${cfg.color}22` : 'none',
   }),
-  trimEmoji: { fontSize: 28, flexShrink: 0 },
+  trimIconWrap: (cfg, selected) => ({
+    width: 48, height: 48, borderRadius: 12, flexShrink: 0,
+    background: selected ? cfg.color : cfg.bg,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    border: `1px solid ${cfg.border}`,
+  }),
   trimInfo: { flex: 1 },
   trimLabel: (selected, color) => ({
     fontSize: 14, fontWeight: 700,
@@ -144,8 +149,7 @@ const s = {
     width: 22, height: 22, borderRadius: '50%',
     background: selected ? color : 'var(--border)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: 12, color: '#fff', flexShrink: 0,
-    transition: 'all 0.2s ease',
+    flexShrink: 0, transition: 'all 0.2s ease',
   }),
   btnRow: { display: 'flex', gap: 12, marginTop: 28 },
   backBtn: {
@@ -154,13 +158,12 @@ const s = {
     background: 'transparent', color: 'var(--slate-mid)',
     fontSize: 14, fontWeight: 500, cursor: 'pointer',
     transition: 'all 0.2s ease', fontFamily: 'var(--font-body)',
+    display: 'flex', alignItems: 'center', gap: 6,
   },
   nextBtn: (loading) => ({
     flex: 1, padding: '13px 22px',
     borderRadius: 'var(--radius-md)',
-    background: loading
-      ? 'var(--primary-light)'
-      : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
+    background: loading ? 'var(--primary-light)' : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
     color: '#fff', border: 'none',
     fontSize: 14, fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer',
     letterSpacing: '0.03em', transition: 'all 0.2s ease',
@@ -169,15 +172,11 @@ const s = {
     fontFamily: 'var(--font-body)',
   }),
   spinner: {
-    width: 15, height: 15,
-    border: '2px solid rgba(255,255,255,0.4)',
+    width: 15, height: 15, border: '2px solid rgba(255,255,255,0.4)',
     borderTopColor: '#fff', borderRadius: '50%',
     animation: 'spin 0.7s linear infinite',
   },
-  switchText: {
-    textAlign: 'center', fontSize: 14,
-    color: 'var(--slate-mid)', marginTop: 20,
-  },
+  switchText: { textAlign: 'center', fontSize: 14, color: 'var(--slate-mid)', marginTop: 20 },
   link: {
     color: 'var(--primary-dark)', fontWeight: 600, cursor: 'pointer',
     background: 'none', border: 'none', padding: 0,
@@ -188,15 +187,12 @@ const s = {
     borderRadius: 'var(--radius-sm)', padding: '12px 16px',
     color: 'var(--primary-dark)', fontSize: 13, marginBottom: 18,
     animation: 'fadeIn 0.3s ease', lineHeight: 1.5,
+    display: 'flex', alignItems: 'center', gap: 8,
   },
   pwStrength: (score) => ({
     height: 4, borderRadius: 99, marginTop: 6,
-    background: score === 0 ? 'var(--border)'
-      : score <= 1 ? 'var(--primary)'
-      : score === 2 ? 'var(--warning)'
-      : '#5A8A72',
-    width: `${Math.max(score * 25, 4)}%`,
-    transition: 'all 0.3s ease',
+    background: score === 0 ? 'var(--border)' : score <= 1 ? 'var(--primary)' : score === 2 ? 'var(--warning)' : '#5A8A72',
+    width: `${Math.max(score * 25, 4)}%`, transition: 'all 0.3s ease',
   }),
   pwHint: (score) => ({
     fontSize: 11, marginTop: 4,
@@ -213,23 +209,19 @@ function pwScore(pw) {
   if (/[^A-Za-z0-9]/.test(pw)) s++;
   return s;
 }
-
 const PW_LABELS = ['', 'Weak', 'Fair', 'Good', 'Strong'];
 
 export default function RegisterPage({ onSwitchToLogin }) {
   const { register } = useAuth();
-
   const [step,    setStep]    = useState(1);
   const [loading, setLoading] = useState(false);
   const [errors,  setErrors]  = useState({});
   const [apiError,setApiError]= useState('');
   const [showPw,  setShowPw]  = useState(false);
   const [focused, setFocused] = useState(null);
-
   const [form, setForm] = useState({
     username: '', email: '', password: '',
-    full_name: '', age: '',
-    trimester: null, due_date: '',
+    full_name: '', age: '', trimester: null, due_date: '',
   });
 
   const set = (key, val) => {
@@ -238,27 +230,20 @@ export default function RegisterPage({ onSwitchToLogin }) {
     setApiError('');
   };
 
-  /* ── Per-step validation ──────────────────────────────── */
   const validateStep = (n) => {
     const errs = {};
     if (n === 1) {
-      if (!form.username.trim() || form.username.length < 3)
-        errs.username = 'At least 3 characters required.';
-      if (!form.email.trim() || !form.email.includes('@'))
-        errs.email = 'Enter a valid email address.';
-      if (!form.password || form.password.length < 6)
-        errs.password = 'At least 6 characters required.';
+      if (!form.username.trim() || form.username.length < 3) errs.username = 'At least 3 characters required.';
+      if (!form.email.trim() || !form.email.includes('@')) errs.email = 'Enter a valid email address.';
+      if (!form.password || form.password.length < 6) errs.password = 'At least 6 characters required.';
     }
     if (n === 2) {
-      if (!form.full_name.trim())
-        errs.full_name = 'Full name is required.';
+      if (!form.full_name.trim()) errs.full_name = 'Full name is required.';
       const age = parseInt(form.age);
-      if (!form.age || isNaN(age) || age < 10 || age > 70)
-        errs.age = 'Age must be between 10 and 70.';
+      if (!form.age || isNaN(age) || age < 10 || age > 70) errs.age = 'Age must be between 10 and 70.';
     }
     if (n === 3) {
-      if (!form.trimester)
-        errs.trimester = 'Please select your current trimester.';
+      if (!form.trimester) errs.trimester = 'Please select your current trimester.';
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -271,29 +256,19 @@ export default function RegisterPage({ onSwitchToLogin }) {
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
-    setApiError('');
+    setLoading(true); setApiError('');
     try {
-      const res = await register({
-        ...form,
-        age: parseInt(form.age),
-        trimester: form.trimester,
-      });
+      const res = await register({ ...form, age: parseInt(form.age), trimester: form.trimester });
       if (!res.success) {
         const msg = res.errors ? res.errors.join(' · ') : res.error;
         setApiError(msg || 'Registration failed.');
       }
-      // On success, AuthContext redirects automatically via App.js
-    } catch {
-      setApiError('Cannot connect to server. Make sure Flask is running on port 5000.');
-    } finally {
-      setLoading(false);
-    }
+    } catch { setApiError('Cannot connect to server. Make sure Flask is running on port 5000.'); }
+    finally { setLoading(false); }
   };
 
   const score = pwScore(form.password);
 
-  /* ── Field helpers ────────────────────────────────────── */
   const inp = (key, label, type, placeholder, opts = {}) => (
     <div style={{ ...s.fieldWrap, ...(opts.style || {}) }}>
       <label style={s.label}>{label}</label>
@@ -310,7 +285,7 @@ export default function RegisterPage({ onSwitchToLogin }) {
         />
         {key === 'password' && (
           <button style={s.eye} type="button" onClick={() => setShowPw(p => !p)}>
-            {showPw ? '🙈' : '👁️'}
+            {showPw ? <EyeOff size={15} strokeWidth={1.8} /> : <Eye size={15} strokeWidth={1.8} />}
           </button>
         )}
       </div>
@@ -324,7 +299,6 @@ export default function RegisterPage({ onSwitchToLogin }) {
     </div>
   );
 
-  /* ── Step content ─────────────────────────────────────── */
   const stepContent = {
     1: (
       <>
@@ -351,11 +325,9 @@ export default function RegisterPage({ onSwitchToLogin }) {
           <div style={s.fieldWrap}>
             <label style={s.label}>Due Date <span style={{ color: 'var(--slate-light)' }}>(optional)</span></label>
             <input
-              type="date"
-              value={form.due_date}
+              type="date" value={form.due_date}
               style={s.input(focused === 'due_date', false)}
-              onFocus={() => setFocused('due_date')}
-              onBlur={() => setFocused(null)}
+              onFocus={() => setFocused('due_date')} onBlur={() => setFocused(null)}
               onChange={e => set('due_date', e.target.value)}
             />
           </div>
@@ -380,13 +352,17 @@ export default function RegisterPage({ onSwitchToLogin }) {
                 onMouseEnter={e => { if (!sel) e.currentTarget.style.borderColor = t.color; }}
                 onMouseLeave={e => { if (!sel) e.currentTarget.style.borderColor = 'var(--border)'; }}
               >
-                <span style={s.trimEmoji}>{t.emoji}</span>
+                <div style={s.trimIconWrap(t, sel)}>
+                  <t.Icon size={22} color={sel ? '#fff' : t.color} strokeWidth={1.8} />
+                </div>
                 <div style={s.trimInfo}>
                   <div style={s.trimLabel(sel, t.color)}>{t.label}</div>
                   <div style={s.trimWeeks}>{t.weeks}</div>
                   <div style={s.trimDesc}>{t.desc}</div>
                 </div>
-                <div style={s.trimCheck(sel, t.color)}>{sel ? '✓' : ''}</div>
+                <div style={s.trimCheck(sel, t.color)}>
+                  {sel && <Check size={13} color="#fff" strokeWidth={2.5} />}
+                </div>
               </div>
             );
           })}
@@ -402,14 +378,14 @@ export default function RegisterPage({ onSwitchToLogin }) {
       <div style={s.left}>
         <div style={s.orb(280, 280, -60, -60, null, null, 0.04)} />
         <div style={s.orb(160, 160, null, null, 30, -50, 0.06)} />
-        <div style={s.orb(90,  90,  null, null, 160, 30, 0.03)} />
-
+        <div style={s.orb(90, 90, null, null, 160, 30, 0.03)} />
         <div style={s.leftContent}>
           <div style={s.brandRow}>
-            <span style={s.brandIcon}>🌸</span>
+            <div style={s.brandIconWrap}>
+              <Flower2 size={22} color="#fff" strokeWidth={1.8} />
+            </div>
             <span style={s.brandName}>BloomCare AI</span>
           </div>
-
           <p style={s.progressTitle}>Your progress</p>
           <ul style={s.stepList}>
             {STEPS.map(st => {
@@ -418,12 +394,15 @@ export default function RegisterPage({ onSwitchToLogin }) {
               return (
                 <li key={st.id} style={s.stepItem(active, done)}>
                   <div style={s.stepCircle(active, done)}>
-                    {done ? '✓' : st.icon}
+                    {done
+                      ? <Check size={16} strokeWidth={2.5} />
+                      : <st.Icon size={15} strokeWidth={1.8} />
+                    }
                   </div>
                   <div>
                     <div style={s.stepText(active)}>{st.label}</div>
                     <div style={s.stepSub}>
-                      {done ? 'Completed ✓' : active ? 'In progress…' : 'Coming up'}
+                      {done ? 'Completed' : active ? 'In progress…' : 'Coming up'}
                     </div>
                   </div>
                 </li>
@@ -436,10 +415,13 @@ export default function RegisterPage({ onSwitchToLogin }) {
       {/* Right panel */}
       <div style={s.rightPanel}>
         <div style={s.formWrap}>
-          {apiError && <div style={s.globalError}>⚠️ {apiError}</div>}
-
+          {apiError && (
+            <div style={s.globalError}>
+              <AlertTriangle size={14} strokeWidth={2} />
+              {apiError}
+            </div>
+          )}
           {stepContent[step]}
-
           <div style={s.btnRow}>
             {step > 1 && (
               <button
@@ -448,7 +430,7 @@ export default function RegisterPage({ onSwitchToLogin }) {
                 onMouseEnter={e => { e.currentTarget.style.background = 'var(--blush)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
               >
-                ← Back
+                <ArrowLeft size={15} strokeWidth={2} /> Back
               </button>
             )}
             <button
@@ -460,11 +442,12 @@ export default function RegisterPage({ onSwitchToLogin }) {
             >
               {loading
                 ? <><div style={s.spinner} /> Creating account…</>
-                : step === 3 ? '🌸 Create My Account' : 'Continue →'
+                : step === 3
+                  ? <><Flower2 size={15} strokeWidth={1.8} /> Create My Account</>
+                  : <>Continue <ArrowRight size={15} strokeWidth={2} /></>
               }
             </button>
           </div>
-
           <p style={s.switchText}>
             Already have an account?{' '}
             <button style={s.link} onClick={onSwitchToLogin}>Sign in</button>

@@ -1,28 +1,32 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import ProfileModal from './auth/ProfileModal';
+import {
+  Home, BookOpen, Stethoscope, MessageCircle,
+  Pill, Target, Shield, LogOut, Edit,
+  ChevronDown, Leaf, Flower2, User,
+} from 'lucide-react';
 
-/* ── New palette ─────────────────────────────────────────────── */
+/* ── Trimester config — Icon instead of emoji ──────────────── */
 const TRIM_INFO = {
-  1: { label: '1st Trimester', color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5', emoji: '🌱' },
-  2: { label: '2nd Trimester', color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0', emoji: '🌷' },
-  3: { label: '3rd Trimester', color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8', emoji: '🌸' },
+  1: { label: '1st Trimester', color: '#8A00F3', bg: '#F0E6FF', border: '#C89EF5', Icon: Leaf },
+  2: { label: '2nd Trimester', color: '#BC00DD', bg: '#F5E0FF', border: '#DBA0F0', Icon: Flower2 },
+  3: { label: '3rd Trimester', color: '#E500A3', bg: '#FFE6F7', border: '#F0A0D8', Icon: Flower2 },
 };
 
-const GRAD_SOFT   = 'linear-gradient(135deg, #8A00F3 0%, #D300D0 100%)';
-const PRIMARY     = '#B100E7';
-const PRIMARY_TINT= '#F5E6FF';
-const SHADOW_BTN  = '0 4px 18px rgba(110, 1, 244, 0.3)';
+const GRAD_SOFT = 'linear-gradient(135deg, #8A00F3 0%, #D300D0 100%)';
+const PRIMARY   = '#B100E7';
 
+/* ── Nav links — Icon component instead of emoji string ────── */
 const BASE_LINKS = [
-  { id: 'home',      label: '🏠 Home' },
-  { id: 'journal',   label: '📔 Journal' },
-  { id: 'risk',      label: '🩺 Risk' },
-  { id: 'chat',      label: '💬 AI Chat' },
-  { id: 'medicines', label: '💊 Medicines' },
-  { id: 'goals',     label: '🎯 Goals' },
+  { id: 'home',      label: 'Home',      Icon: Home },
+  { id: 'journal',   label: 'Journal',   Icon: BookOpen },
+  { id: 'risk',      label: 'Risk',      Icon: Stethoscope },
+  { id: 'chat',      label: 'AI Chat',   Icon: MessageCircle },
+  { id: 'medicines', label: 'Medicines', Icon: Pill },
+  { id: 'goals',     label: 'Goals',     Icon: Target },
 ];
-const ADMIN_LINK = { id: 'admin', label: '🛡 Admin' };
+const ADMIN_LINK = { id: 'admin', label: 'Admin', Icon: Shield };
 
 const s = {
   nav: {
@@ -39,13 +43,13 @@ const s = {
   },
   logo: {
     display: 'flex', alignItems: 'center', gap: 10,
-    cursor: 'pointer', flexShrink: 0,
+    cursor: 'pointer', flexShrink: 0, textDecoration: 'none',
   },
   logoIcon: {
-    width: 34, height: 34, borderRadius: '50%',
+    width: 36, height: 36, borderRadius: '50%',
     background: GRAD_SOFT,
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: 17, boxShadow: '0 3px 12px rgba(110,1,244,0.3)',
+    boxShadow: '0 3px 12px rgba(110,1,244,0.3)',
   },
   logoText: {
     fontFamily: 'var(--font-display)', fontSize: 18,
@@ -54,15 +58,17 @@ const s = {
   logoSub: {
     fontSize: 9, fontWeight: 600, letterSpacing: '0.08em',
     textTransform: 'uppercase', display: 'block', marginTop: -1,
-    background: GRAD_SOFT, WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+    background: GRAD_SOFT,
+    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
   },
   centre: {
     display: 'flex', gap: 2, overflowX: 'auto',
     scrollbarWidth: 'none', flex: 1, margin: '0 16px',
   },
   navLink: (active, isAdmin) => ({
-    padding: '6px 12px', borderRadius: 99, whiteSpace: 'nowrap',
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '6px 13px', borderRadius: 99, whiteSpace: 'nowrap',
     fontSize: 13, fontWeight: 500, cursor: 'pointer', border: 'none',
     background: active
       ? (isAdmin ? '#2C3E50' : GRAD_SOFT)
@@ -74,9 +80,9 @@ const s = {
   }),
   right: { display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 },
   trimBadge: (info) => ({
-    display: 'flex', alignItems: 'center', gap: 4,
+    display: 'flex', alignItems: 'center', gap: 5,
     background: info.bg, color: info.color,
-    fontSize: 11, fontWeight: 600, padding: '3px 10px',
+    fontSize: 11, fontWeight: 600, padding: '4px 11px',
     borderRadius: 99, border: `1px solid ${info.border}`,
     whiteSpace: 'nowrap',
   }),
@@ -98,15 +104,15 @@ const s = {
   dropdown: {
     position: 'absolute', top: 48, right: 0,
     background: 'var(--white)', borderRadius: 'var(--radius-md)',
-    border: '1px solid rgba(177,0,231,0.15)', minWidth: 190,
+    border: '1px solid rgba(177,0,231,0.15)', minWidth: 195,
     boxShadow: '0 8px 32px rgba(110,1,244,0.14)',
     zIndex: 200, overflow: 'hidden', animation: 'fadeIn 0.15s ease',
   },
   dropItem: (danger, admin) => ({
     display: 'flex', alignItems: 'center', gap: 10,
-    padding: '10px 16px', cursor: 'pointer',
-    fontSize: 13, fontWeight: 500, transition: 'background 0.15s',
-    color: danger ? '#8A00F3' : admin ? '#2C3E50' : 'var(--slate)',
+    padding: '10px 16px', cursor: 'pointer', fontSize: 13,
+    fontWeight: 500, transition: 'background 0.15s',
+    color: danger ? '#C0394F' : admin ? '#2C3E50' : 'var(--slate)',
     background: 'transparent', border: 'none', width: '100%',
     textAlign: 'left', fontFamily: 'var(--font-body)',
   }),
@@ -119,6 +125,7 @@ export default function Navbar({ currentPage, onNavigate }) {
   const [showProfile,  setShowProfile]  = useState(false);
 
   const tInfo     = TRIM_INFO[user?.trimester] || TRIM_INFO[1];
+  const TrimIcon  = tInfo.Icon;
   const avatarSrc = user?.profile_picture
     ? `http://localhost:5000/auth/uploads/${user.profile_picture}`
     : null;
@@ -129,19 +136,24 @@ export default function Navbar({ currentPage, onNavigate }) {
     <>
       <nav style={s.nav}>
         <div style={s.inner}>
-          {/* Logo */}
+
+          {/* ── Logo ─────────────────────────────────────── */}
           <div style={s.logo} onClick={() => onNavigate('home')}>
-            <div style={s.logoIcon}>🌸</div>
+            <div style={s.logoIcon}>
+              {/* Flower icon instead of 🌸 emoji */}
+              <Flower2 size={18} color="#fff" strokeWidth={1.8} />
+            </div>
             <div>
               <span style={s.logoText}>BloomCare</span>
               <span style={s.logoSub}>AI · Health</span>
             </div>
           </div>
 
-          {/* Nav links */}
+          {/* ── Nav links with Lucide icons ───────────────── */}
           <div style={s.centre}>
             {navLinks.map(l => {
               const isAdminLink = l.id === 'admin';
+              const NavIcon     = l.Icon;
               return (
                 <button
                   key={l.id}
@@ -149,24 +161,35 @@ export default function Navbar({ currentPage, onNavigate }) {
                   onClick={() => onNavigate(l.id)}
                   onMouseEnter={e => {
                     if (currentPage !== l.id)
-                      e.target.style.background = isAdminLink ? '#EDF2F5' : PRIMARY_TINT;
+                      e.currentTarget.style.background = isAdminLink ? '#EDF2F5' : '#F5E6FF';
                   }}
                   onMouseLeave={e => {
-                    if (currentPage !== l.id) e.target.style.background = 'transparent';
+                    if (currentPage !== l.id)
+                      e.currentTarget.style.background = 'transparent';
                   }}
                 >
+                  {/* Real icon instead of emoji */}
+                  <NavIcon
+                    size={15}
+                    strokeWidth={currentPage === l.id ? 2.2 : 1.8}
+                    style={{ flexShrink: 0 }}
+                  />
                   {l.label}
                 </button>
               );
             })}
           </div>
 
-          {/* Right */}
+          {/* ── Right: trimester badge + user menu ────────── */}
           <div style={s.right}>
+
+            {/* Trimester badge — real icon */}
             <div style={s.trimBadge(tInfo)}>
-              {tInfo.emoji} {tInfo.label}
+              <TrimIcon size={12} strokeWidth={2} />
+              {tInfo.label}
             </div>
 
+            {/* User dropdown */}
             <div style={{ position: 'relative' }}>
               <div
                 style={s.userBtn}
@@ -176,49 +199,70 @@ export default function Navbar({ currentPage, onNavigate }) {
               >
                 <div style={s.avatar}>
                   {avatarSrc
-                    ? <img src={avatarSrc} alt="av" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    ? <img src={avatarSrc} alt="avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     : <span>{user?.full_name?.[0]?.toUpperCase() || '?'}</span>
                   }
                 </div>
                 <span style={s.userName}>{user?.full_name?.split(' ')[0]}</span>
-                <span style={{ fontSize: 10, color: 'var(--slate-light)' }}>▾</span>
+                {/* ChevronDown instead of ▾ */}
+                <ChevronDown size={13} color="var(--slate-light)" />
               </div>
 
               {showDropdown && (
                 <div style={s.dropdown} onMouseLeave={() => setShowDropdown(false)}>
+                  {/* User info header */}
                   <div style={{ padding: '10px 16px', borderBottom: '1px solid rgba(177,0,231,0.1)' }}>
                     <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--slate)', display: 'flex', alignItems: 'center', gap: 6 }}>
                       {user?.full_name}
                       {user?.is_admin && (
-                        <span style={{
-                          fontSize: 9, background: '#2C3E50', color: '#fff',
-                          padding: '1px 6px', borderRadius: 99, letterSpacing: '0.04em',
-                        }}>ADMIN</span>
+                        <span style={{ fontSize: 9, background: '#2C3E50', color: '#fff', padding: '1px 6px', borderRadius: 99 }}>
+                          ADMIN
+                        </span>
                       )}
                     </div>
-                    <div style={{ fontSize: 11, color: 'var(--slate-light)' }}>@{user?.username}</div>
+                    <div style={{ fontSize: 11, color: 'var(--slate-light)', marginTop: 1 }}>
+                      @{user?.username}
+                    </div>
                   </div>
 
-                  {[
-                    { label: '✏️ Edit Profile', action: () => { setShowProfile(true); setShowDropdown(false); }, danger: false, admin: false, hover: '#F5E6FF' },
-                    { label: '🏠 My Dashboard', action: () => { onNavigate('home'); setShowDropdown(false); }, danger: false, admin: false, hover: '#F5E6FF' },
-                    ...(user?.is_admin ? [{ label: '🛡 Admin Panel', action: () => { onNavigate('admin'); setShowDropdown(false); }, danger: false, admin: true, hover: '#EDF2F5' }] : []),
-                  ].map(item => (
-                    <button key={item.label} style={s.dropItem(item.danger, item.admin)}
-                      onClick={item.action}
-                      onMouseEnter={e => { e.currentTarget.style.background = item.hover; }}
+                  {/* Edit Profile — Edit icon */}
+                  <button style={s.dropItem(false, false)}
+                    onClick={() => { setShowProfile(true); setShowDropdown(false); }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#F5E6FF'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
+                    <Edit size={14} strokeWidth={1.8} />
+                    Edit Profile
+                  </button>
+
+                  {/* My Dashboard — Home icon */}
+                  <button style={s.dropItem(false, false)}
+                    onClick={() => { onNavigate('home'); setShowDropdown(false); }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#F5E6FF'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
+                    <Home size={14} strokeWidth={1.8} />
+                    My Dashboard
+                  </button>
+
+                  {/* Admin Panel — Shield icon (admin only) */}
+                  {user?.is_admin && (
+                    <button style={s.dropItem(false, true)}
+                      onClick={() => { onNavigate('admin'); setShowDropdown(false); }}
+                      onMouseEnter={e => { e.currentTarget.style.background = '#EDF2F5'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
-                      {item.label}
+                      <Shield size={14} strokeWidth={1.8} />
+                      Admin Panel
                     </button>
-                  ))}
+                  )}
 
                   <div style={s.divider} />
 
+                  {/* Sign Out — LogOut icon */}
                   <button style={s.dropItem(true, false)}
                     onClick={() => { logout(); setShowDropdown(false); }}
-                    onMouseEnter={e => { e.currentTarget.style.background = '#F5E6FF'; }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#FBEEF1'; }}
                     onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
-                    🚪 Sign Out
+                    <LogOut size={14} strokeWidth={1.8} />
+                    Sign Out
                   </button>
                 </div>
               )}

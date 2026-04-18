@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { Flower2, Bot, Pill, BookOpen, Eye, EyeOff, AlertTriangle, ArrowRight } from 'lucide-react';
 
 const GRAD_HEADER = 'linear-gradient(160deg, #2D0060 0%, #8A00F3 45%, #F2008A 100%)';
 const GRAD_SOFT   = 'linear-gradient(135deg, #8A00F3 0%, #D300D0 100%)';
@@ -11,9 +12,7 @@ const PRIMARY_LIGHT='#E8CCFF';
 const BORDER_COLOR= 'rgba(177,0,231,0.15)';
 
 const s = {
-  page: {
-    minHeight: '100vh', display: 'flex', fontFamily: 'var(--font-body)',
-  },
+  page: { minHeight: '100vh', display: 'flex', fontFamily: 'var(--font-body)' },
   left: {
     flex: '0 0 46%', background: GRAD_HEADER,
     display: 'flex', flexDirection: 'column',
@@ -25,7 +24,12 @@ const s = {
     background: `rgba(255,255,255,${op})`,
   }),
   brand: { position: 'relative', zIndex: 1, textAlign: 'center' },
-  brandIcon: { fontSize: 56, marginBottom: 20 },
+  brandIcon: {
+    width: 80, height: 80, borderRadius: '50%',
+    background: 'rgba(255,255,255,0.18)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    margin: '0 auto 20px',
+  },
   brandName: {
     fontFamily: 'var(--font-display)', fontSize: 42, fontWeight: 600,
     color: '#fff', letterSpacing: '-0.5px', lineHeight: 1.1, marginBottom: 12,
@@ -43,12 +47,11 @@ const s = {
     width: 28, height: 28, borderRadius: '50%',
     background: 'rgba(255,255,255,0.18)',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
-    fontSize: 14, flexShrink: 0,
+    flexShrink: 0,
   },
   right: {
     flex: 1, display: 'flex', alignItems: 'center',
-    justifyContent: 'center', padding: '60px 52px',
-    background: '#FEFAFB',
+    justifyContent: 'center', padding: '60px 52px', background: '#FEFAFB',
   },
   form: { width: '100%', maxWidth: 400 },
   eyebrow: {
@@ -78,10 +81,10 @@ const s = {
   }),
   eye: {
     position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)',
-    cursor: 'pointer', fontSize: 16, color: 'var(--slate-light)',
+    cursor: 'pointer', color: 'var(--slate-light)',
     background: 'none', border: 'none', padding: 0,
+    display: 'flex', alignItems: 'center',
   },
-  errText: { fontSize: 12, color: '#8A00F3', marginTop: 5, fontWeight: 500 },
   submitBtn: (loading) => ({
     width: '100%', padding: '14px', borderRadius: 'var(--radius-md)',
     background: loading ? PRIMARY_LIGHT : GRAD_SOFT,
@@ -111,14 +114,15 @@ const s = {
     background: PRIMARY_TINT, border: `1px solid ${PRIMARY_LIGHT}`,
     borderRadius: 'var(--radius-sm)', padding: '12px 16px',
     color: '#6E01F4', fontSize: 13, marginBottom: 20, animation: 'fadeIn 0.3s ease',
+    display: 'flex', alignItems: 'center', gap: 8,
   },
 };
 
 const FEATURES = [
-  { icon: '🌸', text: 'Track your pregnancy journey' },
-  { icon: '🤖', text: 'AI-powered health risk analysis' },
-  { icon: '💊', text: 'Medicine reminders & goal tracking' },
-  { icon: '📔', text: 'Daily journal & mood diary' },
+  { Icon: Flower2, text: 'Track your pregnancy journey' },
+  { Icon: Bot,     text: 'AI-powered health risk analysis' },
+  { Icon: Pill,    text: 'Medicine reminders & goal tracking' },
+  { Icon: BookOpen,text: 'Daily journal & mood diary' },
 ];
 
 export default function LoginPage({ onSwitchToRegister }) {
@@ -156,7 +160,10 @@ export default function LoginPage({ onSwitchToRegister }) {
         />
         {key === 'password' && (
           <button style={s.eye} type="button" onClick={() => setShowPw(p => !p)}>
-            {showPw ? '🙈' : '👁️'}
+            {showPw
+              ? <EyeOff size={16} strokeWidth={1.8} />
+              : <Eye size={16} strokeWidth={1.8} />
+            }
           </button>
         )}
       </div>
@@ -171,7 +178,9 @@ export default function LoginPage({ onSwitchToRegister }) {
         <div style={{ ...s.leftOrb(200, 0.07), bottom: 40, right: -60 }} />
         <div style={{ ...s.leftOrb(100, 0.04), bottom: 160, left: 40 }} />
         <div style={s.brand}>
-          <div style={s.brandIcon}>🌸</div>
+          <div style={s.brandIcon}>
+            <Flower2 size={40} color="#fff" strokeWidth={1.6} />
+          </div>
           <h1 style={s.brandName}>BloomCare<br />AI</h1>
           <p style={s.brandTagline}>
             Your intelligent companion for a healthier, safer pregnancy journey.
@@ -179,7 +188,10 @@ export default function LoginPage({ onSwitchToRegister }) {
           <ul style={s.featureList}>
             {FEATURES.map(f => (
               <li key={f.text} style={s.featureItem}>
-                <span style={s.featureDot}>{f.icon}</span>{f.text}
+                <span style={s.featureDot}>
+                  <f.Icon size={14} color="rgba(255,255,255,0.9)" strokeWidth={1.8} />
+                </span>
+                {f.text}
               </li>
             ))}
           </ul>
@@ -192,7 +204,12 @@ export default function LoginPage({ onSwitchToRegister }) {
           <span style={s.eyebrow}>Welcome Back</span>
           <h2 style={s.title}>Sign in to your<br />account</h2>
           <p style={s.subtitle}>Continue your pregnancy health journey</p>
-          {error && <div style={s.globalError}>⚠️ {error}</div>}
+          {error && (
+            <div style={s.globalError}>
+              <AlertTriangle size={14} strokeWidth={2} />
+              {error}
+            </div>
+          )}
           {field('username', 'Username or Email', 'text', 'Enter your username or email')}
           {field('password', 'Password', 'password', 'Enter your password')}
           <button
@@ -202,7 +219,10 @@ export default function LoginPage({ onSwitchToRegister }) {
             onMouseEnter={e => { if (!loading) e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}
           >
-            {loading ? <><div style={s.spinner} /> Signing in…</> : 'Sign In →'}
+            {loading
+              ? <><div style={s.spinner} /> Signing in…</>
+              : <> Sign In <ArrowRight size={16} strokeWidth={2} /></>
+            }
           </button>
           <div style={s.divider}>
             <span style={s.dividerLine} />
