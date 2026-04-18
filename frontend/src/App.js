@@ -22,7 +22,7 @@ function AppInner() {
     return (
       <div style={{
         minHeight: '100vh', display: 'flex', alignItems: 'center',
-        justifyContent: 'center', background: 'var(--cream)',
+        justifyContent: 'center', background: 'var(--accent-tint)',
         fontFamily: 'var(--font-body)',
       }}>
         <div style={{ textAlign: 'center' }}>
@@ -40,7 +40,7 @@ function AppInner() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--cream)' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--accent-tint)' }}>
       <Navbar currentPage={page} onNavigate={setPage} />
       <main>
         {page === 'home'      && <MainDashboard onNavigate={setPage} />}

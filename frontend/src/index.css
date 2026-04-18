@@ -27,7 +27,7 @@
   --accent-mid:     var(--p11);      /* #E500A3 */
   --accent-dark:    var(--p10);      /* #DB00B6 */
   --accent-light:   #FFE6F4;
-  --accent-tint:    #FFF0FA;
+  --accent-tint:    #ffe5ec;
 
   /* Full gradient (used in buttons, headers, decorative elements) */
   --grad-main:      linear-gradient(135deg, var(--p3) 0%, var(--p7) 50%, var(--p12) 100%);
@@ -81,7 +81,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--cream);
+  background: var(--accent-tint);
   color: var(--slate);
   font-size: 15px;
   line-height: 1.6;

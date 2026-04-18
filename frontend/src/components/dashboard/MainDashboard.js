@@ -338,11 +338,15 @@ export default function MainDashboard({ onNavigate }) {
     <div style={s.page}>
 
       {/* ── Hero Greeting ──────────────────────────────── */}
-      <div style={{
-        ...s.hero,
-        background: `linear-gradient(135deg, #3D1A24 0%, #6B2D3E 50%, #8A00F3 100%)`,
-        color: '#fff',
-      }}>
+      <div
+        style={{
+          ...s.hero,
+          backgroundImage: `url('/bg.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          color: '#fff',
+        }}
+>
         <div style={s.heroOrb1} /><div style={s.heroOrb2} />
         <div style={s.heroContent}>
           <p style={s.greeting}>{getGreeting()}</p>

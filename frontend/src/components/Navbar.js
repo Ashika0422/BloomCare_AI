@@ -27,7 +27,7 @@ const ADMIN_LINK = { id: 'admin', label: '🛡 Admin' };
 const s = {
   nav: {
     position: 'sticky', top: 0, zIndex: 100,
-    background: 'rgba(253,244,255,0.94)',     /* blush tinted */
+    background: '#F3C4FB',
     backdropFilter: 'blur(18px)',
     borderBottom: '1px solid rgba(177,0,231,0.12)',
   },
