@@ -71,7 +71,7 @@ const s = {
     padding: '6px 13px', borderRadius: 99, whiteSpace: 'nowrap',
     fontSize: 13, fontWeight: 500, cursor: 'pointer', border: 'none',
     background: active
-      ? (isAdmin ? '#2C3E50' : GRAD_SOFT)
+      ? (isAdmin ? '#8e0b62' : GRAD_SOFT)
       : 'transparent',
     color: active ? '#fff' : 'var(--slate-mid)',
     transition: 'all 0.18s ease', letterSpacing: '0.01em',
@@ -161,7 +161,7 @@ export default function Navbar({ currentPage, onNavigate }) {
                   onClick={() => onNavigate(l.id)}
                   onMouseEnter={e => {
                     if (currentPage !== l.id)
-                      e.currentTarget.style.background = isAdminLink ? '#EDF2F5' : '#F5E6FF';
+                      e.currentTarget.style.background = isAdminLink ? '#fde7f6' : '#F5E6FF';
                   }}
                   onMouseLeave={e => {
                     if (currentPage !== l.id)
@@ -215,7 +215,7 @@ export default function Navbar({ currentPage, onNavigate }) {
                     <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--slate)', display: 'flex', alignItems: 'center', gap: 6 }}>
                       {user?.full_name}
                       {user?.is_admin && (
-                        <span style={{ fontSize: 9, background: '#2C3E50', color: '#fff', padding: '1px 6px', borderRadius: 99 }}>
+                        <span style={{ fontSize: 9, background: '#8e0b62', color: '#fff', padding: '1px 6px', borderRadius: 99 }}>
                           ADMIN
                         </span>
                       )}
@@ -247,7 +247,7 @@ export default function Navbar({ currentPage, onNavigate }) {
                   {user?.is_admin && (
                     <button style={s.dropItem(false, true)}
                       onClick={() => { onNavigate('admin'); setShowDropdown(false); }}
-                      onMouseEnter={e => { e.currentTarget.style.background = '#EDF2F5'; }}
+                      onMouseEnter={e => { e.currentTarget.style.background = '#fde7f6'; }}
                       onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                       <Shield size={14} strokeWidth={1.8} />
                       Admin Panel

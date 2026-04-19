@@ -1,3 +1,8 @@
+/* ═══════════════════════════════════════════════════════════
+   BloomCare AI — Bubblegum Fizz Design System
+   ONE palette for everything. No more green/amber/slate.
+   ═══════════════════════════════════════════════════════════ */
+
 :root {
   /* ── Raw scale ───────────────────────────────────────────── */
   --bb-50:  #fde7f6;
@@ -12,62 +17,69 @@
   --bb-900: #2f0421;
   --bb-950: #210217;
 
-  /* ── Semantic brand tokens ───────────────────────────────── */
-  --primary:        var(--bb-500);   /* #ed12a4 — buttons, active nav, links    */
-  --primary-hover:  var(--bb-600);   /* #be0e83 — button hover state            */
-  --primary-dark:   var(--bb-700);   /* #8e0b62 — deep accents, gradient end    */
-  --primary-deeper: var(--bb-800);   /* #5f0742 — hero section dark end         */
-  --primary-light:  var(--bb-200);   /* #f8a0db — borders, focus rings          */
-  --primary-tint:   var(--bb-100);   /* #fbd0ed — hover backgrounds             */
-  --primary-wash:   var(--bb-50);    /* #fde7f6 — page/card background tint     */
+  /* ── Brand tokens ────────────────────────────────────────── */
+  --primary:        #ed12a4;
+  --primary-hover:  #be0e83;
+  --primary-dark:   #8e0b62;
+  --primary-deeper: #5f0742;
+  --primary-light:  #f8a0db;
+  --primary-tint:   #fbd0ed;
+  --primary-wash:   #fde7f6;
 
   /* ── Gradients ───────────────────────────────────────────── */
-  --grad-main:    linear-gradient(135deg, var(--bb-500) 0%, var(--bb-700) 100%);
-  --grad-soft:    linear-gradient(135deg, var(--bb-400) 0%, var(--bb-600) 100%);
-  --grad-vivid:   linear-gradient(135deg, var(--bb-300) 0%, var(--bb-600) 100%);
-  --grad-header:  linear-gradient(160deg, var(--bb-950) 0%, var(--bb-800) 40%, var(--bb-600) 100%);
-  --grad-hero:    linear-gradient(135deg, var(--bb-900) 0%, var(--bb-700) 50%, var(--bb-500) 100%);
-  --grad-subtle:  linear-gradient(135deg, var(--bb-50)  0%, var(--bb-100) 100%);
-  --grad-bar:     linear-gradient(90deg,  var(--bb-400) 0%, var(--bb-600) 100%);
+  --grad-main:   linear-gradient(135deg, #ed12a4 0%, #8e0b62 100%);
+  --grad-soft:   linear-gradient(135deg, #f141b6 0%, #be0e83 100%);
+  --grad-vivid:  linear-gradient(135deg, #f471c8 0%, #be0e83 100%);
+  --grad-header: linear-gradient(160deg, #210217 0%, #5f0742 40%, #be0e83 100%);
+  --grad-hero:   linear-gradient(135deg, #2f0421 0%, #8e0b62 50%, #ed12a4 100%);
+  --grad-subtle: linear-gradient(135deg, #fde7f6 0%, #fbd0ed 100%);
+  --grad-bar:    linear-gradient(90deg,  #f141b6 0%, #be0e83 100%);
 
   /* ── Backgrounds ─────────────────────────────────────────── */
   --white:   #FFFFFF;
-  --cream:   #FFFBFE;           /* very slightly pink-tinted white      */
-  --blush:   var(--bb-50);      /* #fde7f6 — input focus bg, card tint  */
-  --surface: #FFF5FC;           /* between white and blush              */
+  --cream:   #FFFBFE;
+  --blush:   #fde7f6;
+  --surface: #FFF5FC;
 
-  /* ── Text / Neutrals ─────────────────────────────────────── */
-  --slate:        #1E1E2E;      /* near-black for headings              */
-  --slate-mid:    #4A4560;      /* body text, labels                    */
-  --slate-light:  #8E8AA8;      /* muted text, hints                    */
+  /* ── Text ────────────────────────────────────────────────── */
+  --slate:        #1E1E2E;
+  --slate-mid:    #4A4560;
+  --slate-light:  #8E8AA8;
 
   /* ── Borders ─────────────────────────────────────────────── */
-  --border:       rgba(237, 18, 164, 0.14);   /* primary-tinted border  */
-  --border-soft:  rgba(237, 18, 164, 0.07);   /* very subtle dividers   */
-  --border-focus: var(--bb-300);              /* input focus border     */
+  --border:       rgba(237, 18, 164, 0.14);
+  --border-soft:  rgba(237, 18, 164, 0.07);
+  --border-focus: #f8a0db;
 
-  /* ── Status colours (keep medically meaningful) ────────────*/
-  --success:        #2D7A4F;
-  --success-light:  #EBF4EF;
-  --success-border: #A8D5B8;
-  --warning:        #9A6B1A;
-  --warning-light:  #FDF3E7;
-  --warning-border: #F5C97B;
-  --danger:         #be0e83;
-  --danger-light:   #fde7f6;
-  --danger-border:  #f8a0db;
+  /* ── Status — ALL from bubblegum scale ───────────────────── */
+  /* Low Risk  → light pink (bb-50/200) */
+  --success:        #be0e83;
+  --success-light:  #fde7f6;
+  --success-border: #f8a0db;
+  --success-text:   #8e0b62;
+
+  /* Mid Risk  → medium pink (bb-100/300) */
+  --warning:        #ed12a4;
+  --warning-light:  #fbd0ed;
+  --warning-border: #f471c8;
+  --warning-text:   #be0e83;
+
+  /* High Risk → deep pink (bb-500/700) */
+  --danger:         #8e0b62;
+  --danger-light:   #fbd0ed;
+  --danger-border:  #f471c8;
+  --danger-text:    #5f0742;
 
   /* ── Shadows ─────────────────────────────────────────────── */
-  --shadow-sm:   0 2px 10px rgba(237, 18, 164, 0.08);
-  --shadow-md:   0 8px 32px  rgba(237, 18, 164, 0.14);
-  --shadow-lg:   0 20px 60px rgba(237, 18, 164, 0.18);
-  --shadow-btn:  0 4px 20px  rgba(190, 14, 131, 0.38);
-  --shadow-glow: 0 0 24px    rgba(237, 18, 164, 0.4);
+  --shadow-sm:  0 2px 10px rgba(237, 18, 164, 0.08);
+  --shadow-md:  0 8px 32px  rgba(237, 18, 164, 0.14);
+  --shadow-lg:  0 20px 60px rgba(237, 18, 164, 0.18);
+  --shadow-btn: 0 4px 20px  rgba(190, 14, 131, 0.38);
 
   /* ── Focus ring ──────────────────────────────────────────── */
   --focus-ring: 0 0 0 3px rgba(237, 18, 164, 0.2);
 
-  /* ── Typography ─────────────────────────────────────────────*/
+  /* ── Typography ──────────────────────────────────────────── */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'DM Sans', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
@@ -77,25 +89,11 @@
   --radius-md: 14px;
   --radius-lg: 22px;
   --radius-xl: 32px;
-
-  /* ── Trimester colours (bubblegum scale) ─────────────────── */
-  --trim1-color:  var(--bb-400);   /* #f141b6 */
-  --trim1-bg:     var(--bb-50);    /* #fde7f6 */
-  --trim1-border: var(--bb-200);   /* #f8a0db */
-
-  --trim2-color:  var(--bb-600);   /* #be0e83 */
-  --trim2-bg:     var(--bb-100);   /* #fbd0ed */
-  --trim2-border: var(--bb-300);   /* #f471c8 */
-
-  --trim3-color:  var(--bb-700);   /* #8e0b62 */
-  --trim3-bg:     var(--bb-100);   /* #fbd0ed */
-  --trim3-border: var(--bb-400);   /* #f141b6 */
 }
 
 /* ── Reset ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-body);
   background: var(--cream);
@@ -109,7 +107,7 @@ body {
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bb-50); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--bb-400), var(--bb-600));
+  background: linear-gradient(180deg, #f141b6, #be0e83);
   border-radius: 99px;
 }
 
@@ -127,26 +125,12 @@ body {
   60%  { transform: scale(1.04); }
   100% { opacity: 1; transform: scale(1); }
 }
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse {
-  0%, 100% { transform: scale(1);    opacity: 1; }
+  0%, 100% { transform: scale(1); opacity: 1; }
   50%       { transform: scale(1.06); opacity: 0.85; }
-}
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 12px rgba(237,18,164,0.25); }
-  50%       { box-shadow: 0 0 28px rgba(237,18,164,0.55); }
 }
 
 .animate-fadeUp   { animation: fadeUp   0.5s ease both; }
 .animate-fadeIn   { animation: fadeIn   0.4s ease both; }
 .animate-bounceIn { animation: bounceIn 0.5s cubic-bezier(.36,.07,.19,.97) both; }
-
-/* ── Utility: gradient text ──────────────────────────────── */
-.gradient-text {
-  background: var(--grad-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}

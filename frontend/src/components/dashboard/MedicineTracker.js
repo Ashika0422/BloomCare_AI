@@ -9,10 +9,10 @@ const FREQUENCIES = ['Daily', 'Twice Daily', 'Every Other Day', 'Weekly', 'As Ne
 const DAYS        = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const FREQ_CFG = {
-  'Daily':           { Icon: Repeat,   color: '#5A8A72', bg: '#EBF4EF', border: '#A8D5B8' },
-  'Twice Daily':     { Icon: Repeat,   color: '#D4924A', bg: '#FDF3E7', border: '#F5C97B' },
-  'Every Other Day': { Icon: Calendar, color: '#546A7B', bg: '#EDF2F5', border: '#B8CDD6' },
-  'Weekly':          { Icon: Calendar, color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  'Daily':           { Icon: Repeat,   color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
+  'Twice Daily':     { Icon: Repeat,   color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  'Every Other Day': { Icon: Calendar, color: '#ed12a4', bg: '#fde7f6', border: '#f8a0db' },
+  'Weekly':          { Icon: Calendar, color: '#8e0b62', bg: '#fbd0ed', border: '#f471c8' },
   'As Needed':       { Icon: Zap,      color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
 };
 
@@ -46,10 +46,10 @@ const s = {
   eyebrow: { display: 'inline-block', background: 'var(--primary-tint)', color: 'var(--primary-dark)', fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 99, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12, border: '1px solid var(--primary-light)' },
   pageTitle: { fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600, color: 'var(--slate)', letterSpacing: '-0.4px', marginBottom: 6, lineHeight: 1.2, display: 'flex', alignItems: 'center', gap: 12 },
   pageSub: { fontSize: 15, color: 'var(--slate-mid)' },
-  notifBanner: (granted) => ({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 18px', borderRadius: 'var(--radius-md)', marginBottom: 24, background: granted ? '#EBF4EF' : '#FDF3E7', border: `1px solid ${granted ? '#A8D5B8' : '#F5C97B'}`, animation: 'fadeUp 0.4s ease 0.05s both' }),
+  notifBanner: (granted) => ({ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 18px', borderRadius: 'var(--radius-md)', marginBottom: 24, background: granted ? '#fde7f6' : '#FDF3E7', border: `1px solid ${granted ? '#f8a0db' : '#F5C97B'}`, animation: 'fadeUp 0.4s ease 0.05s both' }),
   notifLeft: { display: 'flex', alignItems: 'center', gap: 10, fontSize: 14 },
   notifText: (granted) => ({ color: granted ? '#2D7A4F' : '#9A6B1A', fontWeight: 500 }),
-  notifBtn: (granted) => ({ padding: '7px 18px', borderRadius: 99, background: granted ? 'transparent' : '#D4924A', color: granted ? '#9A6B1A' : '#fff', border: `1.5px solid ${granted ? '#F5C97B' : '#D4924A'}`, fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', fontFamily: 'var(--font-body)' }),
+  notifBtn: (granted) => ({ padding: '7px 18px', borderRadius: 99, background: granted ? 'transparent' : '#ed12a4', color: granted ? '#9A6B1A' : '#fff', border: `1.5px solid ${granted ? '#F5C97B' : '#D4924A'}`, fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s', fontFamily: 'var(--font-body)' }),
   layout: { display: 'grid', gridTemplateColumns: '1fr 400px', gap: 24, alignItems: 'start' },
   leftCol: { display: 'flex', flexDirection: 'column', gap: 20 },
   card: (delay = 0) => ({ background: 'var(--white)', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border)', padding: '28px 30px', boxShadow: 'var(--shadow-sm)', animation: `fadeUp 0.5s ease ${delay}ms both` }),
@@ -57,10 +57,10 @@ const s = {
   cardSub: { fontSize: 13, color: 'var(--slate-light)', marginBottom: 22 },
   todayProgress: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 },
   progressLabel: { fontSize: 13, color: 'var(--slate-mid)', fontWeight: 500 },
-  progressPct: { fontSize: 13, fontWeight: 700, color: 'var(--success)' },
+  progressPct: { fontSize: 13, fontWeight: 700, color: 'var(--primary)' },
   progressBar: { height: 6, borderRadius: 99, background: 'var(--border)', marginBottom: 20, overflow: 'hidden' },
   progressFill: (pct) => ({ height: '100%', borderRadius: 99, width: `${pct}%`, background: 'linear-gradient(90deg, #5A8A72, #3D6B54)', transition: 'width 0.6s cubic-bezier(.4,0,.2,1)' }),
-  todayMed: (taken) => ({ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 16px', borderRadius: 14, marginBottom: 10, background: taken ? '#EBF4EF' : 'var(--blush)', border: `1.5px solid ${taken ? '#A8D5B8' : 'var(--border)'}`, transition: 'all 0.2s ease' }),
+  todayMed: (taken) => ({ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 16px', borderRadius: 14, marginBottom: 10, background: taken ? '#fde7f6' : 'var(--blush)', border: `1.5px solid ${taken ? '#f8a0db' : 'var(--border)'}`, transition: 'all 0.2s ease' }),
   todayCheck: (taken) => ({ width: 28, height: 28, borderRadius: '50%', flexShrink: 0, background: taken ? '#5A8A72' : 'transparent', border: `2px solid ${taken ? '#5A8A72' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.2s ease' }),
   todayMedName: (taken) => ({ flex: 1, fontSize: 15, fontWeight: 600, color: taken ? '#2D7A4F' : 'var(--slate)', textDecoration: taken ? 'line-through' : 'none', transition: 'all 0.2s' }),
   todayMedTime: { fontSize: 12, color: 'var(--slate-light)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: 4 },
@@ -85,7 +85,7 @@ const s = {
   errorText: { fontSize: 11, color: 'var(--primary-dark)', marginTop: 4, fontWeight: 500 },
   submitBtn: (loading) => ({ width: '100%', padding: '13px', borderRadius: 'var(--radius-md)', marginTop: 4, background: loading ? 'var(--primary-light)' : 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)', color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontSize: 14, fontWeight: 700, letterSpacing: '0.03em', transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: loading ? 'none' : '0 4px 18px rgba(237,18,164,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }),
   spinner: { width: 14, height: 14, border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.7s linear infinite' },
-  successMsg: { background: '#EBF4EF', border: '1px solid #A8D5B8', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: '#2D7A4F', marginBottom: 16, animation: 'fadeIn 0.3s ease', display: 'flex', alignItems: 'center', gap: 8 },
+  successMsg: { background: '#fde7f6', border: '1px solid #f8a0db', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: '#2D7A4F', marginBottom: 16, animation: 'fadeIn 0.3s ease', display: 'flex', alignItems: 'center', gap: 8 },
   errMsg: { background: 'var(--primary-tint)', border: '1px solid var(--primary-light)', borderRadius: 10, padding: '10px 14px', fontSize: 13, color: 'var(--primary-dark)', marginBottom: 16, animation: 'fadeIn 0.3s ease', display: 'flex', alignItems: 'center', gap: 8 },
 };
 
@@ -222,7 +222,7 @@ export default function MedicineTracker() {
               const cfg   = FREQ_CFG[med.frequency] || FREQ_CFG['Daily'];
               return (
                 <div key={med.id} style={s.todayMed(taken)}
-                  onMouseEnter={e => { if (!taken) e.currentTarget.style.borderColor = '#A8D5B8'; }}
+                  onMouseEnter={e => { if (!taken) e.currentTarget.style.borderColor = '#f8a0db'; }}
                   onMouseLeave={e => { if (!taken) e.currentTarget.style.borderColor = 'var(--border)'; }}>
                   <div style={s.todayCheck(taken)} onClick={() => toggleTaken(med.id)}>
                     {taken && <Check size={14} color="#fff" strokeWidth={2.5} />}
@@ -234,7 +234,7 @@ export default function MedicineTracker() {
                       <span style={s.freqPill(cfg)}><cfg.Icon size={9} strokeWidth={2} />{med.frequency}</span>
                     </div>
                   </div>
-                  {taken && <span style={{ fontSize: 11, fontWeight: 700, color: '#2D7A4F', background: '#EBF4EF', padding: '2px 9px', borderRadius: 99, border: '1px solid #A8D5B8', display: 'flex', alignItems: 'center', gap: 4 }}><Check size={10} strokeWidth={2.5} /> Taken</span>}
+                  {taken && <span style={{ fontSize: 11, fontWeight: 700, color: '#fff', background: '#ed12a4', padding: '2px 9px', borderRadius: 99, border: '1px solid #f8a0db', display: 'flex', alignItems: 'center', gap: 4 }}><Check size={10} strokeWidth={2.5} /> Taken</span>}
                 </div>
               );
             })}
@@ -265,7 +265,7 @@ export default function MedicineTracker() {
                     </div>
                   </div>
                   <div style={s.medActions}>
-                    <button style={s.iconBtn(med.is_active ? '#9A6B1A' : '#2D7A4F', med.is_active ? '#FDF3E7' : '#EBF4EF')}
+                    <button style={s.iconBtn(med.is_active ? '#9A6B1A' : '#2D7A4F', med.is_active ? '#FDF3E7' : '#fde7f6')}
                       title={med.is_active ? 'Pause' : 'Resume'} onClick={() => handleToggleActive(med.id)}
                       onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; }}
                       onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}>

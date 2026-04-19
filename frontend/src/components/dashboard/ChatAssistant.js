@@ -260,7 +260,7 @@ export default function ChatAssistant() {
           })}
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'var(--success-light)', color: 'var(--success)', fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 99, border: '1px solid #A8D5B8' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'var(--primary-wash)', color: 'var(--primary)', fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 99, border: '1px solid #f8a0db' }}>
           <div style={s.onlineDot} /> Ready
         </div>
 

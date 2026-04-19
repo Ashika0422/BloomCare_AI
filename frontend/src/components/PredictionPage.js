@@ -44,14 +44,14 @@ const FIELDS = [
 const SAMPLE_CASES = [
   {
     label: 'Low Risk Sample',
-    color: 'var(--success)',
-    bg: 'var(--success-light)',
+    color: 'var(--primary)',
+    bg: 'var(--primary-wash)',
     data: { age: 25, systolicBP: 115, diastolicBP: 75, bloodGlucose: 6.1, bodyTemp: 98.0, heartRate: 72 }
   },
   {
     label: 'Mid Risk Sample',
-    color: 'var(--warning)',
-    bg: 'var(--warning-light)',
+    color: 'var(--primary)',
+    bg: 'var(--primary-tint)',
     data: { age: 32, systolicBP: 128, diastolicBP: 85, bloodGlucose: 8.5, bodyTemp: 99.0, heartRate: 85 }
   },
   {
@@ -164,9 +164,9 @@ const s = {
   },
   disclaimer: {
     marginTop: 20, padding: '12px 16px',
-    background: 'var(--warning-light)', borderRadius: 'var(--radius-sm)',
+    background: 'var(--primary-tint)', borderRadius: 'var(--radius-sm)',
     border: '1px solid rgba(212,146,74,0.25)',
-    fontSize: 12, color: 'var(--warning)',
+    fontSize: 12, color: 'var(--primary)',
     lineHeight: 1.6,
   },
   rightCol: {

@@ -7,14 +7,14 @@ import {
 } from 'lucide-react';
 
 const CATEGORIES = [
-  { value: 'Exercise',    Icon: Activity,    color: '#5A8A72', bg: '#EBF4EF', border: '#A8D5B8' },
-  { value: 'Nutrition',   Icon: Apple,       color: '#D4924A', bg: '#FDF3E7', border: '#F5C97B' },
-  { value: 'Mindfulness', Icon: Brain,       color: '#9B59B6', bg: '#F5EEF8', border: '#D7B8E8' },
-  { value: 'Sleep',       Icon: Moon,        color: '#546A7B', bg: '#EDF2F5', border: '#B8CDD6' },
-  { value: 'Hydration',   Icon: Droplet,     color: '#2980B9', bg: '#EBF5FB', border: '#AED6F1' },
-  { value: 'Medical',     Icon: Stethoscope, color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF' },
-  { value: 'Personal',    Icon: Flower2,     color: '#B100E7', bg: '#F5E6FF', border: '#E8CCFF' },
-  { value: 'Other',       Icon: Star,        color: '#8FA3B1', bg: '#F0F4F7', border: '#C5D4DC' },
+  { value: 'Exercise',    Icon: Activity,    color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Nutrition',   Icon: Apple,       color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  { value: 'Mindfulness', Icon: Brain,       color: '#ed12a4', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Sleep',       Icon: Moon,        color: '#8e0b62', bg: '#fbd0ed', border: '#f471c8' },
+  { value: 'Hydration',   Icon: Droplet,     color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Medical',     Icon: Stethoscope, color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  { value: 'Personal',    Icon: Flower2,     color: '#ed12a4', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Other',       Icon: Star,        color: '#8e0b62', bg: '#fbd0ed', border: '#f471c8' },
 ];
 const CAT_MAP = Object.fromEntries(CATEGORIES.map(c => [c.value, c]));
 
@@ -43,10 +43,10 @@ const s = {
   cardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 },
   cardTitle: { fontFamily: 'var(--font-display)', fontSize: 19, fontWeight: 600, color: 'var(--slate)' },
   cardSub: { fontSize: 12, color: 'var(--slate-light)', marginBottom: 20 },
-  checkItem: (done) => ({ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 12, marginBottom: 8, background: done ? '#EBF4EF' : 'var(--blush)', border: `1.5px solid ${done ? '#A8D5B8' : 'var(--border)'}`, cursor: 'pointer', transition: 'all 0.2s ease', userSelect: 'none' }),
-  checkBox: (done) => ({ width: 24, height: 24, borderRadius: 7, flexShrink: 0, background: done ? '#5A8A72' : 'transparent', border: `2px solid ${done ? '#5A8A72' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease' }),
+  checkItem: (done) => ({ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 12, marginBottom: 8, background: done ? '#fde7f6' : 'var(--blush)', border: `1.5px solid ${done ? '#f8a0db' : 'var(--border)'}`, cursor: 'pointer', transition: 'all 0.2s ease', userSelect: 'none' }),
+  checkBox: (done) => ({ width: 24, height: 24, borderRadius: 7, flexShrink: 0, background: done ? '#ed12a4' : 'transparent', border: `2px solid ${done ? '#ed12a4' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s ease' }),
   checkInfo: { flex: 1 },
-  checkLabel: (done) => ({ fontSize: 14, fontWeight: 600, color: done ? '#2D7A4F' : 'var(--slate)', textDecoration: done ? 'line-through' : 'none', transition: 'all 0.2s' }),
+  checkLabel: (done) => ({ fontSize: 14, fontWeight: 600, color: done ? '#8e0b62' : 'var(--slate)', textDecoration: done ? 'line-through' : 'none', transition: 'all 0.2s' }),
   checkDesc: { fontSize: 11, color: 'var(--slate-light)', marginTop: 1 },
   metricsRow: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 18 },
   metricCard: (color, bg, border) => ({ background: bg, borderRadius: 12, padding: '14px 16px', border: `1px solid ${border}` }),
@@ -55,7 +55,7 @@ const s = {
   metricInput: (focused) => ({ flex: 1, padding: '9px 12px', borderRadius: 10, border: `1.5px solid ${focused ? 'var(--primary)' : 'var(--border)'}`, background: focused ? 'var(--blush)' : 'var(--white)', fontSize: 15, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', fontWeight: 600, transition: 'all 0.2s' }),
   metricUnit: (color) => ({ fontSize: 12, fontWeight: 600, color, whiteSpace: 'nowrap' }),
   saveMetricsBtn: { marginTop: 14, padding: '9px 20px', borderRadius: 99, background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600, transition: 'all 0.2s', fontFamily: 'var(--font-body)', boxShadow: '0 3px 12px rgba(237,18,164,0.25)' },
-  savedBadge: { display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 600, color: '#2D7A4F', background: '#EBF4EF', padding: '5px 12px', borderRadius: 99, border: '1px solid #A8D5B8', marginTop: 10, animation: 'fadeIn 0.3s ease' },
+  savedBadge: { display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 600, color: '#be0e83', background: '#fde7f6', padding: '5px 12px', borderRadius: 99, border: '1px solid #f8a0db', marginTop: 10, animation: 'fadeIn 0.3s ease' },
   addGoalBtn: { display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 99, background: 'var(--primary-tint)', border: '1.5px solid var(--primary-light)', color: 'var(--primary-dark)', fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.15s', fontFamily: 'var(--font-body)' },
   goalCard: (cfg) => ({ background: 'var(--blush)', borderRadius: 14, padding: '16px', border: '1px solid var(--border)', marginBottom: 10, transition: 'all 0.2s ease' }),
   goalTop: { display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 },
@@ -70,7 +70,7 @@ const s = {
   progressInput: { width: 70, padding: '5px 8px', borderRadius: 8, border: '1.5px solid var(--border)', background: 'var(--white)', fontSize: 13, color: 'var(--slate)', outline: 'none', fontFamily: 'var(--font-body)', textAlign: 'center' },
   updateBtn: (cfg) => ({ padding: '5px 12px', borderRadius: 99, background: cfg.bg, border: `1.5px solid ${cfg.border}`, color: cfg.color, fontSize: 12, fontWeight: 600, cursor: 'pointer', transition: 'all 0.15s', fontFamily: 'var(--font-body)' }),
   deleteGoalBtn: { marginLeft: 'auto', width: 28, height: 28, borderRadius: 8, border: 'none', background: 'var(--primary-tint)', color: 'var(--primary-dark)', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.15s' },
-  completeBadge: { display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 99, background: '#EBF4EF', color: '#2D7A4F', border: '1px solid #A8D5B8', letterSpacing: '0.04em' },
+  completeBadge: { display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 99, background: '#fde7f6', color: '#be0e83', border: '1px solid #f8a0db', letterSpacing: '0.04em' },
   addGoalForm: { background: 'var(--blush)', borderRadius: 14, padding: '18px', border: '1.5px solid var(--primary-light)', marginBottom: 14, animation: 'fadeIn 0.3s ease' },
   formRow2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 },
   fLabel: { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--slate-mid)', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 5 },
@@ -152,10 +152,10 @@ export default function GoalTracker() {
   const completedGoals = goals.filter(g => g.current_progress >= g.target_value).length;
 
   const STAT_CARDS = [
-    { Icon: CheckSquare, label: "Today's Habits",   val: `${checkDone}/${checkTotal}`, color: '#5A8A72' },
+    { Icon: CheckSquare, label: "Today's Habits",   val: `${checkDone}/${checkTotal}`, color: '#f141b6' },
     { Icon: Target,      label: 'Active Goals',     val: goals.length,                 color: '#D4924A' },
     { Icon: Trophy,      label: 'Goals Completed',  val: completedGoals,               color: '#8A00F3' },
-    { Icon: Moon,        label: 'Avg Sleep (7 days)', val: stats ? `${stats.avg_sleep}h` : '—', color: '#546A7B' },
+    { Icon: Moon,        label: 'Avg Sleep (7 days)', val: stats ? `${stats.avg_sleep}h` : '—', color: '#be0e83' },
   ];
 
   return (
@@ -182,7 +182,7 @@ export default function GoalTracker() {
         <div style={s.card(100)}>
           <div style={s.cardHeader}>
             <div><h2 style={s.cardTitle}>Daily Habits</h2></div>
-            <span style={{ fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 99, background: checkPct === 100 ? '#EBF4EF' : 'var(--blush)', color: checkPct === 100 ? '#2D7A4F' : 'var(--slate-mid)', border: `1px solid ${checkPct === 100 ? '#A8D5B8' : 'var(--border)'}` }}>
+            <span style={{ fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 99, background: checkPct === 100 ? '#fde7f6' : 'var(--blush)', color: checkPct === 100 ? '#be0e83' : 'var(--slate-mid)', border: `1px solid ${checkPct === 100 ? '#f8a0db' : 'var(--border)'}` }}>
               {checkPct === 100 ? 'Perfect day!' : `${checkDone}/${checkTotal}`}
             </span>
           </div>
@@ -195,7 +195,7 @@ export default function GoalTracker() {
             return (
               <div key={item.key} style={s.checkItem(done)} onClick={() => toggleCheck(item.key)}>
                 <div style={s.checkBox(done)}>{done && <Check size={13} color="#fff" strokeWidth={2.5} />}</div>
-                <item.Icon size={18} color={done ? '#5A8A72' : 'var(--slate-light)'} strokeWidth={1.8} style={{ flexShrink: 0 }} />
+                <item.Icon size={18} color={done ? '#f141b6' : 'var(--slate-light)'} strokeWidth={1.8} style={{ flexShrink: 0 }} />
                 <div style={s.checkInfo}>
                   <div style={s.checkLabel(done)}>{item.label}</div>
                   <div style={s.checkDesc}>{item.desc}</div>
@@ -205,8 +205,8 @@ export default function GoalTracker() {
           })}
 
           <div style={s.metricsRow}>
-            <div style={s.metricCard('#546A7B', '#EDF2F5', '#B8CDD6')}>
-              <div style={s.metricLabel('#546A7B')}>
+            <div style={s.metricCard('#be0e83', '#EDF2F5', '#B8CDD6')}>
+              <div style={s.metricLabel('#be0e83')}>
                 <Moon size={12} strokeWidth={2} /> Sleep
               </div>
               <div style={s.metricInputRow}>
@@ -214,7 +214,7 @@ export default function GoalTracker() {
                   style={s.metricInput(focused === 'sleep')}
                   onFocus={() => setFocused('sleep')} onBlur={() => setFocused(null)}
                   onChange={e => setSleepVal(e.target.value)} />
-                <span style={s.metricUnit('#546A7B')}>hrs</span>
+                <span style={s.metricUnit('#be0e83')}>hrs</span>
               </div>
             </div>
             <div style={s.metricCard('#2980B9', '#EBF5FB', '#AED6F1')}>
@@ -342,9 +342,9 @@ export default function GoalTracker() {
                 </div>
                 <div style={s.goalProgressRow}>
                   <div style={s.goalBarTrack}>
-                    <div style={s.goalBarFill(pct, done ? '#5A8A72' : cfg.color)} />
+                    <div style={s.goalBarFill(pct, done ? '#f141b6' : cfg.color)} />
                   </div>
-                  <span style={s.goalPct(done ? '#2D7A4F' : cfg.color)}>{pct}%</span>
+                  <span style={s.goalPct(done ? '#be0e83' : cfg.color)}>{pct}%</span>
                 </div>
                 {!done && (
                   <div style={s.goalControls}>
@@ -372,12 +372,12 @@ export default function GoalTracker() {
             <p style={s.cardSub}>How consistent you've been this week</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12 }}>
               {[
-                { label: 'Vitamins',    val: `${stats.vitamins_days}/7`,  Icon: Pill,      color: '#D4924A', pct: (stats.vitamins_days / 7) * 100 },
-                { label: 'Water Goal',  val: `${stats.water_days}/7`,     Icon: Droplet,   color: '#2980B9', pct: (stats.water_days / 7) * 100 },
-                { label: 'Stress Mgmt',val: `${stats.stress_days}/7`,     Icon: Brain,     color: '#9B59B6', pct: (stats.stress_days / 7) * 100 },
-                { label: 'Exercise',    val: `${stats.exercise_days}/7`,  Icon: Activity,  color: '#5A8A72', pct: (stats.exercise_days / 7) * 100 },
-                { label: 'Avg Sleep',   val: `${stats.avg_sleep}h`,       Icon: Moon,      color: '#546A7B', pct: Math.min((stats.avg_sleep / 9) * 100, 100) },
-                { label: 'Avg Water',   val: `${stats.avg_water}L`,       Icon: Droplet,   color: '#1A8FC1', pct: Math.min((stats.avg_water / 3) * 100, 100) },
+                { label: 'Vitamins',    val: `${stats.vitamins_days}/7`,  Icon: Pill,      color: '#f141b6', pct: (stats.vitamins_days / 7) * 100 },
+                { label: 'Water Goal',  val: `${stats.water_days}/7`,     Icon: Droplet,   color: '#be0e83', pct: (stats.water_days / 7) * 100 },
+                { label: 'Stress Mgmt',val: `${stats.stress_days}/7`,     Icon: Brain,     color: '#ed12a4', pct: (stats.stress_days / 7) * 100 },
+                { label: 'Exercise',    val: `${stats.exercise_days}/7`,  Icon: Activity,  color: '#8e0b62', pct: (stats.exercise_days / 7) * 100 },
+                { label: 'Avg Sleep',   val: `${stats.avg_sleep}h`,       Icon: Moon,      color: '#f141b6', pct: Math.min((stats.avg_sleep / 9) * 100, 100) },
+                { label: 'Avg Water',   val: `${stats.avg_water}L`,       Icon: Droplet,   color: '#be0e83', pct: Math.min((stats.avg_water / 3) * 100, 100) },
               ].map((item, i) => (
                 <div key={i} style={{ textAlign: 'center', padding: '16px 10px', background: 'var(--blush)', borderRadius: 12, border: '1px solid var(--border)' }}>
                   <item.Icon size={24} color={item.color} strokeWidth={1.6} style={{ display: 'block', margin: '0 auto 6px' }} />

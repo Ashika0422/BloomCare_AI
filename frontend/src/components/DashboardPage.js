@@ -146,8 +146,8 @@ export default function DashboardPage() {
       <div style={s.statsRow}>
         {[
           { val: `${MODEL_STATS.accuracy}%`, label: 'Test Accuracy',   accent: 'var(--primary)' },
-          { val: `${MODEL_STATS.f1}%`,       label: 'F1 Score (macro)',accent: 'var(--success)' },
-          { val: MODEL_STATS.trainSize,       label: 'Training Samples',accent: 'var(--warning)'},
+          { val: `${MODEL_STATS.f1}%`,       label: 'F1 Score (macro)',accent: 'var(--primary)' },
+          { val: MODEL_STATS.trainSize,       label: 'Training Samples',accent: 'var(--primary)'},
           { val: MODEL_STATS.features,        label: 'Input Features',  accent: 'var(--slate-mid)'},
         ].map((st, i) => (
           <div key={i} style={s.statCard(st.accent)}>
@@ -192,7 +192,7 @@ export default function DashboardPage() {
               <Tooltip content={<CustomTooltip />} />
               <Legend wrapperStyle={{ fontSize: 12, color: 'var(--slate-mid)' }} />
               <Bar dataKey="accuracy" name="Test Accuracy" fill="var(--primary)"    radius={[4,4,0,0]} />
-              <Bar dataKey="cv"       name="CV Score"      fill="var(--success)"    radius={[4,4,0,0]} />
+              <Bar dataKey="cv"       name="CV Score"      fill="var(--primary)"    radius={[4,4,0,0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

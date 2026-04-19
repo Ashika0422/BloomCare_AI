@@ -7,8 +7,7 @@ import {
 } from 'recharts';
 import {
   Heart, Droplets, Thermometer, Activity, FlaskConical,
-  ShieldCheck, ShieldAlert, ShieldX, ScanLine,
-  AlertTriangle, ClipboardList,
+  ScanLine, AlertTriangle, ClipboardList,
 } from 'lucide-react';
 
 /* ── Vital config ──────────────────────────────────────────── */
@@ -42,7 +41,7 @@ const VITALS = [
     label: 'Body Temperature', unit: '°F',
     min: 95,  max: 104,  step: 0.1, placeholder: '98.0',
     normalMin: 97.0, normalMax: 99.0,
-    Icon: Thermometer, color: '#5A8A72', lightColor: '#EBF4EF',
+    Icon: Thermometer, color: '#5A8A72', lightColor: '#fde7f6',
     desc: 'Core body temperature',
   },
   {
@@ -50,7 +49,7 @@ const VITALS = [
     label: 'Heart Rate',       unit: 'bpm',
     min: 40,  max: 120,  step: 1,   placeholder: '72',
     normalMin: 60,  normalMax: 100,
-    Icon: Activity,    color: '#546A7B', lightColor: '#EDF2F5',
+    Icon: Activity,    color: '#be0e83', lightColor: '#EDF2F5',
     desc: 'Resting heart rate',
   },
 ];
@@ -58,15 +57,15 @@ const VITALS = [
 const VITAL_MAP = Object.fromEntries(VITALS.map(v => [v.key, v]));
 
 const RISK_CFG = {
-  0: { label: 'Low Risk',  Icon: ShieldCheck, color: '#2D7A4F', bg: '#EBF4EF', border: '#A8D5B8', grad: 'linear-gradient(135deg,#EBF4EF,#D4EDDA)' },
-  1: { label: 'Mid Risk',  Icon: ShieldAlert, color: '#9A6B1A', bg: '#FDF3E7', border: '#F5C97B', grad: 'linear-gradient(135deg,#FDF3E7,#FAECD4)' },
-  2: { label: 'High Risk', Icon: ShieldX,     color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF', grad: 'linear-gradient(135deg,#F5E6FF,#EDD5FF)' },
+  0: { label: 'Low Risk',  color: '#f141b6', bg: '#fde7f6', border: '#f8a0db', icon: '✓' },
+  1: { label: 'Mid Risk',  color: '#be0e83', bg: '#fbd0ed', border: '#f471c8', icon: '!' },
+  2: { label: 'High Risk', color: '#8e0b62', bg: '#fbd0ed', border: '#f141b6', icon: '!!' },
 };
 
 const STATUS_CFG = {
-  normal: { label: 'Normal', color: '#2D7A4F', bg: '#EBF4EF' },
-  high:   { label: 'High',   color: '#8A00F3', bg: '#F5E6FF' },
-  low:    { label: 'Low',    color: '#9A6B1A', bg: '#FDF3E7' },
+  normal: { label: 'Normal', color: '#f141b6', bg: '#fde7f6' },
+  high:   { label: 'High',   color: '#8e0b62', bg: '#fbd0ed' },
+  low:    { label: 'Low',    color: '#be0e83', bg: '#fbd0ed' },
 };
 
 const s = {
@@ -96,13 +95,13 @@ const s = {
   rangeBar: { marginTop: 5, height: 4, borderRadius: 99, background: 'var(--border)', overflow: 'hidden' },
   analyseBtn: (loading) => ({ width: '100%', marginTop: 8, padding: '15px', borderRadius: 'var(--radius-md)', background: loading ? 'var(--primary-light)' : 'linear-gradient(135deg, #ed12a4 0%, #8e0b62 100%)', color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', fontSize: 15, fontWeight: 700, letterSpacing: '0.04em', transition: 'all 0.2s ease', fontFamily: 'var(--font-body)', boxShadow: loading ? 'none' : '0 6px 24px rgba(237,18,164,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }),
   spinner: { width: 18, height: 18, border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.7s linear infinite' },
-  disclaimer: { marginTop: 14, padding: '10px 14px', background: 'var(--warning-light)', borderRadius: 8, border: '1px solid rgba(212,146,74,0.25)', fontSize: 11, color: '#7A5020', lineHeight: 1.6, display: 'flex', alignItems: 'flex-start', gap: 6 },
+  disclaimer: { marginTop: 14, padding: '10px 14px', background: 'var(--primary-tint)', borderRadius: 8, border: '1px solid rgba(212,146,74,0.25)', fontSize: 11, color: '#7A5020', lineHeight: 1.6, display: 'flex', alignItems: 'flex-start', gap: 6 },
   rightCol: { display: 'flex', flexDirection: 'column', gap: 20, animation: 'fadeUp 0.5s ease 0.15s both' },
   card: { background: 'var(--white)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)', padding: '26px 28px', boxShadow: 'var(--shadow-sm)' },
   cardTitle: { fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 600, color: 'var(--slate)', marginBottom: 4 },
   cardSub: { fontSize: 12, color: 'var(--slate-light)', marginBottom: 20 },
   resultCard: (cfg) => ({ borderRadius: 'var(--radius-xl)', border: `1.5px solid ${cfg.border}`, overflow: 'hidden', boxShadow: 'var(--shadow-md)', animation: 'bounceIn 0.5s cubic-bezier(.36,.07,.19,.97) both' }),
-  resultHeader: (cfg) => ({ background: cfg.grad, padding: '28px 32px 24px', borderBottom: `1px solid ${cfg.border}` }),
+  resultHeader: (cfg) => ({ background: `linear-gradient(135deg, ${cfg.bg} 0%, ${cfg.border} 100%)`, padding: '28px 32px 24px', borderBottom: `1px solid ${cfg.border}` }),
   resultTop: { display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18 },
   resultLabelSm: { fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 3 },
   resultLabelLg: (color) => ({ fontFamily: 'var(--font-display)', fontSize: 34, fontWeight: 600, color, lineHeight: 1.1 }),
@@ -124,7 +123,7 @@ const s = {
   probFill: (color, pct, delay) => ({ height: '100%', borderRadius: 99, background: color, width: `${pct}%`, transition: `width 1s cubic-bezier(.4,0,.2,1) ${delay}ms` }),
   xaiSection: { marginBottom: 4 },
   xaiTitle: { fontSize: 11, fontWeight: 700, color: 'var(--slate-mid)', letterSpacing: '0.07em', textTransform: 'uppercase', marginBottom: 14 },
-  xaiRow: (status) => ({ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10, padding: '10px 14px', borderRadius: 10, background: status !== 'normal' ? (status === 'high' ? '#F5E6FF' : '#FDF3E7') : 'var(--blush)', border: `1px solid ${status === 'high' ? '#E8CCFF' : status === 'low' ? '#F5C97B' : 'var(--border)'}` }),
+  xaiRow: (status) => ({ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10, padding: '10px 14px', borderRadius: 10, background: status !== 'normal' ? '#fbd0ed' : 'var(--blush)', border: `1px solid ${status !== 'normal' ? '#f471c8' : 'var(--border)'}` }),
   xaiInfo: { flex: 1, minWidth: 0 },
   xaiLabel: { fontSize: 13, fontWeight: 600, color: 'var(--slate)', marginBottom: 2 },
   xaiVal: (status) => ({ fontSize: 12, color: status === 'high' ? '#8A00F3' : status === 'low' ? '#9A6B1A' : 'var(--slate-mid)', fontWeight: status !== 'normal' ? 600 : 400 }),
@@ -329,7 +328,7 @@ export default function RiskAnalysis() {
               <div style={s.resultCard(cfg)}>
                 <div style={s.resultHeader(cfg)}>
                   <div style={s.resultTop}>
-                    <cfg.Icon size={52} color={cfg.color} strokeWidth={1.4} />
+                    <span style={{ fontSize: 42, color: cfg.color, fontWeight: 700 }}>{cfg.icon}</span>
                     <div>
                       <div style={{ ...s.resultLabelSm, color: cfg.color }}>Prediction Result</div>
                       <div style={s.resultLabelLg(cfg.color)}>{cfg.label}</div>
@@ -494,7 +493,7 @@ export default function RiskAnalysis() {
                           <td style={s.histTd}>{log.heart_rate}</td>
                           <td style={s.histTd}>
                             {rc
-                              ? <span style={s.riskPill(rc)}><rc.Icon size={10} strokeWidth={2} />{rc.label}</span>
+                              ? <span style={s.riskPill(rc)}><span style={{ fontWeight: 700 }}>{rc.icon}</span> {rc.label}</span>
                               : '—'}
                           </td>
                           <td style={s.histTd}>{log.confidence != null ? `${log.confidence}%` : '—'}</td>

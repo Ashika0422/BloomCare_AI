@@ -191,12 +191,12 @@ const s = {
   },
   pwStrength: (score) => ({
     height: 4, borderRadius: 99, marginTop: 6,
-    background: score === 0 ? 'var(--border)' : score <= 1 ? 'var(--primary)' : score === 2 ? 'var(--warning)' : '#5A8A72',
+    background: score === 0 ? 'var(--border)' : score <= 1 ? 'var(--primary)' : score === 2 ? 'var(--primary)' : '#5A8A72',
     width: `${Math.max(score * 25, 4)}%`, transition: 'all 0.3s ease',
   }),
   pwHint: (score) => ({
     fontSize: 11, marginTop: 4,
-    color: score <= 1 ? 'var(--primary-dark)' : score === 2 ? 'var(--warning)' : 'var(--success)',
+    color: score <= 1 ? 'var(--primary-dark)' : score === 2 ? 'var(--primary)' : 'var(--primary)',
   }),
 };
 

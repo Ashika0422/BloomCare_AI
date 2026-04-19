@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 const RISK_CFG = {
-  0: { label: 'Low Risk',  Icon: ShieldCheck, color: '#2D7A4F', bg: '#EBF4EF', border: '#A8D5B8' },
+  0: { label: 'Low Risk',  Icon: ShieldCheck, color: '#2D7A4F', bg: '#fde7f6', border: '#f8a0db' },
   1: { label: 'Mid Risk',  Icon: ShieldAlert, color: '#9A6B1A', bg: '#FDF3E7', border: '#F5C97B' },
   2: { label: 'High Risk', Icon: ShieldX,     color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF' },
 };
@@ -25,10 +25,10 @@ const s = {
   page: { maxWidth: 1280, margin: '0 auto', padding: '40px 32px 80px', fontFamily: 'var(--font-body)' },
   pageHeader: { marginBottom: 36, animation: 'fadeUp 0.5s ease both' },
   headerRow: { display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 },
-  eyebrow: { display: 'inline-block', background: '#2C3E50', color: '#fff', fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 99, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6, width: 'fit-content' },
+  eyebrow: { display: 'inline-block', background: '#8e0b62', color: '#fff', fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 99, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6, width: 'fit-content' },
   pageTitle: { fontFamily: 'var(--font-display)', fontSize: 36, fontWeight: 600, color: 'var(--slate)', letterSpacing: '-0.4px', marginBottom: 6, lineHeight: 1.2 },
   pageSub: { fontSize: 15, color: 'var(--slate-mid)' },
-  adminBadge: { display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 99, background: '#2C3E50', color: '#fff', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', flexShrink: 0 },
+  adminBadge: { display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 99, background: '#8e0b62', color: '#fff', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', flexShrink: 0 },
   denied: { textAlign: 'center', padding: '80px 32px', animation: 'fadeUp 0.5s ease both' },
   deniedTitle: { fontFamily: 'var(--font-display)', fontSize: 28, color: 'var(--slate)', marginBottom: 10, marginTop: 20 },
   deniedSub: { fontSize: 15, color: 'var(--slate-mid)', marginBottom: 28, lineHeight: 1.6 },
@@ -89,12 +89,12 @@ const ChartTip = ({ active, payload, label }) => {
 };
 
 const STAT_CARDS = [
-  { Icon: Users,       label: 'Total Users',      key: 'total_users',       color: '#2C3E50' },
-  { Icon: UserPlus,    label: 'New This Week',     key: 'new_users_week',    color: '#5A8A72' },
-  { Icon: Stethoscope, label: 'Total Predictions', key: 'total_predictions', color: '#8A00F3' },
-  { Icon: BookOpen,    label: 'Journal Entries',   key: 'total_journals',    color: '#D4924A' },
-  { Icon: Pill,        label: 'Medicines Tracked', key: 'total_medicines',   color: '#9B59B6' },
-  { Icon: Target,      label: 'Goals Created',     key: 'total_goals',       color: '#546A7B' },
+  { Icon: Users,       label: 'Total Users',      key: 'total_users',       color: '#ed12a4' },
+  { Icon: UserPlus,    label: 'New This Week',     key: 'new_users_week',    color: '#f141b6' },
+  { Icon: Stethoscope, label: 'Total Predictions', key: 'total_predictions', color: '#be0e83' },
+  { Icon: BookOpen,    label: 'Journal Entries',   key: 'total_journals',    color: '#f471c8' },
+  { Icon: Pill,        label: 'Medicines Tracked', key: 'total_medicines',   color: '#8e0b62' },
+  { Icon: Target,      label: 'Goals Created',     key: 'total_goals',       color: '#f141b6' },
 ];
 
 export default function AdminPanel() {
@@ -361,7 +361,7 @@ export default function AdminPanel() {
                         <div>
                           <div style={s.userName}>
                             {u.full_name}
-                            {u.is_admin && <span style={{ marginLeft: 5, fontSize: 10, background: '#2C3E50', color: '#fff', padding: '1px 6px', borderRadius: 99 }}>admin</span>}
+                            {u.is_admin && <span style={{ marginLeft: 5, fontSize: 10, background: '#8e0b62', color: '#fff', padding: '1px 6px', borderRadius: 99 }}>admin</span>}
                           </div>
                           <div style={s.userEmail}>@{u.username}</div>
                         </div>
@@ -385,7 +385,7 @@ export default function AdminPanel() {
                     </td>
                     <td style={s.td}>
                       <div style={{ display: 'flex', gap: 5 }}>
-                        <button style={s.actionBtn('#546A7B', '#EDF2F5')} onClick={() => openUserDetail(u)}
+                        <button style={s.actionBtn('#be0e83', '#EDF2F5')} onClick={() => openUserDetail(u)}
                           onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                           onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}>
                           <Eye size={13} strokeWidth={1.8} /> View

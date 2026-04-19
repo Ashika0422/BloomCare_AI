@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Flower2, Bot, Pill, BookOpen, Eye, EyeOff, AlertTriangle, ArrowRight } from 'lucide-react';
 
-const GRAD_HEADER = 'linear-gradient(160deg, #210217 0%, #5f0742 40%, #be0e83 100%)';
-const GRAD_SOFT   = 'linear-gradient(135deg, #8A00F3 0%, #D300D0 100%)';
-const SHADOW_BTN  = '0 4px 20px rgba(110, 1, 244, 0.38)';
-const FOCUS_RING  = '0 0 0 3px rgba(177, 0, 231, 0.18)';
-const PRIMARY     = '#B100E7';
-const PRIMARY_TINT= '#F5E6FF';
-const PRIMARY_LIGHT='#E8CCFF';
-const BORDER_COLOR= 'rgba(237,18,164,0.15)';
+const GRAD_HEADER   = 'var(--grad-header)';
+const GRAD_SOFT     = 'var(--grad-soft)';
+const SHADOW_BTN    = 'var(--shadow-btn)';
+const FOCUS_RING    = 'var(--focus-ring)';
+const PRIMARY       = 'var(--primary)';
+const PRIMARY_TINT  = 'var(--primary-tint)';
+const PRIMARY_LIGHT = 'var(--primary-light)';
+const BORDER_COLOR  = 'var(--border)';
 
 const s = {
   page: { minHeight: '100vh', display: 'flex', fontFamily: 'var(--font-body)' },
@@ -51,11 +51,11 @@ const s = {
   },
   right: {
     flex: 1, display: 'flex', alignItems: 'center',
-    justifyContent: 'center', padding: '60px 52px', background: '#FEFAFB',
+    justifyContent: 'center', padding: '60px 52px', background: 'var(--cream)',
   },
   form: { width: '100%', maxWidth: 400 },
   eyebrow: {
-    display: 'inline-block', background: PRIMARY_TINT, color: '#6E01F4',
+    display: 'inline-block', background: PRIMARY_TINT, color: 'var(--primary-dark)',
     fontSize: 11, fontWeight: 600, padding: '4px 12px', borderRadius: 99,
     letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 16,
     border: `1px solid ${PRIMARY_LIGHT}`,
@@ -73,8 +73,8 @@ const s = {
   inputWrap: { position: 'relative' },
   input: (focused, error) => ({
     width: '100%', padding: '13px 16px', borderRadius: 'var(--radius-md)',
-    border: `1.5px solid ${error ? '#8A00F3' : focused ? PRIMARY : BORDER_COLOR}`,
-    background: focused ? '#F5E6FF' : '#fdfaf7',
+    border: `1.5px solid ${error ? 'var(--primary-dark)' : focused ? PRIMARY : BORDER_COLOR}`,
+    background: focused ? '#F5E6FF' : 'var(--surface)',
     fontSize: 15, color: 'var(--slate)', outline: 'none',
     fontFamily: 'var(--font-body)', transition: 'all 0.2s ease',
     boxShadow: focused ? FOCUS_RING : 'none',
@@ -103,17 +103,17 @@ const s = {
     display: 'flex', alignItems: 'center', gap: 12,
     margin: '24px 0', color: 'var(--slate-light)', fontSize: 13,
   },
-  dividerLine: { flex: 1, height: 1, background: 'rgba(237,18,164,0.12)' },
+  dividerLine: { flex: 1, height: 1, background: 'var(--border)' },
   switchText: { textAlign: 'center', fontSize: 14, color: 'var(--slate-mid)', marginTop: 4 },
   link: {
-    color: '#6E01F4', fontWeight: 600, cursor: 'pointer',
+    color: 'var(--primary-dark)', fontWeight: 600, cursor: 'pointer',
     background: 'none', border: 'none', padding: 0,
     fontSize: 14, fontFamily: 'var(--font-body)', textDecoration: 'underline',
   },
   globalError: {
     background: PRIMARY_TINT, border: `1px solid ${PRIMARY_LIGHT}`,
     borderRadius: 'var(--radius-sm)', padding: '12px 16px',
-    color: '#6E01F4', fontSize: 13, marginBottom: 20, animation: 'fadeIn 0.3s ease',
+    color: 'var(--primary-dark)', fontSize: 13, marginBottom: 20, animation: 'fadeIn 0.3s ease',
     display: 'flex', alignItems: 'center', gap: 8,
   },
 };

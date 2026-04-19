@@ -1,30 +1,21 @@
 const RISK_CONFIG = {
   0: {
-    label: 'Low Risk',
-    emoji: '🟢',
-    color: '#2D7A4F',
-    bg: '#EBF4EF',
-    border: '#A8D5B8',
-    gradient: 'linear-gradient(135deg, #EBF4EF 0%, #D4EDDA 100%)',
-    bar: '#5A8A72',
+    label: 'Low Risk',  icon: '✓',
+    color: '#f141b6', bg: '#fde7f6', border: '#f8a0db',
+    grad:  'linear-gradient(135deg, #fde7f6 0%, #fbd0ed 100%)',
+    bar:   '#f141b6',
   },
   1: {
-    label: 'Mid Risk',
-    emoji: '🟡',
-    color: '#9A6B1A',
-    bg: '#FDF3E7',
-    border: '#F5C97B',
-    gradient: 'linear-gradient(135deg, #FDF3E7 0%, #FAECD4 100%)',
-    bar: '#D4924A',
+    label: 'Mid Risk',  icon: '!',
+    color: '#be0e83', bg: '#fbd0ed', border: '#f471c8',
+    grad:  'linear-gradient(135deg, #fbd0ed 0%, #f8a0db 100%)',
+    bar:   '#be0e83',
   },
   2: {
-    label: 'High Risk',
-    emoji: '🔴',
-    color: '#8A00F3',
-    bg: '#F5E6FF',
-    border: '#E8CCFF',
-    gradient: 'linear-gradient(135deg, #F5E6FF 0%, #EDD5FF 100%)',
-    bar: '#B100E7',
+    label: 'High Risk', icon: '!!',
+    color: '#8e0b62', bg: '#fbd0ed', border: '#f141b6',
+    grad:  'linear-gradient(135deg, #fbd0ed 0%, #f471c8 100%)',
+    bar:   '#8e0b62',
   },
 };
 
@@ -65,12 +56,12 @@ export default function ResultCard({ result }) {
     }}>
       {/* Header band */}
       <div style={{
-        background: cfg.gradient,
+        background: cfg.grad,
         padding: '28px 32px 24px',
         borderBottom: `1px solid ${cfg.border}`,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
-          <span style={{ fontSize: 42 }}>{cfg.emoji}</span>
+          <span style={{ fontSize: 42 }}>{cfg.icon}</span>
           <div>
             <div style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.1em',
@@ -148,7 +139,7 @@ export default function ResultCard({ result }) {
           }}>
             Probability Breakdown
           </h4>
-          <ProbBar label="Low Risk"  value={probs.low_risk}  color="#5A8A72" delay={100} />
+          <ProbBar label="Low Risk"  value={probs.low_risk}  color="#f141b6" delay={100} />
           <ProbBar label="Mid Risk"  value={probs.mid_risk}  color="#D4924A" delay={200} />
           <ProbBar label="High Risk" value={probs.high_risk} color="#B100E7" delay={300} />
         </div>

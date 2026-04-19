@@ -102,9 +102,9 @@ const s = {
     borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.7s linear infinite',
   },
   successMsg: {
-    background: 'var(--success-light)', border: '1px solid #A8D5B8',
+    background: 'var(--primary-wash)', border: '1px solid #f8a0db',
     borderRadius: 8, padding: '10px 14px', fontSize: 13,
-    color: 'var(--success)', marginBottom: 16, animation: 'fadeIn 0.3s ease',
+    color: 'var(--primary)', marginBottom: 16, animation: 'fadeIn 0.3s ease',
     display: 'flex', alignItems: 'center', gap: 7,
   },
   errorMsg: {

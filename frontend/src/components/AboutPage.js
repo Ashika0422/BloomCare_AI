@@ -54,7 +54,7 @@ const s = {
   featureName: { fontSize: 13, fontWeight: 600, color: 'var(--slate)', marginBottom: 4 },
   featureDesc: { fontSize: 12, color: 'var(--slate-light)', lineHeight: 1.5 },
   disclaimer: {
-    background: 'var(--warning-light)', borderRadius: 'var(--radius-md)',
+    background: 'var(--primary-tint)', borderRadius: 'var(--radius-md)',
     border: '1px solid rgba(212,146,74,0.3)', padding: '20px 24px',
     fontSize: 14, color: '#7A5020', lineHeight: 1.7,
   },
@@ -68,8 +68,8 @@ const STEPS = [
 ];
 
 const TECH = [
-  { icon: '🐍', name: 'Python + scikit-learn', desc: 'Model training, preprocessing, GridSearchCV tuning', color: 'var(--success)' },
-  { icon: '⚡', name: 'XGBoost',               desc: 'Gradient boosting classifier (compared against RF)', color: 'var(--warning)' },
+  { icon: '🐍', name: 'Python + scikit-learn', desc: 'Model training, preprocessing, GridSearchCV tuning', color: 'var(--primary)' },
+  { icon: '⚡', name: 'XGBoost',               desc: 'Gradient boosting classifier (compared against RF)', color: 'var(--primary)' },
   { icon: '🌶️', name: 'Flask',                 desc: 'REST API backend serving predictions on port 5000', color: 'var(--primary)' },
   { icon: '⚛️', name: 'React 18',              desc: 'Frontend SPA with hooks, state management, routing', color: '#61DAFB' },
   { icon: '📊', name: 'Recharts',              desc: 'Dashboard visualisations and interactive charts', color: 'var(--slate-mid)' },
@@ -146,7 +146,7 @@ export default function AboutPage() {
         <h2 style={s.sectionTitle}>Risk Level Definitions</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[
-            { icon: '🟢', label: 'Low Risk (0)',  color: '#2D7A4F', bg: '#EBF4EF', border: '#A8D5B8',
+            { icon: '🟢', label: 'Low Risk (0)',  color: '#2D7A4F', bg: '#fde7f6', border: '#f8a0db',
               desc: 'Vitals are within normal ranges. Routine antenatal visits every 4 weeks are advised.' },
             { icon: '🟡', label: 'Mid Risk (1)',  color: '#9A6B1A', bg: '#FDF3E7', border: '#F5C97B',
               desc: 'Some indicators require attention. A medical consultation within 1–2 weeks is recommended.' },

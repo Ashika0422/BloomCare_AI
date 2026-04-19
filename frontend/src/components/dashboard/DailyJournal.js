@@ -7,13 +7,13 @@ import {
 
 /* ── Mood config ───────────────────────────────────────────── */
 const MOODS = [
-  { value: 'Happy',    Icon: Smile,    label: 'Happy',    color: '#5A8A72', bg: '#EBF4EF', border: '#A8D5B8' },
-  { value: 'Excited',  Icon: Sparkles, label: 'Excited',  color: '#D4924A', bg: '#FDF3E7', border: '#F5C97B' },
-  { value: 'Calm',     Icon: Meh,      label: 'Calm',     color: '#546A7B', bg: '#EDF2F5', border: '#B8CDD6' },
-  { value: 'Grateful', Icon: Star,     label: 'Grateful', color: '#9B59B6', bg: '#F5EEF8', border: '#D7B8E8' },
-  { value: 'Tired',    Icon: Moon,     label: 'Tired',    color: '#8FA3B1', bg: '#F0F4F7', border: '#C5D4DC' },
-  { value: 'Anxious',  Icon: Zap,      label: 'Anxious',  color: '#C0884A', bg: '#FDF3E7', border: '#F0C080' },
-  { value: 'Sad',      Icon: Frown,    label: 'Sad',      color: '#8A00F3', bg: '#F5E6FF', border: '#E8CCFF' },
+  { value: 'Happy',    Icon: Smile,    label: 'Happy',    color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Excited',  Icon: Sparkles, label: 'Excited',  color: '#ed12a4', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Calm',     Icon: Meh,      label: 'Calm',     color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  { value: 'Grateful', Icon: Star,     label: 'Grateful', color: '#8e0b62', bg: '#fbd0ed', border: '#f471c8' },
+  { value: 'Tired',    Icon: Moon,     label: 'Tired',    color: '#f141b6', bg: '#fde7f6', border: '#f8a0db' },
+  { value: 'Anxious',  Icon: Zap,      label: 'Anxious',  color: '#be0e83', bg: '#fbd0ed', border: '#f471c8' },
+  { value: 'Sad',      Icon: Frown,    label: 'Sad',      color: '#8e0b62', bg: '#fbd0ed', border: '#f471c8' },
 ];
 const MOOD_MAP = Object.fromEntries(MOODS.map(m => [m.value, m]));
 
@@ -107,7 +107,7 @@ const s = {
   },
   successBanner: {
     display: 'flex', alignItems: 'center', gap: 10,
-    background: '#EBF4EF', border: '1px solid #A8D5B8',
+    background: '#fde7f6', border: '1px solid #f8a0db',
     borderRadius: 10, padding: '12px 16px', marginBottom: 20,
     fontSize: 14, color: '#2D7A4F', animation: 'fadeIn 0.3s ease',
   },
